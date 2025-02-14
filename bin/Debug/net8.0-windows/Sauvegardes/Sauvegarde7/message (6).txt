@@ -1,0 +1,157 @@
+classDiagram
+    namespace EasySaveNamespace {
+        %% ----- VIEWMODEL ----- 
+        class EasySave {
+            - static EasySave instance
+            - BackupManager backupManager
+            - LanguageManager languageManager
+            + static GetInstance(): EasySave
+            + Run(jobId: Guid): void
+            + ListBackup(): List<BackupJob>
+        }
+
+        %% ----- MODEL -----
+        class BackupManager {
+            - List<BackupJob> backupJobs
+            - Logger logger
+            - StateManager stateManager
+            - ConfigurationManager configManager
+            + AddBackup(job: BackupJob): void
+            + ExecuteJob(jobId: Guid): void
+            + ExecuteJobsSequentially(jobIds: List<Guid>): void
+        }
+    }
+
+    %% ----- MODEL -----
+    namespace EasySaveNamespace.Backup {
+        class BackupJob {
+            - Guid Id
+            - string Name
+            - string Source
+            - string Target
+            - boolean IsFullBackup
+            - BackupTypeStrategy backupStrategy
+            + Execute(): void
+        }
+
+        class BackupService {
+            + TransferFiles(source: string, target: string): void
+            + CreateDirectories(path: string): void
+        }
+
+        class IBackupTypeStrategy {
+            <<interface>>
+            + ExecuteBackupStrategy(source: string, target: string): void
+        }
+
+        class CompleteBackupStrategy {
+            + ExecuteBackupStrategy(source: string, target: string): void
+        }
+
+        class DifferentialBackupStrategy {
+            + ExecuteBackupStrategy(source: string, target: string): void
+        }
+
+        class BackupJobFactory {
+            + CreateBackupJobsInParallel(jobs: List<BackupJob>): void
+        }
+    }
+
+    %% ----- MODEL -----
+    namespace EasySaveNamespace.Logging {
+        class Logger {
+            - string logPath
+            + WriteLog(logEntry: LogEntry): void
+            + ConfigureLogPath(path: string): void
+        }
+
+        class LogEntry {
+            - string Timestamp
+            - string JobName
+            - string SourcePath
+            - string TargetPath
+            - int FileSize
+            - TimeSpan TransferTime
+        }
+    }
+
+    %% ----- MODEL -----
+    namespace EasySaveNamespace.State {
+        class StateManager {
+            - string stateFilePath
+            + UpdateState(job: BackupJob): void
+            + ConfigureStatePath(path: string): void
+            + GetCurrentState(jobId: Guid): StateEntry
+        }
+
+        class StateEntry {
+            - string JobName
+            - string Timestamp
+            - string Status
+            - int FilesTotal
+            - int SizeTotal
+            - float Progress
+            - int RemainingFiles
+            - int RemainingSize
+            - string CurrentSource
+            - string CurrentTarget
+        }
+    }
+
+    %% ----- VIEW ----- 
+    namespace EasySaveNamespace.CLI {
+        class CLI {
+            + ParseCommand(command: string): void
+            + DisplayState(): void
+            + DisplayError(message: string): void
+        }
+    }
+
+    %% ----- MODEL ----- 
+    namespace EasySaveNamespace.Language {
+        class LanguageManager {
+            - Language currentLanguage
+            - Map<string, string> translations
+            + SetLanguage(lang: Language): void
+            + GetTranslation(key: string): string
+        }
+
+        class Language {
+            <<enumeration>>
+            FrFr
+            EnUs
+        }
+    }
+
+    %% ----- MODEL -----
+    namespace EasySaveNamespace.Configuration {
+        class ConfigurationManager {
+            + LoadConfiguration(): Configuration
+            + SaveConfiguration(config: Configuration): void
+        }
+
+        class Configuration {
+            - string LogFilePath
+            - string StateFilePath
+        }
+    }
+
+    %% ----- RELATIONS -----
+    EasySave "1" *-- "1" BackupManager : manages
+    EasySave "1" *-- "1" LanguageManager : manages language
+    BackupManager "1" *-- "*" BackupJob : manages
+    BackupManager "1" *-- "1" Logger : uses
+    BackupManager "1" *-- "1" StateManager : tracks state
+    BackupManager "1" *-- "1" ConfigurationManager : configures paths
+    BackupJob "1" *-- "1" IBackupTypeStrategy : uses
+    BackupJob "1" --> "1" BackupService : depends on
+    IBackupTypeStrategy <|-- CompleteBackupStrategy : implements
+    IBackupTypeStrategy <|-- DifferentialBackupStrategy : implements
+    Logger "1" *-- "*" LogEntry : stores
+    StateManager "1" *-- "*" StateEntry : tracks
+    CLI "1" --> "1" BackupManager : interacts with
+    CLI "1" --> "1" StateManager : displays status
+    LanguageManager "1" *-- "1" Language : handles translations
+    ConfigurationManager "1" *-- "1" Configuration : loads paths
+    BackupManager "1" --> "1" BackupJobFactory : uses
+    BackupJobFactory "1" *-- "*" BackupJob : creates and manages
