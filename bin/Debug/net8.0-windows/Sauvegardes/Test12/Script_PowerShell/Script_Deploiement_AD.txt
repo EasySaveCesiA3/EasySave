@@ -1,0 +1,86 @@
+<#
+.SYNOPSIS
+Déploiement complet et sécurisé d'un environnement Active Directory.
+.DESCRIPTION
+Ce script déploie une forêt, un domaine, des OUs, des Groupes des utilisateurs, des GPOs, configure DNS.
+implémente MFA et redondance, et sécurise les mots de passe.
+.AUTHOR
+Votre Nom
+.LASTEDIT
+02/12/2024
+#>
+# Attention de bien configurer l’IP, DNS etc au préalable 
+
+# Étape 1 : Définir les variables globales
+$DomainName = "mon-domaine.local"
+$NetBIOSName = "MONDOMAINE"
+$ForestMode = "WinThreshold" # Niveau de forêt (Windows Server 2016+)
+$OUBase = "OU=Utilisateurs,DC=mon-domaine,DC=local"
+# Demander un mot de passe sécurisé pour le mode restauration AD DS et les utilisateurs
+Write-Host "Veuillez entrer un mot de passe sécurisé pour le mode restauration AD DS :"
+$SafeModePassword = Read-Host -AsSecureString
+Write-Host "Veuillez entrer un mot de passe par défaut pour les utilisateurs créés :"
+$UserPassword = Read-Host -AsSecureString
+
+# Étape 2 : Installation des rôles nécessaires
+Write-Host "Installation des rôles Active Directory Domain Services et DNS..."
+Install-WindowsFeature -Name AD-Domain-Services, DNS -IncludeManagementTools
+
+# Étape 3 : Configuration de la forêt et du domaine
+Write-Host "Configuration de la forêt et du domaine..."
+Install-ADDSForest `
+    -DomainName $DomainName ` 
+    -DomainNetBIOSName $NetBIOSName `
+    -SafeModeAdministratorPassword $SafeModePassword ` #MDP Fort
+    -Force `
+    -InstallDNS `
+    -DatabasePath "C:\NTDS" `
+    -LogPath "C:\NTDS" `
+    -SysvolPath "C:\SYSVOL" `
+    -ForestMode $ForestMode `
+    -DomainMode $ForestMode
+
+Restart-Computer -Force
+
+# Pause pour redémarrage
+Start-Sleep -Seconds 60
+
+# Étape 4 : Configuration de la redondance (ajout d’un deuxième contrôleur de domaine)
+Write-Host "Ajout d’un deuxième contrôleur de domaine..."
+$SecondDC = "DC02.mon-domaine.local"
+Add-WindowsFeature -Name AD-Domain-Services -IncludeManagementTools
+Install-ADDSDomainController `
+    -DomainName $DomainName `
+    -InstallDNS `
+    -Credential (Get-Credential) `
+    -DatabasePath "C:\NTDS" `
+    -LogPath "C:\NTDS" `
+    -SysvolPath "C:\SYSVOL"
+
+# Étape 5 : Vérification des FSMO
+Write-Host "Vérification et répartition des rôles FSMO..."
+Get-ADForest | Select-Object SchemaMaster, DomainNamingMaster
+Get-ADDomain | Select-Object RIDMaster, PDCEmulator, InfrastructureMaster
+
+# Étape 6 : Configuration des GPOs pour prescrire l’usage de périphériques amovibles
+Write-Host "Configuration des GPOs..."
+Import-Module GroupPolicy
+$GPOBase = New-GPO -Name "Politique de base" -Domain $DomainName
+Set-GPRegistryValue -Name "Politique de base" -Key "HKLM\Software\Policies\Microsoft\Windows\RemovableStorageDevices" `
+    -ValueName "Deny_All" -Type DWord -Value 1
+New-GPLink -Name "Politique de base" -Target "DC=mon-domaine,DC=local"
+# Résumé final
+Write-Host "Déploiement terminé. Vérifiez chaque composant pour valider la configuration."
+
+#Optionnel car il faut que chaque collaborateur ait une adresse mail définie sur le domaine de l’entreprise, cela ne fonctionnera donc pas dans la présente démonstration.
+Write-Host "Mise en œuvre de l’authentification multifacteur (MFA)..."
+Connect-MsolService
+#Une fenêtre s’ouvre et nécessite l’authentification sur les services Microsoft, il peut être nécessaire de placer le lien dans une liste de confiance
+$Mfa = New-Object -TypeName Microsoft.Online.Administration.StrongAuthenticationRequirement
+$Mfa.RelyingParty = "*"
+$Mfa.State = "Enabled"
+$MfaStatus = @($Mfa)
+$Users = Get-ADGroupMember -Identity "O365-Licence-E3" | Foreach{ Get-ADUser -Identity $_.SamAccountName } | Select-Object UserPrincipalName
+$USers | Set-MsolUser -StrongAuthenticationRequirements $MfaStatus
+
+
