@@ -8,6 +8,7 @@
     ".NETCoreApp,Version=v8.0": {
       "EasySaveApp/1.0.0": {
         "dependencies": {
+          "CryptoSoft": "1.0.0",
           "MaterialDesignColors": "5.2.1",
           "MaterialDesignThemes.MahApps": "5.2.1",
           "MaterialDesignThemes.Wpf": "1.0.1"
@@ -89,7 +90,15 @@
         }
       },
       "System.Data.DataSetExtensions/4.6.0-preview3.19128.7": {},
-      "System.Text.Json/4.7.2": {}
+      "System.Text.Json/4.7.2": {},
+      "CryptoSoft/1.0.0": {
+        "runtime": {
+          "CryptoSoft.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      }
     }
   },
   "libraries": {
@@ -167,6 +176,11 @@
       "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
       "path": "system.text.json/4.7.2",
       "hashPath": "system.text.json.4.7.2.nupkg.sha512"
+    },
+    "CryptoSoft/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     }
   }
 }

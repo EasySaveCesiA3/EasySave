@@ -157,6 +157,16 @@
             "related": ".xml"
           }
         }
+      },
+      "CryptoSoft/1.0.0": {
+        "type": "project",
+        "framework": ".NETCoreApp,Version=v8.0",
+        "compile": {
+          "bin/placeholder/CryptoSoft.dll": {}
+        },
+        "runtime": {
+          "bin/placeholder/CryptoSoft.dll": {}
+        }
       }
     }
   },
@@ -441,10 +451,16 @@
         "useSharedDesignerContext.txt",
         "version.txt"
       ]
+    },
+    "CryptoSoft/1.0.0": {
+      "type": "project",
+      "path": "../../../Downloads/CryptoSoft (2)/CryptoSoft/CryptoSoft.csproj",
+      "msbuildProject": "../../../Downloads/CryptoSoft (2)/CryptoSoft/CryptoSoft.csproj"
     }
   },
   "projectFileDependencyGroups": {
     "net8.0-windows7.0": [
+      "CryptoSoft >= 1.0.0",
       "MaterialDesignColors >= 5.2.1",
       "MaterialDesignThemes.MahApps >= 5.2.1",
       "MaterialDesignThemes.Wpf >= 1.0.1"
@@ -480,7 +496,11 @@
       "frameworks": {
         "net8.0-windows7.0": {
           "targetAlias": "net8.0-windows",
-          "projectReferences": {}
+          "projectReferences": {
+            "C:\\Users\\Martin\\Downloads\\CryptoSoft (2)\\CryptoSoft\\CryptoSoft.csproj": {
+              "projectPath": "C:\\Users\\Martin\\Downloads\\CryptoSoft (2)\\CryptoSoft\\CryptoSoft.csproj"
+            }
+          }
         }
       },
       "warningProperties": {

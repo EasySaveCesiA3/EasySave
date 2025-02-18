@@ -5,7 +5,7 @@ VisualStudioVersion = 17.12.35707.178
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EasySaveApp", "EasySaveApp.csproj", "{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoSoft", "..\..\..\Downloads\CryptoSoft (2)\CryptoSoft\CryptoSoft.csproj", "{D0ABDCD1-8DE4-485A-9EC3-99C0DDBAFAAC}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CryptoSoft", "..\..\..\Downloads\CryptoSoft (2)\CryptoSoft\CryptoSoft.csproj", "{5802C0F2-E129-4943-A4F9-1FA3B6DB130E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}.Release|Any CPU.Build.0 = Release|Any CPU
-		{D0ABDCD1-8DE4-485A-9EC3-99C0DDBAFAAC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{D0ABDCD1-8DE4-485A-9EC3-99C0DDBAFAAC}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{D0ABDCD1-8DE4-485A-9EC3-99C0DDBAFAAC}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{D0ABDCD1-8DE4-485A-9EC3-99C0DDBAFAAC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5802C0F2-E129-4943-A4F9-1FA3B6DB130E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5802C0F2-E129-4943-A4F9-1FA3B6DB130E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5802C0F2-E129-4943-A4F9-1FA3B6DB130E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5802C0F2-E129-4943-A4F9-1FA3B6DB130E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
