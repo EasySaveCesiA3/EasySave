@@ -32,3 +32,6 @@ C:\Users\Martin\source\repos\EasySaveApp\obj\Debug\net8.0-windows\refint\EasySav
 C:\Users\Martin\source\repos\EasySaveApp\obj\Debug\net8.0-windows\EasySaveApp.pdb
 C:\Users\Martin\source\repos\EasySaveApp\obj\Debug\net8.0-windows\EasySaveApp.genruntimeconfig.cache
 C:\Users\Martin\source\repos\EasySaveApp\obj\Debug\net8.0-windows\ref\EasySaveApp.dll
+C:\Users\Martin\source\repos\EasySaveApp\obj\Debug\net8.0-windows\EasySaveApp.sourcelink.json
+C:\Users\Martin\source\repos\EasySaveApp\bin\Debug\net8.0-windows\CryptoSoft.dll
+C:\Users\Martin\source\repos\EasySaveApp\bin\Debug\net8.0-windows\CryptoSoft.pdb

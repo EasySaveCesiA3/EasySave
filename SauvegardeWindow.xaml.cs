@@ -4,7 +4,7 @@ using System.Windows;
 using System.Windows.Input;
 using Microsoft.Win32;
 using System.IO;
-
+using CryptoSoft;
 
 namespace EasySaveApp
 {
@@ -45,6 +45,28 @@ namespace EasySaveApp
             }   
         }
 
+        private void ChargerExtensions_Click(object sender, RoutedEventArgs e)
+        {
+            string cheminDossier = CheminSauvegardeTextBox.Text.Trim();
+
+            if (string.IsNullOrWhiteSpace(cheminDossier) || !Directory.Exists(cheminDossier))
+            {
+                MessageBox.Show("Veuillez sélectionner un dossier valide.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
+
+            // Obtenir les extensions disponibles dans le dossier
+            List<string> extensions = CryptoSoftManager.GetExtensionsFromFolder(cheminDossier);
+
+            if (extensions.Count == 0)
+            {
+                MessageBox.Show("Aucune extension trouvée dans ce dossier.", "Info", MessageBoxButton.OK, MessageBoxImage.Information);
+                return;
+            }
+
+            ExtensionsListBox.ItemsSource = extensions;
+        }
+
         private void CrypterFichiers_Click(object sender, RoutedEventArgs e)
         {
             string cheminDossier = CheminSauvegardeTextBox.Text.Trim();
@@ -55,32 +77,26 @@ namespace EasySaveApp
                 return;
             }
 
-            // Lancer CryptoSoft comme un processus
-            ProcessStartInfo startInfo = new ProcessStartInfo
+            List<string> selectedExtensions = ExtensionsListBox.SelectedItems.Cast<string>().ToList();
+
+            if (selectedExtensions.Count == 0)
             {
-                FileName = "",
-                Arguments = $"\"{cheminDossier}\"",
-                UseShellExecute = false,
-                RedirectStandardOutput = true,
-                RedirectStandardError = true,
-                CreateNoWindow = true
-            };
+                MessageBox.Show("Veuillez sélectionner au moins une extension à crypter.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
             try
             {
-                using (Process process = Process.Start(startInfo))
-                {
-                    process.WaitForExit();
-                    MessageBox.Show("Chiffrement terminé avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
-                }
+                CryptoSoftManager.StartCrypto(cheminDossier, selectedExtensions);
+
+                MessageBox.Show("Chiffrement terminé avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
             {
-                MessageBox.Show($"Erreur lors de l'exécution de CryptoSoft : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                MessageBox.Show($"Erreur lors du chiffrement : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
 
-        // Valider et enregistrer la sauvegarde
         private void LancerSauvegarde_Click(object sender, RoutedEventArgs e)
         {
             string nomSauvegarde = NomSauvegardeTextBox.Text.Trim();

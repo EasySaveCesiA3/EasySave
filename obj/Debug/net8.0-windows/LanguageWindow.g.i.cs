@@ -52,7 +52,7 @@ namespace EasySaveApp {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EasySaveApp;component/languagewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EasySaveApp;V1.0.0.0;component/languagewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\LanguageWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
