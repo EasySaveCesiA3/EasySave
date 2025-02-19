@@ -8,6 +8,8 @@
     ".NETCoreApp,Version=v8.0": {
       "EasySaveApp/1.0.0": {
         "dependencies": {
+          "ClassLog": "1.0.0",
+          "CommunityToolkit.Mvvm": "8.4.0",
           "CryptoSoft": "1.0.0",
           "MaterialDesignColors": "5.2.1",
           "MaterialDesignThemes.MahApps": "5.2.1",
@@ -15,6 +17,14 @@
         },
         "runtime": {
           "EasySaveApp.dll": {}
+        }
+      },
+      "CommunityToolkit.Mvvm/8.4.0": {
+        "runtime": {
+          "lib/net8.0/CommunityToolkit.Mvvm.dll": {
+            "assemblyVersion": "8.4.0.0",
+            "fileVersion": "8.4.0.1"
+          }
         }
       },
       "ControlzEx/4.3.0": {
@@ -89,9 +99,32 @@
           }
         }
       },
+      "Portable.Xaml/0.26.0": {
+        "runtime": {
+          "lib/netstandard2.0/Portable.Xaml.dll": {
+            "assemblyVersion": "0.26.0.0",
+            "fileVersion": "0.26.7607.20022"
+          }
+        }
+      },
       "System.Data.DataSetExtensions/4.6.0-preview3.19128.7": {},
       "System.Text.Json/4.7.2": {},
+      "ClassLog/1.0.0": {
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0",
+          "Portable.Xaml": "0.26.0"
+        },
+        "runtime": {
+          "ClassLog.dll": {
+            "assemblyVersion": "1.0.0",
+            "fileVersion": "1.0.0.0"
+          }
+        }
+      },
       "CryptoSoft/1.0.0": {
+        "dependencies": {
+          "CommunityToolkit.Mvvm": "8.4.0"
+        },
         "runtime": {
           "CryptoSoft.dll": {
             "assemblyVersion": "1.0.0",
@@ -106,6 +139,13 @@
       "type": "project",
       "serviceable": false,
       "sha512": ""
+    },
+    "CommunityToolkit.Mvvm/8.4.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-tqVU8yc/ADO9oiTRyTnwhFN68hCwvkliMierptWOudIAvWY1mWCh5VFh+guwHJmpMwfg0J0rY+yyd5Oy7ty9Uw==",
+      "path": "communitytoolkit.mvvm/8.4.0",
+      "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
     },
     "ControlzEx/4.3.0": {
       "type": "package",
@@ -163,6 +203,13 @@
       "path": "microsoft.xaml.behaviors.wpf/1.1.39",
       "hashPath": "microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512"
     },
+    "Portable.Xaml/0.26.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQ3TwfgLTg5uAphAH8hIsnWXOicEhXVyR1Mk9jBzjqy+1YiigtpHIqhUzZeh02R/4OlXuXH+4i1FlGok5mzFkQ==",
+      "path": "portable.xaml/0.26.0",
+      "hashPath": "portable.xaml.0.26.0.nupkg.sha512"
+    },
     "System.Data.DataSetExtensions/4.6.0-preview3.19128.7": {
       "type": "package",
       "serviceable": true,
@@ -176,6 +223,11 @@
       "sha512": "sha512-TcMd95wcrubm9nHvJEQs70rC0H/8omiSGGpU4FQ/ZA1URIqD4pjmFJh2Mfv1yH1eHgJDWTi2hMDXwTET+zOOyg==",
       "path": "system.text.json/4.7.2",
       "hashPath": "system.text.json.4.7.2.nupkg.sha512"
+    },
+    "ClassLog/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
     },
     "CryptoSoft/1.0.0": {
       "type": "project",

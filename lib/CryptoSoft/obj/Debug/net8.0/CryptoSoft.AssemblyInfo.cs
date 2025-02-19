@@ -15,7 +15,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyCopyrightAttribute("Copyright © 2025 ProSoft")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+20b4c66cb134ae2cb212f5646f492fc60f6b9200")]
 [assembly: System.Reflection.AssemblyProductAttribute("CryptoSoft")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CryptoSoft")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
