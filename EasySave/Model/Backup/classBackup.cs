@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
+using System.Windows;
 
 namespace Model;
 
@@ -47,6 +48,7 @@ public class BackupFactory
 {
     public IBackupStrategy CreateBackupStrategy(string type)
     {
+        MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
         return type switch
         {
             "Complete" => new CompleteBackup(),
