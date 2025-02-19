@@ -1,0 +1,41 @@
+{
+  "runtimeTarget": {
+    "name": ".NETCoreApp,Version=v8.0",
+    "signature": ""
+  },
+  "compilationOptions": {},
+  "targets": {
+    ".NETCoreApp,Version=v8.0": {
+      "ClassLog/1.0.0": {
+        "dependencies": {
+          "Portable.Xaml": "0.26.0"
+        },
+        "runtime": {
+          "ClassLog.dll": {}
+        }
+      },
+      "Portable.Xaml/0.26.0": {
+        "runtime": {
+          "lib/netstandard2.0/Portable.Xaml.dll": {
+            "assemblyVersion": "0.26.0.0",
+            "fileVersion": "0.26.7607.20022"
+          }
+        }
+      }
+    }
+  },
+  "libraries": {
+    "ClassLog/1.0.0": {
+      "type": "project",
+      "serviceable": false,
+      "sha512": ""
+    },
+    "Portable.Xaml/0.26.0": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-QQ3TwfgLTg5uAphAH8hIsnWXOicEhXVyR1Mk9jBzjqy+1YiigtpHIqhUzZeh02R/4OlXuXH+4i1FlGok5mzFkQ==",
+      "path": "portable.xaml/0.26.0",
+      "hashPath": "portable.xaml.0.26.0.nupkg.sha512"
+    }
+  }
+}
