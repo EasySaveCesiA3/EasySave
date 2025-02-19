@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "CryptoSoft": {
+      "commandName": "Project",
+      "commandLineArgs": "/runas"
+    }
+  }
+}

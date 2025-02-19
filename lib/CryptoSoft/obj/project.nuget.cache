@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "+8iJyGOeSvE=",
+  "success": true,
+  "projectFilePath": "C:\\Users\\Martin\\Downloads\\CryptoSoft (2)\\CryptoSoft\\CryptoSoft.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\Martin\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.12\\microsoft.net.illink.tasks.8.0.12.nupkg.sha512"
+  ],
+  "logs": []
+}

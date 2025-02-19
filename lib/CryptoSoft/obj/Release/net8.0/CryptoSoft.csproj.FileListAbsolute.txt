@@ -1,0 +1,11 @@
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\bin\Release\net8.0\CryptoSoft.deps.json
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\bin\Release\net8.0\CryptoSoft.dll
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\bin\Release\net8.0\CryptoSoft.pdb
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\CryptoSoft.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\CryptoSoft.AssemblyInfoInputs.cache
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\CryptoSoft.AssemblyInfo.cs
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\CryptoSoft.csproj.CoreCompileInputs.cache
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\CryptoSoft.dll
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\refint\CryptoSoft.dll
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\CryptoSoft.pdb
+C:\Users\Martin\Downloads\CryptoSoft (2)\CryptoSoft\obj\Release\net8.0\ref\CryptoSoft.dll
