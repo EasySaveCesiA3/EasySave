@@ -1,6 +1,7 @@
-﻿<Window x:Class="EasySaveApp.MainWindow"
+﻿<Window x:Class="Views.MainWindow"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ViewModels"
         Title="EasySave" Height="350" Width="500"
         WindowStartupLocation="CenterScreen"
         Background="Transparent"
@@ -15,7 +16,6 @@
                 </LinearGradientBrush>
             </Grid.Background>
 
-            <!-- Déplacement des ressources ici, sous Grid -->
             <Grid.Resources>
                 <Style TargetType="Button">
                     <Setter Property="Width" Value="220"/>
@@ -56,12 +56,11 @@
                 <TextBlock Text="EasySave - Menu" FontSize="20" FontWeight="Bold" 
                            Foreground="White" Margin="10" HorizontalAlignment="Center"/>
 
-                <Button Content="Démarrer une sauvegarde" Click="DemarrerSauvegarde_Click"/>
-                <Button Content="Restaurer une sauvegarde" Click="RestaurerSauvegarde_Click"/>
-                <Button Content="Changer la langue" Click="ChangerLangue_Click"/>
-                <Button Content="Quitter" Click="Quitter_Click" Background="#D9534F"/>
+                <Button Content="Démarrer une sauvegarde" Command="{Binding DemarrerSauvegardeCommand}"/>
+                <Button Content="Restaurer une sauvegarde" Command="{Binding RestaurerSauvegardeCommand}"/>
+                <Button Content="Changer la langue" Command="{Binding ChangerLangueCommand}"/>
+                <Button Content="Quitter" Command="{Binding QuitterCommand}" Background="#D9534F"/>
             </StackPanel>
-
         </Grid>
     </Border>
 </Window>
