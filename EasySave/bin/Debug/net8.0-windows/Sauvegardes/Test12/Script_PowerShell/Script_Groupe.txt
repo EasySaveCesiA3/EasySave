@@ -1,0 +1,28 @@
+<#
+.SYNOPSIS
+Création des groupes en masse à l’aide d’un fichier .csv à compléter en fonction de votre organigramme.
+.DESCRIPTION
+Ce script créer un groupe avec l’ensemble des données nécessaires, ainsi que sa localisation dans une OU.
+.AUTHOR
+Groupe 3
+.LASTEDIT
+02/12/2024
+#>
+$CSVFile = "C:\Groupe.csv"
+$CSVData = Import-CSV -Path $CSVFile -Delimiter ";" -Encoding UTF8
+$OUBase = "OU=Groupes,DC=mon-domaine,DC=local"
+
+Foreach($Groupe in $CSVData) {
+    $GroupeTitle = $Groupe.Groupe
+    # Vérifier la présence du groupe dans l'AD
+    if (Get-ADGroup -Filter {Name -eq $GroupeTitle}) {
+        Write-Warning "L'identifiant $GroupeTitle existe déjà dans l'AD"
+    } else {
+        # Création d'un groupe
+        New-ADGroup -Name $GroupeTitle `
+                    -GroupScope Global `
+                    -GroupCategory Security `
+                    -Path $OUBase `
+        Write-Output "Groupe créé : $GroupeTitle"
+    }
+}
