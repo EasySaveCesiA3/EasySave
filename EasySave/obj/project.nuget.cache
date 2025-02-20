@@ -1,21 +1,21 @@
 {
   "version": 2,
-  "dgSpecHash": "5sIl7xRTSy8=",
+  "dgSpecHash": "Mvnr65BB7kk=",
   "success": true,
-  "projectFilePath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\EasySaveApp.csproj",
+  "projectFilePath": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\EasySaveApp.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\louis\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\materialdesigncolors\\5.2.1\\materialdesigncolors.5.2.1.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\materialdesignthemes\\5.2.1\\materialdesignthemes.5.2.1.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\materialdesignthemes.mahapps\\5.2.1\\materialdesignthemes.mahapps.5.2.1.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\materialdesignthemes.wpf\\1.0.1\\materialdesignthemes.wpf.1.0.1.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\portable.xaml\\0.26.0\\portable.xaml.0.26.0.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\system.data.datasetextensions\\4.6.0-preview3.19128.7\\system.data.datasetextensions.4.6.0-preview3.19128.7.nupkg.sha512",
-    "C:\\Users\\louis\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
+    "C:\\Users\\Martin\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\controlzex\\4.3.0\\controlzex.4.3.0.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\mahapps.metro\\2.0.0\\mahapps.metro.2.0.0.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\materialdesigncolors\\5.2.1\\materialdesigncolors.5.2.1.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\materialdesignthemes\\5.2.1\\materialdesignthemes.5.2.1.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\materialdesignthemes.mahapps\\5.2.1\\materialdesignthemes.mahapps.5.2.1.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\materialdesignthemes.wpf\\1.0.1\\materialdesignthemes.wpf.1.0.1.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\microsoft.csharp\\4.6.0\\microsoft.csharp.4.6.0.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\microsoft.xaml.behaviors.wpf\\1.1.39\\microsoft.xaml.behaviors.wpf.1.1.39.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\portable.xaml\\0.26.0\\portable.xaml.0.26.0.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\system.data.datasetextensions\\4.6.0-preview3.19128.7\\system.data.datasetextensions.4.6.0-preview3.19128.7.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\system.text.json\\4.7.2\\system.text.json.4.7.2.nupkg.sha512"
   ],
   "logs": []
 }

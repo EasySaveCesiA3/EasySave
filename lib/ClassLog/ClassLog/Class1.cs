@@ -7,6 +7,7 @@ using System.Xml.Serialization;
 using Portable.Xaml;
 using System.Diagnostics;
 using System.Xml;
+using static Log.Historic;
 
 namespace Log
 {
@@ -139,40 +140,89 @@ namespace Log
         }
 
 
-        public void OpenLog()
+        public void OpenLog(LogEntry logEntry)
         {
-            string? file = null;
-
             switch (choix)
             {
-                case "1": // Ouvrir le fichier JSON dans Notepad
-                    file = jsonfile;
+                case "1": // Enregistrement en JSON
+                    List<LogEntry> logEntriesJson = new List<LogEntry>();
+
+                    // Charger les logs existants
+                    if (File.Exists(jsonfile))
+                    {
+                        try
+                        {
+                            string json = File.ReadAllText(jsonfile);
+                            var existingLogs = JsonSerializer.Deserialize<List<LogEntry>>(json);
+                            if (existingLogs != null)
+                            {
+                                logEntriesJson = existingLogs;
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erreur lors de la lecture du fichier JSON : {ex.Message}");
+                        }
+                    }
+
+                    // Ajouter le nouveau log
+                    logEntriesJson.Add(logEntry);
+
+                    // Écrire le fichier mis à jour
+                    try
+                    {
+                        string newJson = JsonSerializer.Serialize(logEntriesJson, new JsonSerializerOptions { WriteIndented = true });
+                        File.WriteAllText(jsonfile, newJson);
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Erreur lors de l'écriture dans le fichier JSON : {ex.Message}");
+                    }
                     break;
 
-                case "2": // Ouvrir le fichier XAML dans Notepad
-                    file = xamlfile;
+                case "2": // Enregistrement en XAML
+                    List<LogEntry> logEntriesXaml = new List<LogEntry>();
+
+                    // Charger les logs existants
+                    if (File.Exists(xamlfile))
+                    {
+                        try
+                        {
+                            using (var reader = new StreamReader(xamlfile))
+                            {
+                                var existingLogs = XamlServices.Load(reader) as List<LogEntry>;
+                                if (existingLogs != null)
+                                {
+                                    logEntriesXaml = existingLogs;
+                                }
+                            }
+                        }
+                        catch (Exception ex)
+                        {
+                            Console.WriteLine($"Erreur lors de la lecture du fichier XAML : {ex.Message}");
+                        }
+                    }
+
+                    // Ajouter le nouveau log
+                    logEntriesXaml.Add(logEntry);
+
+                    // Écrire le fichier mis à jour
+                    try
+                    {
+                        using (var writer = new StreamWriter(xamlfile))
+                        {
+                            XamlServices.Save(writer, logEntriesXaml);
+                        }
+                    }
+                    catch (Exception ex)
+                    {
+                        Console.WriteLine($"Erreur lors de l'écriture dans le fichier XAML : {ex.Message}");
+                    }
                     break;
 
                 default:
                     Console.WriteLine("Choix invalide.");
-                    return;
-            }
-
-            if (file != null && File.Exists(file))
-            {
-                try
-                {
-                    // Ouvre le fichier dans Notepad
-                    Process.Start("notepad.exe", file);
-                }
-                catch (Exception ex)
-                {
-                    Console.WriteLine($"Erreur lors de l'ouverture du fichier dans Notepad : {ex.Message}");
-                }
-            }
-            else
-            {
-                Console.WriteLine($"Le fichier {file} n'existe pas.");
+                    break;
             }
         }
 
