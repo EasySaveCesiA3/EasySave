@@ -8,8 +8,16 @@ namespace Views
         public MainWindow()
         {
             InitializeComponent();
-            DataContext = new ViewModels.MainViewModel();
+            DataContext = new SaveViewModel();
+        }
 
+        private void AddBackup(object sender, RoutedEventArgs e)
+        {
+            var viewModel = (SaveViewModel)DataContext;
+            viewModel.LancerSauvegardeCommand.Execute(null);
+
+            MessageBox.Show("LancerSauvegardeCommand exécuté avec succès !");
         }
     }
 }
+

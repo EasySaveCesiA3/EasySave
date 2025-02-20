@@ -22,3 +22,16 @@ C:\Users\Martin\EasySaveInt\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
 C:\Users\Martin\EasySaveInt\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
 C:\Users\Martin\EasySaveInt\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
 C:\Users\Martin\EasySaveInt\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.deps.json
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.dll
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.pdb
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.AssemblyReference.cache
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfoInputs.cache
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfo.cs
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.CoreCompileInputs.cache
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.sourcelink.json
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
+C:\Users\louis\EasySaveGUI\EasySave\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
