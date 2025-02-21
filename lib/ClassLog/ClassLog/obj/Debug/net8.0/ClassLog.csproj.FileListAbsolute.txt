@@ -73,3 +73,16 @@ C:\Users\louis\EasySaveGUI\EasySave\lib\ClassLog\ClassLog\obj\Debug\net8.0\Class
 C:\Users\louis\EasySaveGUI\EasySave\lib\ClassLog\ClassLog\obj\Debug\net8.0\refint\ClassLog.dll
 C:\Users\louis\EasySaveGUI\EasySave\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.pdb
 C:\Users\louis\EasySaveGUI\EasySave\lib\ClassLog\ClassLog\obj\Debug\net8.0\ref\ClassLog.dll
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\bin\Debug\net8.0\ClassLog.deps.json
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\bin\Debug\net8.0\ClassLog.dll
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\bin\Debug\net8.0\ClassLog.pdb
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.csproj.AssemblyReference.cache
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.AssemblyInfoInputs.cache
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.AssemblyInfo.cs
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.csproj.CoreCompileInputs.cache
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.sourcelink.json
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.dll
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\refint\ClassLog.dll
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ClassLog.pdb
+C:\Users\erwan\OrganisationES\lib\ClassLog\ClassLog\obj\Debug\net8.0\ref\ClassLog.dll
