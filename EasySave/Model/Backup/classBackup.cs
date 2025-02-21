@@ -48,7 +48,7 @@ public class BackupFactory
 {
     public IBackupStrategy CreateBackupStrategy(string type)
     {
-        MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
+        //MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
         return type switch
         {
             "Complete" => new CompleteBackup(),
