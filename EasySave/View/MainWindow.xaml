@@ -95,7 +95,7 @@
                             Height="40"
                             Margin="5"/>
                     <Button Content="Quitter"
-                            Command="{Binding QuitterCommand}"
+                            Click="QuitterApplication"
                             Background="#D9534F"
                             Foreground="White"
                             Height="40"
@@ -158,25 +158,21 @@
                           SelectedItem="{Binding TypeSauvegarde, Mode=TwoWay}"
                           Width="150" />
 
-                <TextBlock Text="Liste des sauvegardes :"
-                           FontSize="14"
-                           Foreground="White"
-                           Margin="10 0 0 10"/>
-                <ListBox Height="100">
-                    <ListBoxItem>
-                        <TextBlock Text="Test"
-                                   FontWeight="Bold"
-                                   Foreground="White"/>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <TextBlock Text="C:\Users\Martin\Pictures\Dossier"
-                                   Foreground="White"/>
-                    </ListBoxItem>
-                    <ListBoxItem>
-                        <TextBlock Text="C:\Users\Martin\Desktop"
-                                   Foreground="White"/>
-                    </ListBoxItem>
+                <TextBlock Text="Liste des sauvegardes :" FontSize="14" Foreground="White" Margin="10 0 0 10"/>
+
+                <ListBox ItemsSource="{Binding ListeSauvegardes}" SelectedItem="{Binding SelectedBackup}" Height="150">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate>
+                            <StackPanel Orientation="Vertical">
+                                <TextBlock Text="{Binding Name}" Foreground="Black" FontWeight="Bold"/>
+                                <TextBlock Text="{Binding Source}" Foreground="Black"/>
+                                <TextBlock Text="{Binding Target}" Foreground="Black"/>
+                            </StackPanel>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
                 </ListBox>
+
+                <Button Content="Actualiser la liste" Command="{Binding ListerSauvegardesCommand}" Background="#4A90E2" Foreground="White" Height="40" Margin="5"/>
 
                 <TextBlock Text="Journaux :"
                            FontSize="14"

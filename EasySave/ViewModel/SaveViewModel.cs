@@ -10,11 +10,13 @@ using Model;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
+
 namespace ViewModels
 {
     public partial class SaveViewModel : ObservableObject
     {
         private readonly classModel classModel = new classModel();
+        //private List<string> sauvegardes = new List<string>();
 
         [ObservableProperty]
         private string cheminSauvegardeSource;
@@ -36,21 +38,28 @@ namespace ViewModels
             "Différentielle"
         };
 
+        [ObservableProperty]
+        private ObservableCollection<BackupData> listeSauvegardes = new ObservableCollection<BackupData>();
+
         public ICommand SelectionnerDossierCommand { get; }
         public ICommand SelectionnerDossierCibleCommand { get; }
-        public ICommand ChargerExtensionsCommand { get; }
         public ICommand CrypterFichiersCommand { get; }
         public ICommand LancerSauvegardeCommand { get; }
-        public RelayCommand<Window> CloseWindowCommand { get; }
+        public ICommand ListerSauvegardesCommand { get; }
+
+
+        //public RelayCommand<Window> CloseWindowCommand { get; }
+
 
         public SaveViewModel()
         {
             SelectionnerDossierCommand = new RelayCommand(SelectionnerDossier);
             SelectionnerDossierCibleCommand = new RelayCommand(SelectionnerDossierCible);
-            CrypterFichiersCommand = new RelayCommand(CrypterFichiers);
             LancerSauvegardeCommand = new RelayCommand(LancerSauvegarde);
-            CloseWindowCommand = new RelayCommand<Window>(CloseWindow);
+            ListerSauvegardesCommand = new RelayCommand(() => ListerSauvegardes(true));
+
             TypeSauvegarde = TypesSauvegarde.First();
+            ListerSauvegardes(false);
         }
 
         private void SelectionnerDossier()
@@ -65,7 +74,7 @@ namespace ViewModels
             if (openFolderDialog.ShowDialog() == true)
             {
                 CheminSauvegardeSource = openFolderDialog.FolderName;
-                MessageBox.Show($"DEBUG: CheminSauvegardeSource sélectionné = {CheminSauvegardeSource}");
+                //MessageBox.Show($"DEBUG: CheminSauvegardeSource sélectionné = {CheminSauvegardeSource}");
             }
         }
 
@@ -81,34 +90,34 @@ namespace ViewModels
             if (openFolderDialog.ShowDialog() == true)
             {
                 CheminSauvegardeCible = openFolderDialog.FolderName;
-                MessageBox.Show($"DEBUG: CheminSauvegardeCible sélectionné = {CheminSauvegardeCible}");
+                //MessageBox.Show($"DEBUG: CheminSauvegardeCible sélectionné = {CheminSauvegardeCible}");
             }
         }
 
         private void CrypterFichiers()
         {
-            
+
         }
 
         private void LancerSauvegarde()
         {
-            MessageBox.Show($"DEBUG: NomSauvegarde = {NomSauvegarde}");
-            MessageBox.Show($"DEBUG: CheminSauvegardeSource = {CheminSauvegardeSource}");
-            MessageBox.Show($"DEBUG: CheminSauvegardeCible = {CheminSauvegardeCible}");
-            MessageBox.Show($"DEBUG: TypeSauvegarde avant conversion aze = {TypeSauvegarde}");
+            //MessageBox.Show($"DEBUG: NomSauvegarde = {NomSauvegarde}");
+            //MessageBox.Show($"DEBUG: CheminSauvegardeSource = {CheminSauvegardeSource}");
+            //MessageBox.Show($"DEBUG: CheminSauvegardeCible = {CheminSauvegardeCible}");
+            //MessageBox.Show($"DEBUG: TypeSauvegarde avant conversion aze = {TypeSauvegarde}");
 
             string typeSanitized = TypeSauvegarde.Trim();
 
-            Console.WriteLine($"DEBUG: TypeSauvegarde après Trim() = '{typeSanitized}'");
+            //Console.WriteLine($"DEBUG: TypeSauvegarde après Trim() = '{typeSanitized}'");
 
             string backupType = typeSanitized switch
             {
                 "Complète" => "Complete",
                 "Différentielle" => "Differential",
-                _ => "INVALID"  // Ajoute un cas pour voir si la valeur ne correspond à rien
+                _ => "INVALID"
             };
 
-            MessageBox.Show($"DEBUG: TypeSauvegarde après conversion aze = {backupType}");
+            //MessageBox.Show($"DEBUG: TypeSauvegarde après conversion aze = {backupType}");
 
             if (string.IsNullOrWhiteSpace(NomSauvegarde))
             {
@@ -138,6 +147,7 @@ namespace ViewModels
             {
                 var backupResult = classModel.runBackup(CheminSauvegardeSource, CheminSauvegardeCible, NomSauvegarde, backupType);
                 MessageBox.Show($"Sauvegarde '{NomSauvegarde}' enregistrée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+                ListerSauvegardes();
             }
             catch (Exception ex)
             {
@@ -145,9 +155,38 @@ namespace ViewModels
             }
         }
 
-        private void CloseWindow(Window window)
+        private void ListerSauvegardes(bool afficherMessage = true)
         {
-            window?.Close();
+            ListeSauvegardes.Clear();
+
+            try
+            {
+                List<BackupData> sauvegardes = classModel.listBackups();
+
+                if (sauvegardes == null || sauvegardes.Count == 0)
+                {
+                    if (afficherMessage)
+                    {
+                        MessageBox.Show("Aucune sauvegarde disponible.");
+                    }
+                    return;
+                }
+
+                foreach (var sauvegarde in sauvegardes)
+                {
+                    ListeSauvegardes.Add(new BackupData
+                    {
+                        Name = sauvegarde.Name,
+                        Source = sauvegarde.Source,
+                        Target = sauvegarde.Target
+                    });
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors de la récupération des sauvegardes : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
         }
+
     }
 }
