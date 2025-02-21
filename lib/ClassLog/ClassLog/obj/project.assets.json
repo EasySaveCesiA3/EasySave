@@ -94,23 +94,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Martin\\.nuget\\packages\\": {},
+    "C:\\Users\\erwan\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Martin\\EasySaveInt\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+      "projectUniqueName": "C:\\Users\\erwan\\OrganisationES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
       "projectName": "ClassLog",
-      "projectPath": "C:\\Users\\Martin\\EasySaveInt\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
-      "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\Martin\\EasySaveInt\\lib\\ClassLog\\ClassLog\\obj\\",
+      "projectPath": "C:\\Users\\erwan\\OrganisationES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+      "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\erwan\\OrganisationES\\lib\\ClassLog\\ClassLog\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],

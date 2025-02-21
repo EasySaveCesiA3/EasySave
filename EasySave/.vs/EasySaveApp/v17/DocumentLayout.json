@@ -1,52 +1,37 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\",
+  "WorkspaceRootPath": "C:\\Users\\erwan\\OrganisationES\\EasySave\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{42BFB856-DA1A-4097-83F3-FC51AD4852A4}|..\\lib\\ClassLog\\ClassLog\\ClassLog.csproj|c:\\users\\martin\\easysaveint\\lib\\classlog\\classlog\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{42BFB856-DA1A-4097-83F3-FC51AD4852A4}|..\\lib\\ClassLog\\ClassLog\\ClassLog.csproj|c:\\users\\erwan\\organisationes\\lib\\classlog\\classlog\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\viewmodel\\restoreviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\restoreviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\languagewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\languagewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\restorewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\restorewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\restorewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\restorewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\view\\restorewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\restorewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\languagewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\languagewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\view\\languagewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\languagewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\view\\sauvegardewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\sauvegardewindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysaveint\\easysave\\model\\backup\\classbackup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\backup\\classbackup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\ViewModel\\SaveLoadViewModel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\organisationes\\easysave\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -56,28 +41,90 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 2,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "RelativeDocumentMoniker": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "RelativeToolTip": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "ViewState": "AgIAAIgAAAAAAAAAAAAqwJ8AAAAdAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "RestoreViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\ViewModel\\RestoreViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\RestoreViewModel.cs",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\ViewModel\\RestoreViewModel.cs",
+              "RelativeToolTip": "ViewModel\\RestoreViewModel.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T10:47:29.391Z",
+              "WhenOpened": "2025-02-21T08:45:33.486Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "SaveViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\ViewModel\\SaveViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\SaveViewModel.cs",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\ViewModel\\SaveViewModel.cs",
+              "RelativeToolTip": "ViewModel\\SaveViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABgAAAAcAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T08:45:25.582Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "RelativeToolTip": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "ViewState": "AgIAAKQAAAAAAAAAAAA9wLMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-21T08:16:54.814Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "SauvegardeWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\SauvegardeWindow.xaml",
+              "RelativeDocumentMoniker": "View\\SauvegardeWindow.xaml",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\SauvegardeWindow.xaml",
+              "RelativeToolTip": "View\\SauvegardeWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-21T08:13:13.5Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "RestoreWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\RestoreWindow.xaml",
+              "RelativeDocumentMoniker": "View\\RestoreWindow.xaml",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\RestoreWindow.xaml",
+              "RelativeToolTip": "View\\RestoreWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-21T08:13:11.468Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "LanguageWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\LanguageWindow.xaml",
+              "RelativeDocumentMoniker": "View\\LanguageWindow.xaml",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\LanguageWindow.xaml",
+              "RelativeToolTip": "View\\LanguageWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-21T08:13:10.023Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\MainWindow.xaml",
               "RelativeDocumentMoniker": "View\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\MainWindow.xaml",
               "RelativeToolTip": "View\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-20T08:25:45.879Z",
@@ -85,120 +132,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 7,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "View\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\erwan\\OrganisationES\\EasySave\\View\\MainWindow.xaml.cs",
               "RelativeToolTip": "View\\MainWindow.xaml.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-20T08:25:13.581Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "LanguageWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\LanguageWindow.xaml.cs",
-              "RelativeDocumentMoniker": "View\\LanguageWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\LanguageWindow.xaml.cs",
-              "RelativeToolTip": "View\\LanguageWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T08:25:35.857Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RestoreWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\RestoreWindow.xaml",
-              "RelativeDocumentMoniker": "View\\RestoreWindow.xaml",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\RestoreWindow.xaml",
-              "RelativeToolTip": "View\\RestoreWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-20T08:24:54.947Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "LanguageWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\LanguageWindow.xaml",
-              "RelativeDocumentMoniker": "View\\LanguageWindow.xaml",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\LanguageWindow.xaml",
-              "RelativeToolTip": "View\\LanguageWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-20T08:24:32.907Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "SaveLoadViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\ViewModel\\SaveLoadViewModel.cs",
-              "RelativeDocumentMoniker": "..\\..\\..\\louis\\EasySaveGUI\\EasySave\\EasySave\\ViewModel\\SaveLoadViewModel.cs",
-              "ToolTip": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\ViewModel\\SaveLoadViewModel.cs",
-              "RelativeToolTip": "..\\..\\..\\louis\\EasySaveGUI\\EasySave\\EasySave\\ViewModel\\SaveLoadViewModel.cs",
-              "ViewState": "AgIAACkAAAAAAAAAAAAIwFIAAAADAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T07:59:00.902Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RestoreWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\RestoreWindow.xaml.cs",
-              "RelativeDocumentMoniker": "View\\RestoreWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\RestoreWindow.xaml.cs",
-              "RelativeToolTip": "View\\RestoreWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-20T07:55:53.07Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "SauvegardeWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\SauvegardeWindow.xaml",
-              "RelativeDocumentMoniker": "View\\SauvegardeWindow.xaml",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\SauvegardeWindow.xaml",
-              "RelativeToolTip": "View\\SauvegardeWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-19T18:22:54.445Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "SaveViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\ViewModel\\SaveViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModel\\SaveViewModel.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\ViewModel\\SaveViewModel.cs",
-              "RelativeToolTip": "ViewModel\\SaveViewModel.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAowH0AAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T18:17:07.607Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "classBackup.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\Model\\Backup\\classBackup.cs",
-              "RelativeDocumentMoniker": "Model\\Backup\\classBackup.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\Model\\Backup\\classBackup.cs",
-              "RelativeToolTip": "Model\\Backup\\classBackup.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAAAAADIAAABEAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T19:46:39.639Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "SauvegardeWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\SauvegardeWindow.xaml.cs",
-              "RelativeDocumentMoniker": "View\\SauvegardeWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\Martin\\EasySaveInt\\EasySave\\View\\SauvegardeWindow.xaml.cs",
-              "RelativeToolTip": "View\\SauvegardeWindow.xaml.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-19T19:20:33.007Z"
             }
           ]
         }

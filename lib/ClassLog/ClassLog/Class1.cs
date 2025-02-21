@@ -13,6 +13,8 @@ namespace Log
 {
     public class Historic
     {
+        public static string jsonpath => "Historiques/historiqueJSON/";
+        public static string xamlpath => "Historiques/historiqueXAML/";
         public static string jsonfile => $"Historiques/historiqueJSON/historique{DateTime.Now:yyyy-MM-dd}.json";
         public static string xamlfile => $"Historiques/historiqueXAML/historique{DateTime.Now:yyyy-MM-dd}.xaml";
 
@@ -78,76 +80,14 @@ namespace Log
             AddLog(logEntry);
         }
 
+
         public void AddLog(LogEntry logEntry)
         {
             switch (choix)
             {
-                case "1": // Enregistrement en JSON
+                case "1":
                     List<LogEntry> logEntriesJson = new List<LogEntry>();
 
-                    logEntriesJson.Add(logEntry);
-
-                    try
-                    {
-                        string newJson = JsonSerializer.Serialize(logEntriesJson, new JsonSerializerOptions { WriteIndented = true });
-                        File.WriteAllText(jsonfile, newJson);
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Erreur lors de l'écriture dans le fichier JSON : {ex.Message}");
-                    }
-                    break;
-
-                case "2":
-                    List<LogEntry> logEntriesXaml = new List<LogEntry>();
-
-                    try
-                    {
-                        if (File.Exists(xamlfile))
-                        {
-                            XmlSerializer serializer = new XmlSerializer(typeof(List<LogEntry>));
-                            using (FileStream fs = new FileStream(xamlfile, FileMode.Open))
-                            {
-                                logEntriesXaml = (List<LogEntry>)serializer.Deserialize(fs) ?? new List<LogEntry>();
-                            }
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Erreur lors de la lecture du fichier XAML : {ex.Message}");
-                    }
-
-                    logEntriesXaml.Add(logEntry);
-
-                    try
-                    {
-                        XmlSerializer serializer = new XmlSerializer(typeof(List<LogEntry>));
-                        using (StreamWriter writer = new StreamWriter(xamlfile))
-                        {
-                            serializer.Serialize(writer, logEntriesXaml);
-                        }
-                    }
-                    catch (Exception ex)
-                    {
-                        Console.WriteLine($"Erreur lors de l'écriture dans le fichier XAML : {ex.Message}");
-                    }
-                    break;
-
-                default:
-                    Console.WriteLine("Choix invalide.");
-                    break;
-            }
-        }
-
-
-        public void OpenLog(LogEntry logEntry)
-        {
-            switch (choix)
-            {
-                case "1": // Enregistrement en JSON
-                    List<LogEntry> logEntriesJson = new List<LogEntry>();
-
-                    // Charger les logs existants
                     if (File.Exists(jsonfile))
                     {
                         try
@@ -165,10 +105,9 @@ namespace Log
                         }
                     }
 
-                    // Ajouter le nouveau log
                     logEntriesJson.Add(logEntry);
 
-                    // Écrire le fichier mis à jour
+
                     try
                     {
                         string newJson = JsonSerializer.Serialize(logEntriesJson, new JsonSerializerOptions { WriteIndented = true });
@@ -180,10 +119,9 @@ namespace Log
                     }
                     break;
 
-                case "2": // Enregistrement en XAML
+                case "2":
                     List<LogEntry> logEntriesXaml = new List<LogEntry>();
 
-                    // Charger les logs existants
                     if (File.Exists(xamlfile))
                     {
                         try
@@ -203,10 +141,8 @@ namespace Log
                         }
                     }
 
-                    // Ajouter le nouveau log
                     logEntriesXaml.Add(logEntry);
 
-                    // Écrire le fichier mis à jour
                     try
                     {
                         using (var writer = new StreamWriter(xamlfile))
@@ -226,6 +162,86 @@ namespace Log
             }
         }
 
+        public List<string> DisplayLog()
+        {
+            string filename = choix == "1" ? jsonfile : xamlfile;
+            List<string> logMessages = new List<string>();
+
+            if (!File.Exists(filename))
+            {
+                return logMessages;
+            }
+
+            try
+            {
+                List<LogEntry>? logEntries = choix == "1"
+                    ? JsonSerializer.Deserialize<List<LogEntry>>(File.ReadAllText(filename))
+                    : (List<LogEntry>?)XamlServices.Load(new StreamReader(filename));
+
+                if (logEntries == null || logEntries.Count == 0)
+                {
+                    return logMessages;
+                }
+
+                foreach (var entry in logEntries)
+                {
+                    var displayParts = new List<string>();
+
+                    foreach (var prop in entry.GetType().GetProperties())
+                    {
+                        object? value = prop.GetValue(entry);
+                        if (value != null)
+                        {
+                            displayParts.Add($"{prop.Name}: {value}");
+                        }
+                    }
+
+                    logMessages.Add(string.Join(", ", displayParts));
+                }
+            }
+            catch
+            {
+            }
+
+            return logMessages;
+        }
+
+
+        public void OpenLog()
+        {
+            string? path = null;
+
+            switch (choix)
+            {
+                case "1":
+                    path = jsonpath;
+                    break;
+
+                case "2":
+                    path = xamlpath;
+                    break;
+
+                default:
+                    Console.WriteLine("Choix invalide.");
+                    return;
+            }
+
+            if (!Directory.Exists(path))
+            {
+                try
+                {
+                    Process.Start("explorer.exe", Path.GetFullPath(path));
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Erreur lors de l'ouverture du dossier : {ex.Message}");
+                }
+            }
+            else
+            {
+                Console.WriteLine($"Le dossier {path} n'existe pas.");
+            }
+        }
 
         public static void CreateFile()
         {
