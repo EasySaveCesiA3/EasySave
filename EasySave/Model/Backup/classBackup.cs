@@ -3,15 +3,17 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.Linq;
 using System.Windows;
+using System.Xml.Linq;
+using Log;
 
 namespace Model;
 
 // Conteneur de données pour une sauvegarde
 public class BackupData
 {
-    public string Source { get; set; }
-    public string Target { get; set; }
-    public string Name { get; set; }
+    public required string Source { get; set; }
+    public required string Target { get; set; }
+    public required string Name { get; set; }
     public IBackupStrategy Strategy { get; set; }
     public int BackupId { get; set; }
 }
@@ -27,9 +29,8 @@ public class CompleteBackup : IBackupStrategy
 {
     public (long totalSize, long totalFiles) ExecuteBackup(string source, string target)
     {
-        long totalSize = 0, totalFiles = 0;
-        Copie.Instance.CopyDirectory(source, target, ref totalSize, ref totalFiles);
-        return (totalSize, totalFiles);
+        //return Copie.Instance.CopyDirectoryAsync(source, target, false).Result;
+        return Copie.Instance.CopyDirectory(source, target);
     }
 }
 
@@ -37,9 +38,8 @@ public class DifferentialBackup : IBackupStrategy
 {
     public (long totalSize, long totalFiles) ExecuteBackup(string source, string target)
     {
-        long totalSize = 0, totalFiles = 0;
-        Copie.Instance.CopyDirectoryDifferential(source, target, ref totalSize, ref totalFiles);
-        return (totalSize, totalFiles);
+        //return Copie.Instance.CopyDirectoryAsync(source, target, true).Result;
+        return Copie.Instance.CopyDirectoryDifferential(source, target);
     }
 }
 
@@ -48,7 +48,7 @@ public class BackupFactory
 {
     public IBackupStrategy CreateBackupStrategy(string type)
     {
-        //MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
+        MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
         return type switch
         {
             "Complete" => new CompleteBackup(),
@@ -107,29 +107,24 @@ public class BackupService
     private BackupFactory backupFactory = new BackupFactory();
 
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
-    public BackupResult StartBackup(string source, string target, string name, string type)
+    public void StartBackup(string source, string target, string name, string type)
     {
         var strategy = backupFactory.CreateBackupStrategy(type);
         var backupData = backupManager.CreateBackupData(source, target, name, strategy);
+        string sauvegarde = "Sauvegardes";
 
         var stopwatch = Stopwatch.StartNew();
-        var (totalSize, totalFiles) = strategy.ExecuteBackup(source, target);
+        var (totalSize, totalFiles) = strategy.ExecuteBackup(source, sauvegarde);
         stopwatch.Stop();
 
-        return new BackupResult
-        {
-            BackupId = backupData.BackupId,
-            BackupName = name,
-            TotalSize = totalSize,
-            TotalFiles = totalFiles,
-            ElapsedTimeMs = stopwatch.ElapsedMilliseconds
-        };
+        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
     }
 
     // Restaure une sauvegarde et renvoie le résultat
-    public BackupResult RestoreBackup(int backupId, string restoreDestination, bool differential)
+    public void RestoreBackup(int backupId, string restoreDestination, bool differential)
     {
         var backupData = backupManager.GetBackup(backupId);
+        string sauvegarde = "Sauvegarde";
         if (backupData == null)
         {
             throw new ArgumentException("Backup not found");
@@ -140,17 +135,10 @@ public class BackupService
 
         var stopwatch = Stopwatch.StartNew();
         // Pour la restauration, on copie depuis le dossier de sauvegarde vers la destination
-        var (totalSize, totalFiles) = strategy.ExecuteBackup(backupData.Target, restoreDestination);
+        var (totalSize, totalFiles) = strategy.ExecuteBackup(sauvegarde, backupData.Target);
         stopwatch.Stop();
 
-        return new BackupResult
-        {
-            BackupId = backupData.BackupId,
-            BackupName = backupData.Name,
-            TotalSize = totalSize,
-            TotalFiles = totalFiles,
-            ElapsedTimeMs = stopwatch.ElapsedMilliseconds
-        };
+        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
     }
 
     public bool DeleteBackup(int backupId)
@@ -165,11 +153,11 @@ public class BackupService
 }
 
 // Objet résultat pour encapsuler le résultat d’une sauvegarde ou restauration
-public class BackupResult
-{
-    public int BackupId { get; set; }
-    public string BackupName { get; set; }
-    public long TotalSize { get; set; }
-    public long TotalFiles { get; set; }
-    public long ElapsedTimeMs { get; set; }
-}
+//public class BackupResult
+//{
+//    public int BackupId { get; set; }
+//    public string BackupName { get; set; }
+//    public long TotalSize { get; set; }
+//    public long TotalFiles { get; set; }
+//    public long ElapsedTimeMs { get; set; }
+//}

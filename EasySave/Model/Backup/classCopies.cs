@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Diagnostics;
 using System.IO;
 
 namespace Model
@@ -26,8 +27,27 @@ namespace Model
             }
         }
 
-        public void CopyDirectory(string sourceDir, string destinationDir, ref long totalSize, ref long totalFiles)
+        public async Task<(long totalSize, long totalFiles)> CopyDirectoryAsync(string sourceDir, string destinationDir, bool useDifferential)
         {
+            return await Task.Run(async () =>
+            {
+                while (IsDiscordRunning()) // Tant que Discord est actif, on attend
+                {
+                    await Task.Delay(2000);
+                }
+
+                return useDifferential
+                    ? CopyDirectoryDifferential(sourceDir, destinationDir)
+                    : CopyDirectory(sourceDir, destinationDir);
+            });
+        }
+
+
+        public (long totalSize, long totalFiles) CopyDirectory(string sourceDir, string destinationDir)
+        {
+            long totalSize = 0;
+            long totalFiles = 0;
+
             if (!Directory.Exists(destinationDir))
             {
                 Directory.CreateDirectory(destinationDir);
@@ -52,12 +72,20 @@ namespace Model
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
-                CopyDirectory(dir, destDirPath, ref totalSize, ref totalFiles);
+                var result = CopyDirectory(dir, destDirPath); // Appel récursif
+                totalSize += result.totalSize;
+                totalFiles += result.totalFiles;
             }
+
+            return (totalSize, totalFiles); // Retourne le tuple
         }
 
-        public void CopyDirectoryDifferential(string sourceDir, string destinationDir, ref long totalSize, ref long totalFiles)
+
+        public (long totalSize, long totalFiles) CopyDirectoryDifferential(string sourceDir, string destinationDir)
         {
+            long totalSize = 0;
+            long totalFiles = 0;
+
             if (!Directory.Exists(destinationDir))
             {
                 Directory.CreateDirectory(destinationDir);
@@ -95,8 +123,19 @@ namespace Model
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
-                CopyDirectoryDifferential(dir, destDirPath, ref totalSize, ref totalFiles);
+                var result = CopyDirectoryDifferential(dir, destDirPath); // Appel récursif
+                totalSize += result.totalSize;
+                totalFiles += result.totalFiles;
             }
+
+            return (totalSize, totalFiles); // Retourne le tuple
+        }
+
+
+        private bool IsDiscordRunning()
+        {
+            //return Process.GetProcessesByName("discord").Length > 0;
+            return false;
         }
     }
 }

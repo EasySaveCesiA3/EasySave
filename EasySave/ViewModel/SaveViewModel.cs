@@ -145,7 +145,7 @@ namespace ViewModels
 
             try
             {
-                var backupResult = classModel.runBackup(CheminSauvegardeSource, CheminSauvegardeCible, NomSauvegarde, backupType);
+                classModel.runBackup(CheminSauvegardeSource, CheminSauvegardeCible, NomSauvegarde, backupType);
                 MessageBox.Show($"Sauvegarde '{NomSauvegarde}' enregistrée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
                 ListerSauvegardes();
             }

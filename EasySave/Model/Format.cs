@@ -44,12 +44,12 @@ namespace Model
             {
                 case "1":
                     Historic.choix = "1";
-                    Historic.CreateFile();
+                    Historic.CreateLogFile();
                     Console.WriteLine("Sauvegarde sous format Json");
                     break;
                 case "2":
                     Historic.choix = "2";
-                    Historic.CreateFile();
+                    Historic.CreateLogFile();
                     Console.WriteLine("Sauvegarde sous format Xaml");
                     break;
                 default:

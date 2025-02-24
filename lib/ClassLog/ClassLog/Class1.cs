@@ -11,6 +11,25 @@ using static Log.Historic;
 
 namespace Log
 {
+    public class LogEntry
+    {
+        public required string Logname { get; set; }
+        public required string Action { get; set; }
+        public required DateTime Time { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? TransfertTime { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Source { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? RestorationTarget { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? Size { get; set; }
+    }
+
     public class Historic
     {
         public static string jsonpath => "Historiques/historiqueJSON/";
@@ -20,49 +39,30 @@ namespace Log
 
         public static string choix = "1";
 
-        public class LogEntry
-        {
-            public required string Logname { get; set; }
-            public required string Action { get; set; }
-            public required DateTime Time { get; set; }
-
-            [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-            public string? Transfert { get; set; }
-
-            [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-            public string? Source { get; set; }
-
-            [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-            public string? Target { get; set; }
-
-            [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
-            public string? Size { get; set; }
-        }
-
-        public void Backup(string logname, string source, string target, string transfert, string size)
+        public static void Backup(string logname, string source, string target, string transfert, string size)
         {
             LogEntry logEntry = new LogEntry
             {
                 Logname = logname,
                 Time = DateTime.Now,
                 Source = source,
-                Target = target,
-                Transfert = transfert,
+                RestorationTarget = target,
+                TransfertTime = transfert,
                 Size = size,
                 Action = "Sauvegarde"
             };
             AddLog(logEntry);
         }
 
-        public void Restore(string logname, string source, string target, string transfert, string size)
+        public static void Restore(string logname, string source, string target, string transfert, string size)
         {
             LogEntry logEntry = new LogEntry
             {
                 Logname = logname,
                 Time = DateTime.Now,
                 Source = source,
-                Target = target,
-                Transfert = transfert,
+                RestorationTarget = target,
+                TransfertTime = transfert,
                 Size = size,
                 Action = "Restauration"
             };
@@ -81,7 +81,7 @@ namespace Log
         }
 
 
-        public void AddLog(LogEntry logEntry)
+        public static string AddLog(LogEntry logEntry)
         {
             switch (choix)
             {
@@ -101,7 +101,7 @@ namespace Log
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Erreur lors de la lecture du fichier JSON : {ex.Message}");
+                            return $"Erreur lors de la lecture du fichier JSON : {ex.Message}";
                         }
                     }
 
@@ -115,9 +115,9 @@ namespace Log
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Erreur lors de l'écriture dans le fichier JSON : {ex.Message}");
+                        return $"Erreur lors de l'écriture dans le fichier JSON : {ex.Message}";
                     }
-                    break;
+                    return "";
 
                 case "2":
                     List<LogEntry> logEntriesXaml = new List<LogEntry>();
@@ -137,7 +137,7 @@ namespace Log
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Erreur lors de la lecture du fichier XAML : {ex.Message}");
+                            return $"Erreur lors de la lecture du fichier XAML : {ex.Message}";
                         }
                     }
 
@@ -152,24 +152,25 @@ namespace Log
                     }
                     catch (Exception ex)
                     {
-                        Console.WriteLine($"Erreur lors de l'écriture dans le fichier XAML : {ex.Message}");
+                        return $"Erreur lors de l'écriture dans le fichier XAML : {ex.Message}";
                     }
-                    break;
+                    return "";
 
                 default:
-                    Console.WriteLine("Choix invalide.");
-                    break;
+                    return "Choix invalide.";
             }
         }
 
-        public List<string> DisplayLog()
+        public static (List<string> LogMessages, string ErrorMessage) DisplayLog()
         {
             string filename = choix == "1" ? jsonfile : xamlfile;
             List<string> logMessages = new List<string>();
+            string errorMessage = string.Empty;
 
             if (!File.Exists(filename))
             {
-                return logMessages;
+                errorMessage = $"Le fichier {filename} n'existe pas.";
+                return (logMessages, errorMessage);
             }
 
             try
@@ -180,7 +181,8 @@ namespace Log
 
                 if (logEntries == null || logEntries.Count == 0)
                 {
-                    return logMessages;
+                    errorMessage = $"Le fichier {filename} est vide.";
+                    return (logMessages, errorMessage);
                 }
 
                 foreach (var entry in logEntries)
@@ -199,15 +201,17 @@ namespace Log
                     logMessages.Add(string.Join(", ", displayParts));
                 }
             }
-            catch
+            catch (Exception ex)
             {
+                errorMessage = $"Erreur lors de la lecture du fichier {filename}: {ex.Message}";
             }
 
-            return logMessages;
+            return (logMessages, errorMessage);
         }
 
 
-        public void OpenLog()
+
+        public static string OpenLog()
         {
             string? path = null;
 
@@ -222,8 +226,7 @@ namespace Log
                     break;
 
                 default:
-                    Console.WriteLine("Choix invalide.");
-                    return;
+                    return "Choix invalide.";
             }
 
             if (!Directory.Exists(path))
@@ -231,19 +234,20 @@ namespace Log
                 try
                 {
                     Process.Start("explorer.exe", Path.GetFullPath(path));
+                    return "";
                 }
                 catch (Exception ex)
                 {
-                    Console.WriteLine($"Erreur lors de l'ouverture du dossier : {ex.Message}");
+                    return $"Erreur lors de l'ouverture du dossier : {ex.Message}";
                 }
             }
             else
             {
-                Console.WriteLine($"Le dossier {path} n'existe pas.");
+                return $"Le dossier {path} n'existe pas.";
             }
         }
 
-        public static void CreateFile()
+        public static string CreateLogFile()
         {
             string? file;
             string directory;
@@ -258,32 +262,30 @@ namespace Log
                         try
                         {
                             Directory.CreateDirectory(directory);
-                            Console.WriteLine("Dossier 'historique' sous format Json créé avec succès !");
+                            return "";
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Erreur lors de la création du dossier : {ex.Message}");
-                            return;
+                            return $"Erreur lors de la création du dossier : {ex.Message}";
                         }
                     }
-                    
+
                     if (!File.Exists(jsonfile))
                     {
                         try
                         {
                             File.WriteAllText(jsonfile, "[]");
-                            Console.WriteLine("Fichier JSON créé avec succès !");
+                            return "";
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Erreur lors de la création du fichier JSON : {ex.Message}");
+                            return $"Erreur lors de la création du fichier JSON : {ex.Message}";
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Le fichier JSON existe déjà, il n'a pas été écrasé.");
+                        return "";
                     }
-                    break;
 
                 case "2":
                     file = xamlfile;
@@ -293,42 +295,39 @@ namespace Log
                         try
                         {
                             Directory.CreateDirectory(directory);
-                            Console.WriteLine("Dossier 'historique' sous format XAML créé avec succès !");
+                            return "";
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Erreur lors de la création du dossier : {ex.Message}");
-                            return;
+                            return $"Erreur lors de la création du dossier : {ex.Message}";
                         }
                     }
- 
+
                     if (!File.Exists(xamlfile))
                     {
                         try
                         {
                             File.WriteAllText(xamlfile, "");
 
-                            Console.WriteLine("Fichier XAML créé avec succès !");
+                            return "";
                         }
                         catch (Exception ex)
                         {
-                            Console.WriteLine($"Erreur lors de la création du fichier XAML : {ex.Message}");
+                            return $"Erreur lors de la création du fichier XAML : {ex.Message}";
                         }
                     }
                     else
                     {
-                        Console.WriteLine("Le fichier XAML existe déjà, il n'a pas été écrasé.");
+                        return "Le fichier XAML existe déjà, il n'a pas été écrasé.";
                     }
-                    break;
 
                 default:
-                    Console.WriteLine("Choix invalide.");
-                    return;
+                    return "Choix invalide.";
             }
         }
 
 
-        public static void DeleteFile()
+        public static string DeleteFile()
         {
             try
             {
@@ -344,17 +343,15 @@ namespace Log
                 using (Process process = Process.Start(psi))
                 {
                     process.WaitForExit();
-                    Console.WriteLine(process.StandardOutput.ReadToEnd());
                 }
 
-                Console.WriteLine("Le répertoire 'historique' a été supprimé avec succès.");
+                return "Le répertoire 'historique' a été supprimé avec succès.";
             }
             catch (Exception e)
             {
-                Console.WriteLine("Une erreur est survenue lors de la suppression forcée du répertoire : " + e.Message);
+                return "Une erreur est survenue lors de la suppression forcée du répertoire : " + e.Message;
             }
         }
 
     }
 }
-
