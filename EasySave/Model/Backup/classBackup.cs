@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
 using System.Linq;
 using System.Windows;
 using System.Xml.Linq;
@@ -18,30 +19,32 @@ public class BackupData
     public int BackupId { get; set; }
 }
 
-// Interface de stratégie de sauvegarde
 public interface IBackupStrategy
 {
-    // Effectue la copie selon la stratégie et retourne (taille totale, nombre de fichiers)
-    (long totalSize, long totalFiles) ExecuteBackup(string source, string target);
+    Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target);
 }
+
 
 public class CompleteBackup : IBackupStrategy
 {
-    public (long totalSize, long totalFiles) ExecuteBackup(string source, string target)
+    public async Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target)
     {
-        //return Copie.Instance.CopyDirectoryAsync(source, target, false).Result;
-        return Copie.Instance.CopyDirectory(source, target);
+        // Appel de la méthode asynchrone CopyDirectoryAsync
+        return await Copie.Instance.CopyDirectoryAsync(source, target, false);
     }
 }
 
+
 public class DifferentialBackup : IBackupStrategy
 {
-    public (long totalSize, long totalFiles) ExecuteBackup(string source, string target)
+    public async Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target)
     {
-        //return Copie.Instance.CopyDirectoryAsync(source, target, true).Result;
-        return Copie.Instance.CopyDirectoryDifferential(source, target);
+        // Appel de la méthode asynchrone CopyDirectoryAsync avec différentiel
+        return await Copie.Instance.CopyDirectoryAsync(source, target, true);
     }
 }
+
+
 
 // Fabrique de stratégies de sauvegarde
 public class BackupFactory
@@ -107,39 +110,49 @@ public class BackupService
     private BackupFactory backupFactory = new BackupFactory();
 
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
-    public void StartBackup(string source, string target, string name, string type)
+    public async Task StartBackup(string source, string target, string name, string type)
     {
         var strategy = backupFactory.CreateBackupStrategy(type);
         var backupData = backupManager.CreateBackupData(source, target, name, strategy);
-        string sauvegarde = "Sauvegardes";
+        string sauvegarde = Path.Combine("Sauvegardes", name);
 
         var stopwatch = Stopwatch.StartNew();
-        var (totalSize, totalFiles) = strategy.ExecuteBackup(source, sauvegarde);
+
+        // Attente asynchrone pour récupérer les résultats de la méthode ExecuteBackup
+        var (totalSize, totalFiles) = await strategy.ExecuteBackup(source, sauvegarde);
+
         stopwatch.Stop();
 
         Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
     }
 
     // Restaure une sauvegarde et renvoie le résultat
-    public void RestoreBackup(int backupId, string restoreDestination, bool differential)
+    public async Task RestoreBackup(int backupId, string restoreDestination, bool differential)
     {
         var backupData = backupManager.GetBackup(backupId);
-        string sauvegarde = "Sauvegarde";
+
+        // Vérification si le backup existe
         if (backupData == null)
         {
-            throw new ArgumentException("Backup not found");
+            throw new ArgumentException("Backup non trouvé");
         }
+
+        string sauvegarde = Path.Combine("Sauvegarde", backupData.Name);
 
         // Choix de la stratégie pour la restauration
         IBackupStrategy strategy = differential ? new DifferentialBackup() : new CompleteBackup();
 
         var stopwatch = Stopwatch.StartNew();
-        // Pour la restauration, on copie depuis le dossier de sauvegarde vers la destination
-        var (totalSize, totalFiles) = strategy.ExecuteBackup(sauvegarde, backupData.Target);
+
+        // Appel asynchrone de la méthode ExecuteBackup pour effectuer la restauration
+        var (totalSize, totalFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination);
+
         stopwatch.Stop();
 
+        // Enregistrement de l'historique après la restauration
         Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
     }
+
 
     public bool DeleteBackup(int backupId)
     {
