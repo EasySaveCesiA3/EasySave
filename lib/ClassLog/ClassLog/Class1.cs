@@ -83,6 +83,7 @@ namespace Log
 
         public static string AddLog(LogEntry logEntry)
         {
+            CreateLogFile();
             switch (choix)
             {
                 case "1":

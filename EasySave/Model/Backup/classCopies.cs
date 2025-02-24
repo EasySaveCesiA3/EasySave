@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Windows;
 
 namespace Model
 {
@@ -134,8 +135,7 @@ namespace Model
 
         private bool IsDiscordRunning()
         {
-            //return Process.GetProcessesByName("discord").Length > 0;
-            return false;
+            return Process.GetProcessesByName("discord").Length > 0;
         }
     }
 }
