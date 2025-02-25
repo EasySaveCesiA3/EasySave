@@ -1,0 +1,20 @@
+[
+  {
+    "Logname": "tuti",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T10:53:16.6698395+01:00",
+    "TransfertTime": "90993",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "Logname": "momi",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T11:02:55.1431273+01:00",
+    "TransfertTime": "39",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  }
+]
