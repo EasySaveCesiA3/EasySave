@@ -51,7 +51,7 @@ public class BackupFactory
 {
     public IBackupStrategy CreateBackupStrategy(string type)
     {
-        MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
+        //MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
         return type switch
         {
             "Complete" => new CompleteBackup(),
@@ -92,10 +92,26 @@ public class BackupManager
         return false;
     }
 
-    public BackupData? GetBackup(int backupId)
+    public BackupData? GetBackup(string backupName)
     {
-        return backupList.FirstOrDefault(b => b.BackupId == backupId);
+        var (logDictionaries, errorMessage) = Historic.LogsData();
+
+        if (!string.IsNullOrEmpty(errorMessage) || logDictionaries == null || logDictionaries.Count == 0)
+        {
+            return null;
+        }
+
+        var backups = logDictionaries.Select(b => new BackupData
+        {
+            Name = b.TryGetValue("BackupName", out string? name) ? name : string.Empty,
+            Source = b.TryGetValue("Source", out string? source) ? source : string.Empty,
+            Target = b.TryGetValue("RestorationTarget", out string? target) ? target : string.Empty,
+            Strategy = b.TryGetValue("StrategyType", out string? strategy) ? strategy : string.Empty,
+        }).ToList();
+
+        return backups.FirstOrDefault(b => b.Name == backupName);
     }
+
 
     public List<BackupData> ListBackups()
     {
@@ -128,21 +144,24 @@ public class BackupService
     }
 
     // Restaure une sauvegarde et renvoie le résultat
-    public async Task RestoreBackup(int backupId, string restoreDestination, bool differential)
+    public async Task RestoreBackup(string backupName, string restoreDestination)
     {
-        var backupData = backupManager.GetBackup(backupId);
+        var backupData = backupManager.GetBackup(backupName);
+        bool differential = false;
 
         if (backupData == null)
         {
             throw new ArgumentException("Backup non trouvé");
         }
 
-        string sauvegarde = Path.Combine("Sauvegarde", backupData.Name);
+        string sauvegarde = Path.Combine("Sauvegardes", backupData.Name);
 
         // Choix de la stratégie pour la restauration
         IBackupStrategy strategy = differential ? new DifferentialBackup() : new CompleteBackup();
 
         var stopwatch = Stopwatch.StartNew();
+
+        MessageBox.Show($"{sauvegarde},{restoreDestination}");
 
         // Appel asynchrone de la méthode ExecuteBackup pour effectuer la restauration
         var (totalSize, totalFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination);

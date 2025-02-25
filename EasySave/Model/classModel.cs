@@ -6,16 +6,14 @@ namespace Model
     {
         private static BackupService backupService = new BackupService();
 
-        // Démarrer une sauvegarde ; renvoie un objet résultat à l’interface
         public static void runBackup(string source, string target, string backupName, string type)
         {
             backupService.StartBackup(source, target, backupName, type);
         }
 
-        // Restaurer une sauvegarde ; differential indique le type de restauration
-        public static void runRestore(int backupId, string destination, bool differential)
+        public static void runRestore(string backupName, string destination)
         {
-            backupService.RestoreBackup(backupId, destination, differential);
+            backupService.RestoreBackup(backupName, destination);
         }
 
         public static List<BackupData> listBackups()

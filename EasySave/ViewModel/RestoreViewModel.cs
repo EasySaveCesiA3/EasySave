@@ -1,6 +1,7 @@
 ﻿using System;
 using Model;
 using CommunityToolkit.Mvvm.ComponentModel;
+using System.Windows;
 
 namespace ViewModel
 {
@@ -16,9 +17,8 @@ namespace ViewModel
                 return;
             }
 
-            bool isDifferential = selectedBackup.Strategy is DifferentialBackup;
-
-            classModel.runRestore(selectedBackup.BackupId, selectedBackup.Target, isDifferential);
+            bool isDifferential = selectedBackup.Strategy is "Differential";
+            classModel.runRestore(selectedBackup.Name, selectedBackup.Target);
         }
     }
 }

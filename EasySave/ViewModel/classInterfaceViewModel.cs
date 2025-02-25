@@ -102,7 +102,7 @@ namespace ViewModel
 
             try
             {
-                var (logMessages, errorMessage) = Historic.DisplayLog();
+                var (logDictionaries, errorMessage) = Historic.LogsData();
 
                 if (!string.IsNullOrEmpty(errorMessage))
                 {
@@ -113,20 +113,21 @@ namespace ViewModel
                     return;
                 }
 
-                foreach (var log in logMessages)
+                foreach (var logDict in logDictionaries)
                 {
-                    var logDict = log.Split(", ")
-                                     .Select(part => part.Split(": "))
-                                     .ToDictionary(e => e[0], e => e[1]);
-
-
-                    ListeSauvegardes.Add(new BackupData
+                    if (logDict.TryGetValue("BackupName", out string? name) &&
+                        logDict.TryGetValue("Source", out string? source) &&
+                        logDict.TryGetValue("RestorationTarget", out string? target) &&
+                        logDict.TryGetValue("StrategyType", out string? strategy))
                     {
-                        Name = logDict["Logname"],
-                        Source = logDict["Source"],
-                        Target = logDict["RestorationTarget"],
-                        Strategy = logDict["StrategyType"]
-                    });
+                        ListeSauvegardes.Add(new BackupData
+                        {
+                            Name = name,
+                            Source = source,
+                            Target = target,
+                            Strategy = strategy
+                        });
+                    }
                 }
             }
             catch (Exception ex)
@@ -134,6 +135,7 @@ namespace ViewModel
                 MessageBox.Show($"Erreur lors de la récupération des sauvegardes : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
 
         private void LancerSauvegarde()

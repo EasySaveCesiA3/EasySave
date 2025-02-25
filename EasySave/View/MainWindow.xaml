@@ -59,7 +59,7 @@
                             Height="40"
                             Margin="5"/>
                     <Button Content="Restaurer une sauvegarde"
-                            Command="{Binding RestaurerSauvegardeCommand}"
+                            Command="{Binding RestoreCommand}"
                             Background="#4A90E2"
                             Foreground="White"
                             Height="40"
@@ -160,7 +160,7 @@
 
                 <TextBlock Text="Liste des sauvegardes :" FontSize="14" Foreground="White" Margin="10 0 0 10"/>
 
-                <ListBox ItemsSource="{Binding ListeSauvegardes}" SelectedItem="{Binding SelectedBackup}" Height="150">
+                <ListBox ItemsSource="{Binding ListeSauvegardes}" SelectedItem="{Binding SelectBackup}" Height="150">
                     <ListBox.ItemTemplate>
                         <DataTemplate>
                             <StackPanel Orientation="Vertical">

@@ -12,7 +12,7 @@ namespace Log
 {
     public class LogEntry
     {
-        public required string Logname { get; set; }
+        public required string BackupName { get; set; }
         public required string Action { get; set; }
         public required DateTime Time { get; set; }
 
@@ -41,11 +41,11 @@ namespace Log
 
         public static string choix = "1";
 
-        public static void Backup(string logname, string source, string target, string transfert, string size, string strategyType)
+        public static void Backup(string backupName, string source, string target, string transfert, string size, string strategyType)
         {
             LogEntry logEntry = new LogEntry
             {
-                Logname = logname,
+                BackupName = backupName,
                 Time = DateTime.Now,
                 Source = source,
                 RestorationTarget = target,
@@ -57,11 +57,11 @@ namespace Log
             AddLog(logEntry);
         }
 
-        public static void Restore(string logname, string source, string target, string transfert, string size, string strategyType)
+        public static void Restore(string backupName, string source, string target, string transfert, string size, string strategyType)
         {
             LogEntry logEntry = new LogEntry
             {
-                Logname = logname,
+                BackupName = backupName,
                 Time = DateTime.Now,
                 Source = source,
                 RestorationTarget = target,
@@ -73,12 +73,12 @@ namespace Log
             AddLog(logEntry);
         }
 
-        public void Delete(string logname)
+        public void Delete(string backupName)
         {
             LogEntry logEntry = new LogEntry
             {
                 Time = DateTime.Now,
-                Logname = logname,
+                BackupName = backupName,
                 Action = "Remplacement"
             };
             AddLog(logEntry);
@@ -166,16 +166,16 @@ namespace Log
             }
         }
 
-        public static (List<string> LogMessages, string ErrorMessage) DisplayLog()
+        public static (List<Dictionary<string, string>> LogDictionaries, string ErrorMessage) LogsData()
         {
             string filename = choix == "1" ? jsonfile : xamlfile;
-            List<string> logMessages = new List<string>();
+            List<Dictionary<string, string>> logDictionaries = new List<Dictionary<string, string>>();
             string errorMessage = string.Empty;
 
             if (!File.Exists(filename))
             {
                 errorMessage = $"Le fichier {filename} n'existe pas.";
-                return (logMessages, errorMessage);
+                return (logDictionaries, errorMessage);
             }
 
             try
@@ -187,7 +187,7 @@ namespace Log
                 if (logEntries == null || logEntries.Count == 0)
                 {
                     errorMessage = $"Le fichier {filename} est vide.";
-                    return (logMessages, errorMessage);
+                    return (logDictionaries, errorMessage);
                 }
 
                 foreach (var entry in logEntries)
@@ -203,7 +203,12 @@ namespace Log
                         }
                     }
 
-                    logMessages.Add(string.Join(", ", displayParts));
+                    var logDict = displayParts
+                        .Select(part => part.Split(": ", 2))
+                        .Where(parts => parts.Length == 2)
+                        .ToDictionary(e => e[0], e => e[1]);
+
+                    logDictionaries.Add(logDict);
                 }
             }
             catch (Exception ex)
@@ -211,8 +216,9 @@ namespace Log
                 errorMessage = $"Erreur lors de la lecture du fichier {filename}: {ex.Message}";
             }
 
-            return (logMessages, errorMessage);
+            return (logDictionaries, errorMessage);
         }
+
 
 
 
