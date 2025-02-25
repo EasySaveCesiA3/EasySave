@@ -9,7 +9,7 @@
       "CryptoSoft/1.0.0": {
         "dependencies": {
           "CommunityToolkit.Mvvm": "8.4.0",
-          "Microsoft.NET.ILLink.Tasks": "8.0.13"
+          "Microsoft.NET.ILLink.Tasks": "8.0.12"
         },
         "runtime": {
           "CryptoSoft.dll": {}
@@ -23,7 +23,7 @@
           }
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.13": {}
+      "Microsoft.NET.ILLink.Tasks/8.0.12": {}
     }
   },
   "libraries": {
@@ -39,12 +39,12 @@
       "path": "communitytoolkit.mvvm/8.4.0",
       "hashPath": "communitytoolkit.mvvm.8.4.0.nupkg.sha512"
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.13": {
+    "Microsoft.NET.ILLink.Tasks/8.0.12": {
       "type": "package",
       "serviceable": true,
-      "sha512": "sha512-R19ZTaRiQAK+xo9ZwaHbF/1vb1wwR1Wn5+sqp9v8+CDjbdS8R6qftKdw0VSXWKm7VAMi7P+NCU4zxDzhEWcAwQ==",
-      "path": "microsoft.net.illink.tasks/8.0.13",
-      "hashPath": "microsoft.net.illink.tasks.8.0.13.nupkg.sha512"
+      "sha512": "sha512-FV4HnQ3JI15PHnJ5PGTbz+rYvrih42oLi/7UMIshNwCwUZhTq13UzrggtXk4ygrcMcN+4jsS6hhshx2p/Zd0ig==",
+      "path": "microsoft.net.illink.tasks/8.0.12",
+      "hashPath": "microsoft.net.illink.tasks.8.0.12.nupkg.sha512"
     }
   }
 }

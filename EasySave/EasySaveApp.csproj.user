@@ -30,5 +30,8 @@
     <Page Update="View\LanguageWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="View\SettingsWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
   </ItemGroup>
 </Project>

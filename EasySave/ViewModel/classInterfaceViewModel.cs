@@ -24,6 +24,7 @@ namespace ViewModel
         public ICommand LancerSauvegardeCommand { get; }
         public ICommand ListerSauvegardesCommand { get; }
         public ICommand RestoreCommand { get; }
+        public ICommand OuvrirParametresCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -42,6 +43,13 @@ namespace ViewModel
 
         [ObservableProperty]
         private string typeSauvegarde;
+
+        [ObservableProperty]
+        private bool crypterFichiers = false;
+
+        [ObservableProperty]
+        private bool nePascrypterFichiers = true;
+
         // Ajout des types de sauvegarde pour la ComboBox
         [ObservableProperty]
         private ObservableCollection<string> typesSauvegarde = new ObservableCollection<string>
@@ -62,6 +70,7 @@ namespace ViewModel
             ListerSauvegardesCommand = new RelayCommand(() => ListerSauvegardes(true));
             RestoreCommand = new RelayCommand(RestoreBackup);
             QuitterCommand = new RelayCommand(QuitterApplication);
+            OuvrirParametresCommand = new RelayCommand(OuvrirParametres);
             //public RelayCommand<Window> CloseWindowCommand { get; }
 
         }
@@ -140,7 +149,7 @@ namespace ViewModel
 
         private void LancerSauvegarde()
         {
-            SaveViewModel.LancerSauvegarde(NomSauvegarde, CheminSauvegardeSource, CheminSauvegardeCible, TypeSauvegarde);
+            SaveViewModel.LancerSauvegarde(NomSauvegarde, CheminSauvegardeSource, CheminSauvegardeCible, TypeSauvegarde, CrypterFichiers);
         }
         private void RestoreBackup()
         {
@@ -156,6 +165,12 @@ namespace ViewModel
             restoreViewModel.RestoreBackup(SelectBackup);
 
             MessageBox.Show("Restauration terminée avec succès !");
+        }
+
+        private void OuvrirParametres()
+        {
+            Views.SettingsWindow settingsWindow = new Views.SettingsWindow();
+            settingsWindow.Show();
         }
 
         private void QuitterApplication()

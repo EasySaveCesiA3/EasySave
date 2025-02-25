@@ -61,3 +61,16 @@ C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
 C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
 C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
 C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.deps.json
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.dll
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.pdb
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.AssemblyReference.cache
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfoInputs.cache
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfo.cs
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.CoreCompileInputs.cache
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.sourcelink.json
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
+C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll

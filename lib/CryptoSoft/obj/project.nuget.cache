@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Eeijioenv40=",
+  "dgSpecHash": "Y7vXtNpadRI=",
   "success": true,
-  "projectFilePath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+  "projectFilePath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\erwan\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\erwan\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.13\\microsoft.net.illink.tasks.8.0.13.nupkg.sha512"
+    "C:\\Users\\Martin\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\Martin\\.nuget\\packages\\microsoft.net.illink.tasks\\8.0.12\\microsoft.net.illink.tasks.8.0.12.nupkg.sha512"
   ],
   "logs": []
 }
