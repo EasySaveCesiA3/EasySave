@@ -7,7 +7,6 @@ using System.Xml.Serialization;
 using Portable.Xaml;
 using System.Diagnostics;
 using System.Xml;
-using static Log.Historic;
 
 namespace Log
 {
@@ -16,6 +15,9 @@ namespace Log
         public required string Logname { get; set; }
         public required string Action { get; set; }
         public required DateTime Time { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? StrategyType { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? TransfertTime { get; set; }
@@ -39,7 +41,7 @@ namespace Log
 
         public static string choix = "1";
 
-        public static void Backup(string logname, string source, string target, string transfert, string size)
+        public static void Backup(string logname, string source, string target, string transfert, string size, string strategyType)
         {
             LogEntry logEntry = new LogEntry
             {
@@ -47,6 +49,7 @@ namespace Log
                 Time = DateTime.Now,
                 Source = source,
                 RestorationTarget = target,
+                StrategyType = strategyType,
                 TransfertTime = transfert,
                 Size = size,
                 Action = "Sauvegarde"
@@ -54,7 +57,7 @@ namespace Log
             AddLog(logEntry);
         }
 
-        public static void Restore(string logname, string source, string target, string transfert, string size)
+        public static void Restore(string logname, string source, string target, string transfert, string size, string strategyType)
         {
             LogEntry logEntry = new LogEntry
             {
@@ -62,6 +65,7 @@ namespace Log
                 Time = DateTime.Now,
                 Source = source,
                 RestorationTarget = target,
+                StrategyType = strategyType,
                 TransfertTime = transfert,
                 Size = size,
                 Action = "Restauration"

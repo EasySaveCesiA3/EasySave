@@ -2,6 +2,7 @@
 using CommunityToolkit.Mvvm.Input;
 using Microsoft.Win32;
 using Model;
+using Log;
 using System;
 using System.Collections.Generic;
 using System.Collections.ObjectModel;
@@ -101,25 +102,30 @@ namespace ViewModel
 
             try
             {
-                List<BackupData> sauvegardes = classModel.listBackups();
+                var (logMessages, errorMessage) = Historic.DisplayLog();
 
-                if (sauvegardes == null || sauvegardes.Count == 0)
+                if (!string.IsNullOrEmpty(errorMessage))
                 {
                     if (afficherMessage)
                     {
-                        MessageBox.Show("Aucune sauvegarde disponible.");
+                        MessageBox.Show(errorMessage);
                     }
                     return;
                 }
 
-                foreach (var sauvegarde in sauvegardes)
+                foreach (var log in logMessages)
                 {
+                    var logDict = log.Split(", ")
+                                     .Select(part => part.Split(": "))
+                                     .ToDictionary(e => e[0], e => e[1]);
+
+
                     ListeSauvegardes.Add(new BackupData
                     {
-                        Name = sauvegarde.Name,
-                        Source = sauvegarde.Source,
-                        Target = sauvegarde.Target,
-                        Strategy = sauvegarde.Strategy
+                        Name = logDict["Logname"],
+                        Source = logDict["Source"],
+                        Target = logDict["RestorationTarget"],
+                        Strategy = logDict["StrategyType"]
                     });
                 }
             }
@@ -128,6 +134,7 @@ namespace ViewModel
                 MessageBox.Show($"Erreur lors de la récupération des sauvegardes : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
         private void LancerSauvegarde()
         {

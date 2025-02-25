@@ -15,7 +15,7 @@ public class BackupData
     public required string Source { get; set; }
     public required string Target { get; set; }
     public required string Name { get; set; }
-    public IBackupStrategy Strategy { get; set; }
+    public string Strategy { get; set; }
     public int BackupId { get; set; }
 }
 
@@ -67,7 +67,7 @@ public class BackupManager
     private List<BackupData> backupList = new List<BackupData>();
     private int nextBackupId = 1;
 
-    public BackupData CreateBackupData(string source, string target, string name, IBackupStrategy strategy)
+    public BackupData CreateBackupData(string source, string target, string name, string strategy)
     {
         var backup = new BackupData
         {
@@ -110,10 +110,10 @@ public class BackupService
     private BackupFactory backupFactory = new BackupFactory();
 
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
-    public async Task StartBackup(string source, string target, string name, string type)
+    public async Task StartBackup(string source, string target, string name, string strategyType)
     {
-        var strategy = backupFactory.CreateBackupStrategy(type);
-        var backupData = backupManager.CreateBackupData(source, target, name, strategy);
+        var strategy = backupFactory.CreateBackupStrategy(strategyType);
+        var backupData = backupManager.CreateBackupData(source, target, name, strategyType);
         string sauvegarde = Path.Combine("Sauvegardes", name);
 
 
@@ -124,27 +124,17 @@ public class BackupService
 
         stopwatch.Stop();
 
-        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), type);
+        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), strategyType);
     }
 
     // Restaure une sauvegarde et renvoie le résultat
     public async Task RestoreBackup(int backupId, string restoreDestination, bool differential)
     {
         var backupData = backupManager.GetBackup(backupId);
-        string type = "";
 
         if (backupData == null)
         {
             throw new ArgumentException("Backup non trouvé");
-        }
-
-        if (backupData.Strategy is CompleteBackup)
-        {
-            type = "Complète";
-        }
-        else if (backupData.Strategy is DifferentialBackup)
-        {
-            type = "Complète";
         }
 
         string sauvegarde = Path.Combine("Sauvegarde", backupData.Name);
@@ -160,7 +150,7 @@ public class BackupService
         stopwatch.Stop();
 
         // Enregistrement de l'historique après la restauration
-        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), type);
+        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), backupData.Strategy);
     }
 
 
