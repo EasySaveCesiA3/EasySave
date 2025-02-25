@@ -8,5 +8,45 @@
     "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
     "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
     "Size": "24"
+  },
+  {
+    "BackupName": "test",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T20:42:47.0105531+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "1102",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "bb",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T21:01:23.6010556+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "36",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "bb",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T21:01:32.7950751+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "2169",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "bb",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T21:02:10.6838055+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "1743",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
   }
 ]

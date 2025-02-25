@@ -12,6 +12,7 @@ using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
 using ViewModels;
+using System.IO;
 
 namespace ViewModel
 
@@ -115,10 +116,13 @@ namespace ViewModel
                     return;
                 }
 
+                string sauvegardesPath = Path.Combine(Directory.GetCurrentDirectory(), "Sauvegardes");
+
                 foreach (var logDict in logDictionaries)
                 {
                     if (logDict.TryGetValue("Action", out string? action) && action == "Sauvegarde" &&
                         logDict.TryGetValue("BackupName", out string? name) &&
+                        Directory.Exists(Path.Combine(sauvegardesPath, name)) && // Vérifie si BackupName est un dossier existant
                         logDict.TryGetValue("Source", out string? source) &&
                         logDict.TryGetValue("RestorationTarget", out string? target) &&
                         logDict.TryGetValue("StrategyType", out string? strategy))
@@ -138,6 +142,7 @@ namespace ViewModel
                 MessageBox.Show($"Erreur lors de la récupération des sauvegardes : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
+
 
 
 
@@ -163,7 +168,13 @@ namespace ViewModel
 
         private void LancerSuppression()
         {
+            if (SelectBackup == null)
+            {
+                MessageBox.Show("Veuillez sélectionner une sauvegarde à restaurer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+                return;
+            }
 
+            DeleteViewModel.DeleteBackup(SelectBackup);
         }
 
         private void QuitterApplication()

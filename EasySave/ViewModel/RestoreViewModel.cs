@@ -7,13 +7,12 @@ namespace ViewModel
 {
     public partial class RestoreViewModel : ObservableObject
     {
-        private readonly classModel _classModel = new classModel();
 
         public void RestoreBackup(BackupData selectedBackup)
         {
             if (selectedBackup == null)
             {
-                System.Windows.MessageBox.Show("Aucune sauvegarde sélectionnée.", "Erreur", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
+                MessageBox.Show("Aucune sauvegarde sélectionnée.", "Erreur", System.Windows.MessageBoxButton.OK, System.Windows.MessageBoxImage.Error);
                 return;
             }
 
