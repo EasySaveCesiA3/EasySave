@@ -82,7 +82,14 @@ namespace ViewModels
         private void Retour()
         {
             SauvegarderExtensions();
-            Application.Current.Windows[0]?.Close();
+            foreach (Window window in Application.Current.Windows)
+            {
+                if (window.DataContext == this)
+                {
+                    window.Close();
+                    break;
+                }
+            }
         }
 
         private void AjouterExtension()
@@ -120,6 +127,7 @@ namespace ViewModels
             if (openFileDialog.ShowDialog() == true)
             {
                 LogicielMetier = openFileDialog.FileName;
+                Model.Copie.Instance.BusinessSoftwarePath = LogicielMetier;
             }
         }
     }

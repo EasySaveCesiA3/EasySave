@@ -2,6 +2,7 @@
 using System.Diagnostics;
 using System.IO;
 using System.Threading.Tasks;
+using System.Windows;
 
 namespace Model
 {
@@ -12,6 +13,8 @@ namespace Model
         private volatile bool Interruption = false;
 
         private Copie() { }
+
+        public string BusinessSoftwarePath { get; set; } = string.Empty;
 
         public static Copie Instance
         {
@@ -36,7 +39,16 @@ namespace Model
         {
             return await Task.Run(async () =>
             {
-                while (IsDiscordRunning() || Interruption) // Pause si Discord est actif ou si Interruption est activée
+                if (IsBusinessSoftwareRunning())
+                {
+                    MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
+                                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+
+                    throw new Exception("Logiciel métier en cours d'exécution.");
+                }
+
+                // On attend tant que le logiciel métier est actif ou que l'interruption est activée
+                while (IsBusinessSoftwareRunning() || Interruption)
                 {
                     await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
                 }
@@ -47,6 +59,15 @@ namespace Model
             });
         }
 
+        private bool IsBusinessSoftwareRunning()
+        {
+            if (string.IsNullOrWhiteSpace(BusinessSoftwarePath))
+                return false;
+
+            string exeName = Path.GetFileNameWithoutExtension(BusinessSoftwarePath);
+            
+            return Process.GetProcessesByName(exeName).Any();
+        }
         public (long totalSize, long totalFiles) CopyDirectory(string sourceDir, string destinationDir)
         {
             long totalSize = 0;
@@ -130,6 +151,6 @@ namespace Model
             return (totalSize, totalFiles);
         }
 
-        private bool IsDiscordRunning() => Process.GetProcessesByName("discord").Length > 0;
+        //private bool IsDiscordRunning() => Process.GetProcessesByName("discord").Length > 0;
     }
 }
