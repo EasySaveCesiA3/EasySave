@@ -338,7 +338,7 @@ namespace Log
         }
 
 
-        public static string DeleteFile()
+        public static string DeleteLogs()
         {
             try
             {

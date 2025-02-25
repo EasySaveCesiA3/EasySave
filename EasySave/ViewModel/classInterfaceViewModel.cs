@@ -24,6 +24,7 @@ namespace ViewModel
         public ICommand LancerSauvegardeCommand { get; }
         public ICommand ListerSauvegardesCommand { get; }
         public ICommand RestoreCommand { get; }
+        public ICommand DeleteSauvegardeCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -60,7 +61,8 @@ namespace ViewModel
             SelectionnerDossierCibleCommand = new RelayCommand(SelectionnerDossierCible);
             LancerSauvegardeCommand = new RelayCommand(LancerSauvegarde);
             ListerSauvegardesCommand = new RelayCommand(() => ListerSauvegardes(true));
-            RestoreCommand = new RelayCommand(RestoreBackup);
+            RestoreCommand = new RelayCommand(LancerRestauration);
+            DeleteSauvegardeCommand = new RelayCommand(LancerSuppression);
             QuitterCommand = new RelayCommand(QuitterApplication);
             //public RelayCommand<Window> CloseWindowCommand { get; }
 
@@ -115,7 +117,8 @@ namespace ViewModel
 
                 foreach (var logDict in logDictionaries)
                 {
-                    if (logDict.TryGetValue("BackupName", out string? name) &&
+                    if (logDict.TryGetValue("Action", out string? action) && action == "Sauvegarde" &&
+                        logDict.TryGetValue("BackupName", out string? name) &&
                         logDict.TryGetValue("Source", out string? source) &&
                         logDict.TryGetValue("RestorationTarget", out string? target) &&
                         logDict.TryGetValue("StrategyType", out string? strategy))
@@ -138,11 +141,12 @@ namespace ViewModel
 
 
 
+
         private void LancerSauvegarde()
         {
             SaveViewModel.LancerSauvegarde(NomSauvegarde, CheminSauvegardeSource, CheminSauvegardeCible, TypeSauvegarde);
         }
-        private void RestoreBackup()
+        private void LancerRestauration()
         {
             if (SelectBackup == null)
             {
@@ -150,12 +154,16 @@ namespace ViewModel
                 return;
             }
 
-            MessageBox.Show("Restauration en cours...");
-
             RestoreViewModel restoreViewModel = new RestoreViewModel();
             restoreViewModel.RestoreBackup(SelectBackup);
 
             MessageBox.Show("Restauration terminée avec succès !");
+        }
+
+
+        private void LancerSuppression()
+        {
+
         }
 
         private void QuitterApplication()
