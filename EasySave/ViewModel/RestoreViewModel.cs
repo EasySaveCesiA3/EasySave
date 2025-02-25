@@ -25,7 +25,13 @@ namespace ViewModel
            
             classModel.runRestore(selectedBackup.Name, selectedBackup.Target);
 
-            DecrypterSauvegarde(selectedBackup.Name, selectedBackup.Target);
+            string backupMetadataPath = Path.Combine(Path.GetFullPath(selectedBackup.Target), "metadata.json");
+
+            if (File.Exists(backupMetadataPath)) 
+            { 
+                DecrypterSauvegarde(selectedBackup.Name, selectedBackup.Target);
+            }
+            MessageBox.Show($"Restauration faites avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         private void DecrypterSauvegarde(string backupName, string targetFolder)
@@ -41,7 +47,6 @@ namespace ViewModel
                                     "Information", MessageBoxButton.OK, MessageBoxImage.Information);
                     return;
                 }
-
                 string metadataJson = File.ReadAllText(backupMetadataPath);
                 var metadata = JsonSerializer.Deserialize<BackupMetadata>(metadataJson);
                 if (metadata == null || !metadata.Crypte)

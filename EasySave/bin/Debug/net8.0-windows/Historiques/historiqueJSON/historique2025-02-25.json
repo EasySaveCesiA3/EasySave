@@ -218,5 +218,55 @@
     "Source": "C:\\Users\\Martin\\Downloads\\Dossier_Source",
     "RestorationTarget": "C:\\Users\\Martin\\Downloads\\Dossier_Cible",
     "Size": "1417806"
+  },
+  {
+    "BackupName": "TestM\u00E9tier",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T23:36:06.3491493+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "1129",
+    "Source": "C:\\Users\\Martin\\Downloads\\Dossier_Source",
+    "RestorationTarget": "C:\\Users\\Martin\\Downloads\\Dossier_Cible",
+    "Size": "1417806"
+  },
+  {
+    "BackupName": "TestM\u00E9tier",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T23:39:07.0509853+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "1253",
+    "Source": "C:\\Users\\Martin\\Downloads\\Dossier_Source",
+    "RestorationTarget": "C:\\Users\\Martin\\Downloads\\Dossier_Cible",
+    "Size": "1417806"
+  },
+  {
+    "BackupName": "Test19",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T23:39:17.0900399+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "623",
+    "Source": "C:\\Users\\Martin\\Downloads\\Dossier_Source",
+    "RestorationTarget": "C:\\Users\\Martin\\Downloads\\Dossier_Cible",
+    "Size": "1417934"
+  },
+  {
+    "BackupName": "Test19",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T23:39:54.4999714+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "772",
+    "Source": "C:\\Users\\Martin\\Downloads\\Dossier_Source",
+    "RestorationTarget": "C:\\Users\\Martin\\Downloads\\Dossier_Cible",
+    "Size": "1417934"
+  },
+  {
+    "BackupName": "Test19",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-25T23:40:09.119851+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "508",
+    "Source": "C:\\Users\\Martin\\Downloads\\Dossier_Source",
+    "RestorationTarget": "C:\\Users\\Martin\\Downloads\\Dossier_Cible",
+    "Size": "1417934"
   }
 ]

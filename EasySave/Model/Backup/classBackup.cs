@@ -125,9 +125,30 @@ public class BackupService
     private BackupManager backupManager = new BackupManager();
     private BackupFactory backupFactory = new BackupFactory();
 
+    // Méthode de vérification du logiciel métier
+    private bool IsBusinessSoftwareRunning()
+    {
+        return Model.Copie.Instance.IsBusinessSoftwareRunning();
+    }
+
+    private bool CheckForBusinessSoftware()
+    {
+        if (IsBusinessSoftwareRunning())
+        {
+            MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer avant de lancer l'opération.",
+                "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            return true;
+        }
+        return false;
+    }
+
+
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
     public async Task StartBackup(string source, string target, string name, string strategyType)
     {
+        if (CheckForBusinessSoftware())
+            return;
+
         var strategy = backupFactory.CreateBackupStrategy(strategyType);
         var backupData = backupManager.CreateBackupData(source, target, name, strategyType);
         string sauvegarde = Path.Combine("Sauvegardes", name);
@@ -146,6 +167,9 @@ public class BackupService
     // Restaure une sauvegarde et renvoie le résultat
     public async Task RestoreBackup(string backupName, string restoreDestination)
     {
+        if (CheckForBusinessSoftware())
+            return;
+
         var backupData = backupManager.GetBackup(backupName);
         bool differential = false;
 

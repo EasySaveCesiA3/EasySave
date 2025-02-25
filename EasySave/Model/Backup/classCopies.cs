@@ -59,7 +59,7 @@ namespace Model
             });
         }
 
-        private bool IsBusinessSoftwareRunning()
+        public bool IsBusinessSoftwareRunning()
         {
             if (string.IsNullOrWhiteSpace(BusinessSoftwarePath))
                 return false;

@@ -162,9 +162,7 @@ namespace ViewModel
             MessageBox.Show("Restauration en cours...");
 
             RestoreViewModel restoreViewModel = new RestoreViewModel();
-            restoreViewModel.RestoreBackup(SelectBackup);
-
-            MessageBox.Show("Restauration terminée avec succès !");
+            restoreViewModel.RestoreBackup(SelectBackup); 
         }
 
         private void OuvrirParametres()
