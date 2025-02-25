@@ -59,7 +59,7 @@ namespace ViewModels
             {
                 // Instanciation du modèle et exécution de la sauvegarde
                 classModel classModelInstance = new classModel();
-                var backupResult = classModel.runBackup(cheminSauvegardeSource, cheminSauvegardeCible, nomSauvegarde, backupType);
+                classModel.runBackup(cheminSauvegardeSource, cheminSauvegardeCible, nomSauvegarde, backupType);
                 MessageBox.Show($"Sauvegarde '{nomSauvegarde}' enregistrée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
             }
             catch (Exception ex)
