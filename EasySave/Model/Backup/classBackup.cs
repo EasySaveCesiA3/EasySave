@@ -116,6 +116,7 @@ public class BackupService
         var backupData = backupManager.CreateBackupData(source, target, name, strategy);
         string sauvegarde = Path.Combine("Sauvegardes", name);
 
+
         var stopwatch = Stopwatch.StartNew();
 
         // Attente asynchrone pour récupérer les résultats de la méthode ExecuteBackup
@@ -123,18 +124,27 @@ public class BackupService
 
         stopwatch.Stop();
 
-        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
+        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), type);
     }
 
     // Restaure une sauvegarde et renvoie le résultat
     public async Task RestoreBackup(int backupId, string restoreDestination, bool differential)
     {
         var backupData = backupManager.GetBackup(backupId);
+        string type = "";
 
-        // Vérification si le backup existe
         if (backupData == null)
         {
             throw new ArgumentException("Backup non trouvé");
+        }
+
+        if (backupData.Strategy is CompleteBackup)
+        {
+            type = "Complète";
+        }
+        else if (backupData.Strategy is DifferentialBackup)
+        {
+            type = "Complète";
         }
 
         string sauvegarde = Path.Combine("Sauvegarde", backupData.Name);
@@ -150,7 +160,7 @@ public class BackupService
         stopwatch.Stop();
 
         // Enregistrement de l'historique après la restauration
-        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
+        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), type);
     }
 
 
