@@ -1,34 +1,42 @@
 ﻿using System.Windows;
+using ViewModel;
 using ViewModels;
 
 namespace Views
 {
     public partial class MainWindow : Window
     {
-        private readonly SaveViewModel _saveViewModel;
-        private readonly ApplicationViewModel _appViewModel;
+
+        private readonly classInterfaceViewModel _interfaceViewModel;
+
 
         public MainWindow()
         {
             InitializeComponent();
 
             // Initialiser les ViewModels
-            _saveViewModel = new SaveViewModel();
-            _appViewModel = new ApplicationViewModel();
+            _interfaceViewModel = new classInterfaceViewModel();
+
 
             // Affecter SaveViewModel comme DataContext global
-            DataContext = _saveViewModel;
+            DataContext = _interfaceViewModel;
         }
 
         private void AddBackup(object sender, RoutedEventArgs e)
         {
-            _saveViewModel.LancerSauvegardeCommand.Execute(null);
+            _interfaceViewModel.LancerSauvegardeCommand.Execute(null);
             MessageBox.Show("LancerSauvegardeCommand exécuté avec succès !");
         }
 
         private void QuitterApplication(object sender, RoutedEventArgs e)
         {
-            _appViewModel.QuitterCommand.Execute(null);
+            _interfaceViewModel.QuitterCommand.Execute(null);
+        }
+        private void RestaurerSauvegardeCommand(object sender, RoutedEventArgs e)
+        {
+            _interfaceViewModel.RestoreCommand.Execute(null);
+            MessageBox.Show("LancerSauvegardeCommand exécuté avec succès !");
+
         }
     }
 }
