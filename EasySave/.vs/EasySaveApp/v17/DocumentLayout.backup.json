@@ -3,12 +3,12 @@
   "WorkspaceRootPath": "C:\\Users\\erwan\\OrgaES\\EasySave\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\gestionnairesauvegarde.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -56,16 +56,16 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 0,
+          "SelectedChildIndex": 7,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 1,
               "Title": "classCopies.cs",
               "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classCopies.cs",
               "RelativeDocumentMoniker": "Model\\Backup\\classCopies.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classCopies.cs*",
-              "RelativeToolTip": "Model\\Backup\\classCopies.cs*",
+              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classCopies.cs",
+              "RelativeToolTip": "Model\\Backup\\classCopies.cs",
               "ViewState": "AgIAADgAAAAAAAAAAAAcwEcAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-24T14:13:28.436Z",
@@ -144,13 +144,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "SaveViewModel.cs",
               "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\ViewModel\\SaveViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\SaveViewModel.cs",
               "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\ViewModel\\SaveViewModel.cs",
               "RelativeToolTip": "ViewModel\\SaveViewModel.cs",
-              "ViewState": "AgIAAJkAAAAAAAAAAAAkwK0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAJwAAAAAAAAAAAAkwLUAAAAXAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-21T08:45:25.582Z",
               "EditorCaption": ""

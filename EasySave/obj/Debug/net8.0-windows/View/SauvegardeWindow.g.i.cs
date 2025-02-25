@@ -53,7 +53,7 @@ namespace Views {
                 return;
             }
             _contentLoaded = true;
-            System.Uri resourceLocater = new System.Uri("/EasySaveApp;component/view/sauvegardewindow.xaml", System.UriKind.Relative);
+            System.Uri resourceLocater = new System.Uri("/EasySaveApp;V1.0.0.0;component/view/sauvegardewindow.xaml", System.UriKind.Relative);
             
             #line 1 "..\..\..\..\View\SauvegardeWindow.xaml"
             System.Windows.Application.LoadComponent(this, resourceLocater);
