@@ -220,8 +220,6 @@ namespace Log
         }
 
 
-
-
         public static string OpenLog()
         {
             string? path = null;

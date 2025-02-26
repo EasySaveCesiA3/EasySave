@@ -1,3 +1,4 @@
+using Log;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -20,7 +21,6 @@ namespace Model
             }
 
             backupService.StartBackup(source, target, backupName, type);
-            MessageBox.Show($"Sauvegarde '{backupName}' enregistrée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
         public static void runRestore(string backupName, string destination)
@@ -37,7 +37,10 @@ namespace Model
         {
             return backupService.DeleteBackup(backupId);
         }
-
+        public static void openLogFile()
+        {
+            Historic.OpenLog();
+        }
         // Vous pourrez ajouter d’autres méthodes (modifyBackup, addBackup, etc.) en suivant ce modèle.
     }
 }

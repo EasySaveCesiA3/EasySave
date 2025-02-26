@@ -27,6 +27,7 @@ namespace ViewModel
         public ICommand DeleteSauvegardeCommand { get; }
         public ICommand RestoreCommand { get; }
         public ICommand OuvrirParametresCommand { get; }
+        public ICommand ViewLogsCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -74,6 +75,7 @@ namespace ViewModel
             QuitterCommand = new RelayCommand(QuitterApplication);
             OuvrirParametresCommand = new RelayCommand(OuvrirParametres);
             DeleteSauvegardeCommand = new RelayCommand(LancerSuppression);
+            ViewLogsCommand = new RelayCommand(OuvrirLog);
             //public RelayCommand<Window> CloseWindowCommand { get; }
 
         }
@@ -193,6 +195,11 @@ namespace ViewModel
         {
             //M essageBox.Show("Fermeture de l'application...");
             Application.Current.Shutdown();
+        }
+        private void OuvrirLog()
+        {
+            MessageBox.Show("Ouverture du fichier de log...");
+            classModel.openLogFile();
         }
     }
 }

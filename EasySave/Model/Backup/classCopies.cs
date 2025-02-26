@@ -39,13 +39,13 @@ namespace Model
         {
             return await Task.Run(async () =>
             {
-                if (IsBusinessSoftwareRunning())
-                {
-                    MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
-                                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                //if (IsBusinessSoftwareRunning())
+                //{
+                //    MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
+                //                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
 
-                    throw new Exception("Logiciel métier en cours d'exécution.");
-                }
+                //    throw new Exception("Logiciel métier en cours d'exécution.");
+                //}
 
                 // On attend tant que le logiciel métier est actif ou que l'interruption est activée
                 while (IsBusinessSoftwareRunning() || Interruption)

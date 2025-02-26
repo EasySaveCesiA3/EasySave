@@ -131,22 +131,26 @@ public class BackupService
         return Model.Copie.Instance.IsBusinessSoftwareRunning();
     }
 
-    private bool CheckForBusinessSoftware()
-    {
-        if (IsBusinessSoftwareRunning())
-        {
-            MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer avant de lancer l'opération.",
-                "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-            return true;
-        }
-        return false;
-    }
+    //private bool CheckForBusinessSoftware()
+    //{
+    //    if (IsBusinessSoftwareRunning())
+    //    {
+
+    //        return true;
+    //    }
+    //    return false;
+    //}
 
 
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
     public async Task StartBackup(string source, string target, string name, string strategyType)
     {
-        while (CheckForBusinessSoftware())
+        if (IsBusinessSoftwareRunning())
+        {
+            MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
+                            "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+        }
+        while (IsBusinessSoftwareRunning())
         {
             await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
         }
@@ -164,12 +168,13 @@ public class BackupService
         stopwatch.Stop();
 
         Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), strategyType);
+        MessageBox.Show($"Sauvegarde '{name}' enregistrée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
     // Restaure une sauvegarde et renvoie le résultat
     public async Task RestoreBackup(string backupName, string restoreDestination)
     {
-        while(CheckForBusinessSoftware())
+        while(IsBusinessSoftwareRunning())
         {
             await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
         }
