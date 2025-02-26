@@ -57,7 +57,7 @@
                             Background="#4A90E2"
                             Foreground="White"
                             Height="40"
-                            Margin="5"/>
+                            Margin="5" Click="Button_Click"/>
                     <Button Content="Restaurer une sauvegarde"
                             Command="{Binding RestoreCommand}"
                             Background="#4A90E2"
