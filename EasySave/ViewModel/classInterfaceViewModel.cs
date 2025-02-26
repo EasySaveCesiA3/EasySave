@@ -28,6 +28,7 @@ namespace ViewModel
         public ICommand RestoreCommand { get; }
         public ICommand OuvrirParametresCommand { get; }
         public ICommand ViewLogsCommand { get; }
+        public ICommand ChangeLogFormatCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -76,6 +77,7 @@ namespace ViewModel
             OuvrirParametresCommand = new RelayCommand(OuvrirParametres);
             DeleteSauvegardeCommand = new RelayCommand(LancerSuppression);
             ViewLogsCommand = new RelayCommand(OuvrirLog);
+            ChangeLogFormatCommand = new RelayCommand(changerLogType);
             //public RelayCommand<Window> CloseWindowCommand { get; }
 
         }
@@ -153,9 +155,6 @@ namespace ViewModel
                 MessageBox.Show($"Erreur lors de la récupération des sauvegardes : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
             }
         }
-
-
-
         private void LancerSauvegarde()
         {
             SaveViewModel.LancerSauvegarde(NomSauvegarde, CheminSauvegardeSource, CheminSauvegardeCible, TypeSauvegarde, CrypterFichiers);
@@ -200,6 +199,18 @@ namespace ViewModel
         {
             MessageBox.Show("Ouverture du fichier de log...");
             classModel.openLogFile();
+        }
+        private void changerLogType()
+        {
+            if (classModel.logtype())
+            {
+                MessageBox.Show("Format => XML");
+            }
+            else
+            {
+                MessageBox.Show("Format => JSON "); ;
+            }
+
         }
     }
 }

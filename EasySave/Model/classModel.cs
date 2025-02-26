@@ -45,6 +45,10 @@ namespace Model
                 MessageBox.Show(retour, "Logs", MessageBoxButton.OK, MessageBoxImage.Information);
             }
         }
-        // Vous pourrez ajouter d’autres méthodes (modifyBackup, addBackup, etc.) en suivant ce modèle.
+        public static bool logtype()
+        {
+            Historic.choix = !Historic.choix;
+           return Historic.choix;
+        }
     }
 }
