@@ -215,3 +215,5 @@ C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\refint\EasySaveApp
 C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\EasySaveApp.pdb
 C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\EasySaveApp.genruntimeconfig.cache
 C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\ref\EasySaveApp.dll
+C:\Users\louis\EasySaveGUI\EasySave\EasySave\obj\Debug\net8.0-windows\View\SettingsWindow.g.cs
+C:\Users\louis\EasySaveGUI\EasySave\EasySave\obj\Debug\net8.0-windows\View\SettingsWindow.baml

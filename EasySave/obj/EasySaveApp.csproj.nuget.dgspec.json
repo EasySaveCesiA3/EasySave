@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj": {}
+    "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\EasySaveApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj": {
+    "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\EasySaveApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj",
+        "projectUniqueName": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\EasySaveApp.csproj",
         "projectName": "EasySaveApp",
-        "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj",
-        "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\obj\\",
+        "projectPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\EasySaveApp.csproj",
+        "packagesPath": "C:\\Users\\louis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\EasySave\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\louis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -32,11 +32,11 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
-                "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj"
+              "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
+                "projectPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj"
               },
-              "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj": {
-                "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj"
+              "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+                "projectPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj"
               }
             }
           }
@@ -97,20 +97,20 @@
         }
       }
     },
-    "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
+    "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+        "projectUniqueName": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
         "projectName": "ClassLog",
-        "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
-        "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\obj\\",
+        "projectPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+        "packagesPath": "C:\\Users\\louis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\ClassLog\\ClassLog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\louis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -172,20 +172,20 @@
         }
       }
     },
-    "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+    "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "projectUniqueName": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj",
         "projectName": "CryptoSoft",
-        "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj",
-        "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\obj\\",
+        "projectPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "packagesPath": "C:\\Users\\louis\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\louis\\EasySaveGUI\\EasySave\\lib\\CryptoSoft\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\louis\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
