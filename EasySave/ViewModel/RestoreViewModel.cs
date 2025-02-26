@@ -25,9 +25,10 @@ namespace ViewModel
            
             classModel.runRestore(selectedBackup.Name, selectedBackup.Target);
 
-            string backupMetadataPath = Path.Combine(Path.GetFullPath(selectedBackup.Target), "metadata.json");
+            string pathBackup = Path.Combine("Sauvegardes",selectedBackup.Name);
+            string pathMetadata = Path.Combine(pathBackup, "metadata.json");
 
-            if (File.Exists(backupMetadataPath)) 
+            if (File.Exists(pathMetadata)) 
             { 
                 DecrypterSauvegarde(selectedBackup.Name, selectedBackup.Target);
             }

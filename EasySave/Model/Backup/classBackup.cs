@@ -146,8 +146,10 @@ public class BackupService
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
     public async Task StartBackup(string source, string target, string name, string strategyType)
     {
-        if (CheckForBusinessSoftware())
-            return;
+        while (CheckForBusinessSoftware())
+        {
+            await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
+        }
 
         var strategy = backupFactory.CreateBackupStrategy(strategyType);
         var backupData = backupManager.CreateBackupData(source, target, name, strategyType);
@@ -167,8 +169,10 @@ public class BackupService
     // Restaure une sauvegarde et renvoie le résultat
     public async Task RestoreBackup(string backupName, string restoreDestination)
     {
-        if (CheckForBusinessSoftware())
-            return;
+        while(CheckForBusinessSoftware())
+        {
+            await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
+        }
 
         var backupData = backupManager.GetBackup(backupName);
         bool differential = false;
@@ -193,7 +197,7 @@ public class BackupService
         stopwatch.Stop();
 
         // Enregistrement de l'historique après la restauration
-        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), backupData.Strategy);
+        Historic.Restore(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), backupData.Strategy);
     }
 
 
