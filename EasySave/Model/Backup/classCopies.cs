@@ -35,7 +35,17 @@ namespace Model
         public void Pause() => Interruption = true;
         public void Resume() => Interruption = false;
 
-        public async Task<(long totalSize, long totalFiles)> CopyDirectoryAsync(string sourceDir, string destinationDir, bool useDifferential)
+        public bool IsBusinessSoftwareRunning()
+        {
+            if (string.IsNullOrWhiteSpace(BusinessSoftwarePath))
+                return false;
+
+            string exeName = Path.GetFileNameWithoutExtension(BusinessSoftwarePath);
+
+            return Process.GetProcessesByName(exeName).Any();
+        }
+
+        public async Task<(long transferredSize, long transferredFiles)> CopyDirectoryAsync(string sourceDir, string destinationDir, bool useDifferential, Action<long, long> updateProgress)
         {
             return await Task.Run(async () =>
             {
@@ -54,24 +64,15 @@ namespace Model
                 }
 
                 return useDifferential
-                    ? CopyDirectoryDifferential(sourceDir, destinationDir)
-                    : CopyDirectory(sourceDir, destinationDir);
+                    ? CopyDirectoryDifferential(sourceDir, destinationDir, updateProgress)
+                    : CopyDirectory(sourceDir, destinationDir, updateProgress);
             });
         }
 
-        public bool IsBusinessSoftwareRunning()
+        public (long transferredSize, long transferredFiles) CopyDirectory(string sourceDir, string destinationDir, Action<long, long> updateProgress)
         {
-            if (string.IsNullOrWhiteSpace(BusinessSoftwarePath))
-                return false;
-
-            string exeName = Path.GetFileNameWithoutExtension(BusinessSoftwarePath);
-            
-            return Process.GetProcessesByName(exeName).Any();
-        }
-        public (long totalSize, long totalFiles) CopyDirectory(string sourceDir, string destinationDir)
-        {
-            long totalSize = 0;
-            long totalFiles = 0;
+            long transferredSize = 0;
+            long transferredFiles = 0;
 
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
@@ -83,8 +84,14 @@ namespace Model
                 {
                     File.Copy(file, destFile, true);
                     FileInfo fileInfo = new FileInfo(file);
-                    totalSize += fileInfo.Length;
-                    totalFiles++;
+                    transferredSize += fileInfo.Length;
+                    transferredFiles++;
+
+                    // Mise à jour du progrès
+                    updateProgress(transferredSize, transferredFiles);
+
+                    // Pause de 2 secondes après chaque copie
+                    //Thread.Sleep(20000); // Attend 2 secondes
                 }
                 catch (Exception)
                 {
@@ -95,18 +102,19 @@ namespace Model
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
-                var result = CopyDirectory(dir, destDirPath);
-                totalSize += result.totalSize;
-                totalFiles += result.totalFiles;
+                var result = CopyDirectory(dir, destDirPath, updateProgress);
+                transferredSize += result.transferredSize;
+                transferredFiles += result.transferredFiles;
             }
 
-            return (totalSize, totalFiles);
+            return (transferredSize, transferredFiles);
         }
 
-        public (long totalSize, long totalFiles) CopyDirectoryDifferential(string sourceDir, string destinationDir)
+
+        public (long transferredSize, long transferredFiles) CopyDirectoryDifferential(string sourceDir, string destinationDir, Action<long, long> updateProgress)
         {
-            long totalSize = 0;
-            long totalFiles = 0;
+            long transferredSize = 0;
+            long transferredFiles = 0;
 
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
@@ -130,8 +138,11 @@ namespace Model
                     {
                         File.Copy(file, destFile, true);
                         FileInfo fileInfo = new FileInfo(file);
-                        totalSize += fileInfo.Length;
-                        totalFiles++;
+                        transferredSize += fileInfo.Length;
+                        transferredFiles++;
+
+                        // Mise à jour du progrès
+                        updateProgress(transferredSize, transferredFiles);
                     }
                     catch (Exception)
                     {
@@ -143,14 +154,14 @@ namespace Model
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
-                var result = CopyDirectoryDifferential(dir, destDirPath);
-                totalSize += result.totalSize;
-                totalFiles += result.totalFiles;
+                var result = CopyDirectoryDifferential(dir, destDirPath, updateProgress);
+                transferredSize += result.transferredSize;
+                transferredFiles += result.transferredFiles;
             }
 
-            return (totalSize, totalFiles);
+            return (transferredSize, transferredFiles);
         }
 
         //private bool IsDiscordRunning() => Process.GetProcessesByName("discord").Length > 0;
     }
-}
+}   

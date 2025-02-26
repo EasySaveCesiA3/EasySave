@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\EasySave\\EasySave\\EasySaveApp.csproj": {}
+    "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj": {}
   },
   "projects": {
-    "C:\\EasySave\\EasySave\\EasySaveApp.csproj": {
+    "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\EasySave\\EasySave\\EasySaveApp.csproj",
+        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj",
         "projectName": "EasySaveApp",
-        "projectPath": "C:\\EasySave\\EasySave\\EasySaveApp.csproj",
-        "packagesPath": "C:\\Users\\fab02\\.nuget\\packages\\",
-        "outputPath": "C:\\EasySave\\EasySave\\obj\\",
+        "projectPath": "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj",
+        "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\erwan\\OrgaES\\EasySave\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fab02\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -33,11 +33,11 @@
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
-                "projectPath": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj"
+              "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
+                "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj"
               },
-              "C:\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj": {
-                "projectPath": "C:\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj"
+              "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+                "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj"
               }
             }
           }
@@ -98,20 +98,20 @@
         }
       }
     },
-    "C:\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
+    "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
         "projectName": "ClassLog",
-        "projectPath": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
-        "packagesPath": "C:\\Users\\fab02\\.nuget\\packages\\",
-        "outputPath": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\obj\\",
+        "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+        "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fab02\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -174,20 +174,20 @@
         }
       }
     },
-    "C:\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+    "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
         "projectName": "CryptoSoft",
-        "projectPath": "C:\\EasySave\\lib\\CryptoSoft\\CryptoSoft.csproj",
-        "packagesPath": "C:\\Users\\fab02\\.nuget\\packages\\",
-        "outputPath": "C:\\EasySave\\lib\\CryptoSoft\\obj\\",
+        "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\fab02\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],

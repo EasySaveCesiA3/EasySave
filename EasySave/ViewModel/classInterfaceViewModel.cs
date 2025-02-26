@@ -28,6 +28,7 @@ namespace ViewModel
         public ICommand RestoreCommand { get; }
         public ICommand OuvrirParametresCommand { get; }
         public ICommand ViewLogsCommand { get; }
+        public ICommand ChangeLogFormatCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -76,6 +77,7 @@ namespace ViewModel
             OuvrirParametresCommand = new RelayCommand(OuvrirParametres);
             DeleteSauvegardeCommand = new RelayCommand(LancerSuppression);
             ViewLogsCommand = new RelayCommand(ouvrirLog);
+            ChangeLogFormatCommand = new RelayCommand(changerLogType);
             //public RelayCommand<Window> CloseWindowCommand { get; }
 
         }
@@ -157,11 +159,7 @@ namespace ViewModel
 
         private void ouvrirLog()
         {
-            MessageBox.Show("Ouverture du journal d'événements");
-
             classModel.openLog();
-            Historic.OpenLog();
-          
 
         }
         private void LancerSauvegarde()
@@ -201,6 +199,19 @@ namespace ViewModel
         {
             //M essageBox.Show("Fermeture de l'application...");
             Application.Current.Shutdown();
+        }
+
+        private void changerLogType()
+        {
+            if (classModel.logtype())
+            {
+                MessageBox.Show("Format => XML");
+            }
+            else
+            {
+                MessageBox.Show("Format => JSON "); ;
+            }
+
         }
     }
 }

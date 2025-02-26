@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Shapes;
 using System.Xml.Linq;
 using Log;
 
@@ -21,26 +22,63 @@ public class BackupData
 
 public interface IBackupStrategy
 {
-    Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target);
+    Task<(long transferredSize, long transferredFiles)> ExecuteBackup(string source, string target, string name, string action);
 }
 
 
 public class CompleteBackup : IBackupStrategy
 {
-    public async Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target)
+    public async Task<(long transferredSize, long transferredFiles)> ExecuteBackup(string source, string target, string name, string action)
     {
-        // Appel de la méthode asynchrone CopyDirectoryAsync
-        return await Copie.Instance.CopyDirectoryAsync(source, target, false);
+        string path = System.IO.Path.Combine("Etat", String.Concat(name,".txt"));
+
+        // Créer le fichier initial
+        Tools.CreateFile(path);
+        long sourceSize = Tools.GetSize(source);
+        long targetSize = 0;
+
+        Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+
+        Action<long, long> updateProgress = (transferredSize, transferredFiles) =>
+        {
+            targetSize = transferredSize;
+            Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+        };
+
+        var result = await Copie.Instance.CopyDirectoryAsync(source, target, false, updateProgress);
+
+        File.Delete(path);
+
+        return result;
     }
+
 }
 
 
 public class DifferentialBackup : IBackupStrategy
 {
-    public async Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target)
+    public async Task<(long transferredSize, long transferredFiles)> ExecuteBackup(string source, string target, string name, string action)
     {
-        // Appel de la méthode asynchrone CopyDirectoryAsync avec différentiel
-        return await Copie.Instance.CopyDirectoryAsync(source, target, true);
+        string path = System.IO.Path.Combine("Etat", String.Concat(name, ".txt"));
+
+        // Créer le fichier initial
+        Tools.CreateFile(path);
+        long sourceSize = Tools.GetSize(source);
+        long targetSize = 0;
+
+        Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+
+        Action<long, long> updateProgress = (transferredSize, transferredFiles) =>
+        {
+            targetSize = transferredSize;
+            Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+        };
+
+        var result = await Copie.Instance.CopyDirectoryAsync(source, target, true, updateProgress);
+
+        File.Delete(path);
+
+        return result;
     }
 }
 
@@ -151,17 +189,16 @@ public class BackupService
 
         var strategy = backupFactory.CreateBackupStrategy(strategyType);
         var backupData = backupManager.CreateBackupData(source, target, name, strategyType);
-        string sauvegarde = Path.Combine("Sauvegardes", name);
+        string sauvegarde = System.IO.Path.Combine("Sauvegardes", name);
 
 
         var stopwatch = Stopwatch.StartNew();
 
         // Attente asynchrone pour récupérer les résultats de la méthode ExecuteBackup
-        var (totalSize, totalFiles) = await strategy.ExecuteBackup(source, sauvegarde);
-
+        var (transferredSize, transferredFiles) = await strategy.ExecuteBackup(source, sauvegarde, name, "Sauvegarde");
         stopwatch.Stop();
 
-        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), strategyType);
+        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), transferredSize.ToString(), strategyType);
     }
 
     // Restaure une sauvegarde et renvoie le résultat
@@ -178,7 +215,7 @@ public class BackupService
             throw new ArgumentException("Backup non trouvé");
         }
 
-        string sauvegarde = Path.Combine("Sauvegardes", backupData.Name);
+        string sauvegarde = System.IO.Path.Combine("Sauvegardes", backupData.Name);
 
         // Choix de la stratégie pour la restauration
         IBackupStrategy strategy = differential ? new DifferentialBackup() : new CompleteBackup();
@@ -187,13 +224,11 @@ public class BackupService
 
         MessageBox.Show($"{sauvegarde},{restoreDestination}");
 
-        // Appel asynchrone de la méthode ExecuteBackup pour effectuer la restauration
-        var (totalSize, totalFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination);
+        var (transferredSize, transferredFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination, backupData.Name, "Restauration");
 
         stopwatch.Stop();
 
-        // Enregistrement de l'historique après la restauration
-        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), backupData.Strategy);
+        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), transferredSize.ToString(), backupData.Strategy);
     }
 
 
@@ -213,7 +248,7 @@ public class BackupService
 //{
 //    public int BackupId { get; set; }
 //    public string BackupName { get; set; }
-//    public long TotalSize { get; set; }
-//    public long TotalFiles { get; set; }
+//    public long transferredSize { get; set; }
+//    public long transferredFiles { get; set; }
 //    public long ElapsedTimeMs { get; set; }
 //}

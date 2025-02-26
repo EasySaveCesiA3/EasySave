@@ -79,8 +79,6 @@ namespace EasySaveApp
 
         public void RestoreBackup(string backupPath, string destination, string nomSauvegarde)
         {
-            long totalSize = 0;
-            long totalFiles = 0;
 
             if (Directory.Exists(destination))
             {
@@ -102,8 +100,6 @@ namespace EasySaveApp
 
         public void RestoreBackupDifferential(string backupPath, string destination, string nomSauvegarde)
         {
-            long totalSize = 0;
-            long totalFiles = 0;
 
             if (!Directory.Exists(destination))
             {
