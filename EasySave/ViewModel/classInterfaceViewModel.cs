@@ -27,6 +27,7 @@ namespace ViewModel
         public ICommand DeleteSauvegardeCommand { get; }
         public ICommand RestoreCommand { get; }
         public ICommand OuvrirParametresCommand { get; }
+        public ICommand ViewLogsCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -74,6 +75,7 @@ namespace ViewModel
             QuitterCommand = new RelayCommand(QuitterApplication);
             OuvrirParametresCommand = new RelayCommand(OuvrirParametres);
             DeleteSauvegardeCommand = new RelayCommand(LancerSuppression);
+            ViewLogsCommand = new RelayCommand(ouvrirLog);
             //public RelayCommand<Window> CloseWindowCommand { get; }
 
         }
@@ -153,7 +155,15 @@ namespace ViewModel
         }
 
 
+        private void ouvrirLog()
+        {
+            MessageBox.Show("Ouverture du journal d'événements");
 
+            classModel.openLog();
+            Historic.OpenLog();
+          
+
+        }
         private void LancerSauvegarde()
         {
             SaveViewModel.LancerSauvegarde(NomSauvegarde, CheminSauvegardeSource, CheminSauvegardeCible, TypeSauvegarde, CrypterFichiers);
@@ -171,13 +181,11 @@ namespace ViewModel
             RestoreViewModel restoreViewModel = new RestoreViewModel();
             restoreViewModel.RestoreBackup(SelectBackup); 
         }
-
         private void OuvrirParametres()
         {
             Views.SettingsWindow settingsWindow = new Views.SettingsWindow();
             settingsWindow.Show();
         }
-
         private void LancerSuppression()
         {
             if (SelectBackup == null)

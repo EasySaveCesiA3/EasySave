@@ -1,3 +1,4 @@
+using Log;
 using System.Collections.Generic;
 using System.IO;
 using System.Windows;
@@ -36,6 +37,11 @@ namespace Model
         public static bool deleteBackup(int backupId)
         {
             return backupService.DeleteBackup(backupId);
+        }
+        public static void openLog()
+        {
+            MessageBox.Show("Ouverture du journal d'événements");
+            Historic.OpenLog();
         }
 
         // Vous pourrez ajouter d’autres méthodes (modifyBackup, addBackup, etc.) en suivant ce modèle.

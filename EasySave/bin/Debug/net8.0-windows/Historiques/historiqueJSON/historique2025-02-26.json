@@ -1,0 +1,22 @@
+[
+  {
+    "BackupName": "lucas",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-26T00:55:32.1512886+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "29",
+    "Source": "C:\\Users\\fab02\\Music\\Screenshots",
+    "RestorationTarget": "C:\\Users\\fab02\\Music\\Nouveau dossier",
+    "Size": "3"
+  },
+  {
+    "BackupName": "lucas",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-26T00:56:13.5253705+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "2301",
+    "Source": "C:\\Users\\fab02\\Music\\Screenshots",
+    "RestorationTarget": "C:\\Users\\fab02\\Music\\Nouveau dossier",
+    "Size": "3"
+  }
+]

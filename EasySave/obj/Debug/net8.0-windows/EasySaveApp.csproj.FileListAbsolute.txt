@@ -215,3 +215,16 @@ C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\refint\EasySaveApp
 C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\EasySaveApp.pdb
 C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\EasySaveApp.genruntimeconfig.cache
 C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\ref\EasySaveApp.dll
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\EasySaveApp.csproj.AssemblyReference.cache
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\LanguageWindow.baml
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\RestoreWindow.baml
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\App.baml
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\LanguageWindow.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\MainWindow.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\RestoreWindow.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\SauvegardeWindow.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\View\SettingsWindow.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\App.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\GeneratedInternalTypeHelper.g.cs
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\EasySaveApp_MarkupCompile.cache
+C:\EasySave\EasySave\obj\Debug\net8.0-windows\EasySaveApp_MarkupCompile.lref

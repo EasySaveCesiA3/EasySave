@@ -18,7 +18,6 @@ namespace Views
             _interfaceViewModel = new classInterfaceViewModel();
 
 
-            // Affecter SaveViewModel comme DataContext global
             DataContext = _interfaceViewModel;
         }
 

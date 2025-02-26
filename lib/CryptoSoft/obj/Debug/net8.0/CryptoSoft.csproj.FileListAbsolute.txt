@@ -74,3 +74,16 @@ C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
 C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
 C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
 C:\Users\Martin\EasySaveWPF\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
+C:\EasySave\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.deps.json
+C:\EasySave\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.dll
+C:\EasySave\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.pdb
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.AssemblyReference.cache
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.GeneratedMSBuildEditorConfig.editorconfig
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfoInputs.cache
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfo.cs
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.CoreCompileInputs.cache
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.sourcelink.json
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
+C:\EasySave\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
