@@ -4,7 +4,6 @@
         WindowStartupLocation="CenterScreen"
         Background="Black"
         WindowStyle="None"
-        WindowState="Maximized"
         xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
         xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
         xmlns:vm="clr-namespace:ViewModels">
@@ -15,7 +14,6 @@
             <ColumnDefinition Width="*"/>
         </Grid.ColumnDefinitions>
 
-        <!-- Barre latérale -->
         <Border Grid.Column="0"
                 Background="#2E2E2E"
                 Padding="10"
@@ -28,7 +26,6 @@
                            Foreground="White"
                            Margin="10"
                            HorizontalAlignment="Center"/>
-
                 <Button Content="Retour"
                         Command="{Binding RetourCommand}"
                         Background="#4A90E2"
@@ -38,7 +35,6 @@
             </StackPanel>
         </Border>
 
-        <!-- Contenu principal -->
         <Border Grid.Column="1"
                 Padding="20"
                 BorderBrush="#444"
@@ -51,7 +47,6 @@
             </Border.Background>
 
             <StackPanel>
-                <!-- Section Crypter Fichier -->
                 <TextBlock Text="Crypter Fichier"
                            FontSize="20"
                            FontWeight="Bold"
@@ -59,9 +54,7 @@
                            Margin="0 0 0 10"/>
                 <StackPanel Orientation="Horizontal">
                     <TextBox Width="200"
-                        
-                             Text="{Binding NouvelleExtension, Mode=TwoWay}"
-                             />
+                             Text="{Binding NouvelleExtension, Mode=TwoWay}"/>
                     <Button Content="Ajouter"
                             Command="{Binding AjouterExtensionCommand}"
                             Background="#4A90E2"
@@ -69,14 +62,13 @@
                             Width="80"
                             Margin="5"/>
                 </StackPanel>
-                
+
                 <ListBox ItemsSource="{Binding ExtensionsCryptees}"
                          SelectedItem="{Binding ExtensionSelectionnee, Mode=TwoWay}"
                          Height="100"
                          Width="250"
                          Margin="0 5 0 0"
-                         HorizontalAlignment="Left"/>       
-                
+                         HorizontalAlignment="Left"/>
                 <Button Content="Supprimer"
                         Command="{Binding SupprimerExtensionCommand}"
                         Background="#D9534F"
@@ -85,7 +77,6 @@
                         HorizontalAlignment="Left"
                         Margin="80 5 5 5"/>
 
-                <!-- Section Détection de Logiciel Métier -->
                 <TextBlock Text="Détection de Logiciel Métier"
                            FontSize="20"
                            FontWeight="Bold"
@@ -103,7 +94,6 @@
                             Margin="5"/>
                 </StackPanel>
 
-                <!-- Section Changer la Langue -->
                 <TextBlock Text="Langue"
                            FontSize="20"
                            FontWeight="Bold"
@@ -113,7 +103,6 @@
                           SelectedItem="{Binding LangueSelectionnee}"
                           Width="150"/>
 
-                <!-- Bouton Sauvegarder -->
                 <Button Content="Sauvegarder les paramètres"
                         Command="{Binding SauvegarderCommand}"
                         Background="#4A90E2"

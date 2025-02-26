@@ -3,6 +3,14 @@
   "WorkspaceRootPath": "C:\\EasySave\\EasySave\\",
   "Documents": [
     {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\easysave\\easysave\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\easysave\\easysave\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{42BFB856-DA1A-4097-83F3-FC51AD4852A4}|..\\lib\\ClassLog\\ClassLog\\ClassLog.csproj|c:\\easysave\\lib\\classlog\\classlog\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -25,11 +33,35 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 3,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Document",
               "DocumentIndex": 1,
+              "Title": "MainWindow.xaml",
+              "DocumentMoniker": "C:\\EasySave\\EasySave\\View\\MainWindow.xaml",
+              "RelativeDocumentMoniker": "View\\MainWindow.xaml",
+              "ToolTip": "C:\\EasySave\\EasySave\\View\\MainWindow.xaml",
+              "RelativeToolTip": "View\\MainWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-26T10:55:19.339Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "SettingsWindow.xaml",
+              "DocumentMoniker": "C:\\EasySave\\EasySave\\View\\SettingsWindow.xaml",
+              "RelativeDocumentMoniker": "View\\SettingsWindow.xaml",
+              "ToolTip": "C:\\EasySave\\EasySave\\View\\SettingsWindow.xaml",
+              "RelativeToolTip": "View\\SettingsWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-26T10:52:41.885Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
               "Title": "classModel.cs",
               "DocumentMoniker": "C:\\EasySave\\EasySave\\Model\\classModel.cs",
               "RelativeDocumentMoniker": "Model\\classModel.cs",
@@ -42,7 +74,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 5,
               "Title": "classBackup.cs",
               "DocumentMoniker": "C:\\EasySave\\EasySave\\Model\\Backup\\classBackup.cs",
               "RelativeDocumentMoniker": "Model\\Backup\\classBackup.cs",
@@ -55,7 +87,7 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 4,
               "Title": "classInterfaceViewModel.cs",
               "DocumentMoniker": "C:\\EasySave\\EasySave\\ViewModel\\classInterfaceViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\classInterfaceViewModel.cs",
@@ -68,13 +100,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "Class1.cs",
               "DocumentMoniker": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\Class1.cs",
               "RelativeDocumentMoniker": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "ToolTip": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\Class1.cs*",
-              "RelativeToolTip": "..\\lib\\ClassLog\\ClassLog\\Class1.cs*",
-              "ViewState": "AgIAAOoAAAAAAAAAAAAAAPIAAAARAAAAAAAAAA==",
+              "ToolTip": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "RelativeToolTip": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "ViewState": "AgIAAOQAAAAAAAAAAAAAAP8AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2025-02-26T10:26:17.484Z",
               "EditorCaption": ""
