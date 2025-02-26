@@ -145,15 +145,6 @@ public class BackupService
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
     public async Task StartBackup(string source, string target, string name, string strategyType)
     {
-        if (IsBusinessSoftwareRunning())
-        {
-            MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
-                            "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-        }
-        while (IsBusinessSoftwareRunning())
-        {
-            await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
-        }
 
         var strategy = backupFactory.CreateBackupStrategy(strategyType);
         var backupData = backupManager.CreateBackupData(source, target, name, strategyType);
@@ -174,11 +165,6 @@ public class BackupService
     // Restaure une sauvegarde et renvoie le résultat
     public async Task RestoreBackup(string backupName, string restoreDestination)
     {
-        while(IsBusinessSoftwareRunning())
-        {
-            await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
-        }
-
         var backupData = backupManager.GetBackup(backupName);
         bool differential = false;
 
@@ -203,6 +189,7 @@ public class BackupService
 
         // Enregistrement de l'historique après la restauration
         Historic.Restore(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString(), backupData.Strategy);
+        MessageBox.Show($"Sauvegarde '{backupData.Name}' restaurée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
     }
 
 

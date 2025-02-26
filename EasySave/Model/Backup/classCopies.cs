@@ -37,27 +37,18 @@ namespace Model
 
         public async Task<(long totalSize, long totalFiles)> CopyDirectoryAsync(string sourceDir, string destinationDir, bool useDifferential)
         {
-            return await Task.Run(async () =>
+            return await Task.Run(() =>
             {
-                //if (IsBusinessSoftwareRunning())
-                //{
-                //    MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
-                //                    "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                // Vérification initiale
+                CheckForInterruption();
 
-                //    throw new Exception("Logiciel métier en cours d'exécution.");
-                //}
-
-                // On attend tant que le logiciel métier est actif ou que l'interruption est activée
-                while (IsBusinessSoftwareRunning() || Interruption)
-                {
-                    await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
-                }
-
+                // Lancement de la copie
                 return useDifferential
                     ? CopyDirectoryDifferential(sourceDir, destinationDir)
                     : CopyDirectory(sourceDir, destinationDir);
             });
         }
+
 
         public bool IsBusinessSoftwareRunning()
         {
@@ -73,11 +64,19 @@ namespace Model
             long totalSize = 0;
             long totalFiles = 0;
 
+            // Liste d'extensions prioritaires
+            var priorityExtensions = new System.Collections.Generic.HashSet<string> { ".pdf", ".docx", ".xlsx" };
+
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
 
-            foreach (var file in Directory.GetFiles(sourceDir))
+            var allFiles = Directory.GetFiles(sourceDir);
+            var priorityFiles = allFiles.Where(f => priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+            var normalFiles = allFiles.Where(f => !priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+
+            foreach (var file in priorityFiles)
             {
+                CheckForInterruption();
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
@@ -88,12 +87,30 @@ namespace Model
                 }
                 catch (Exception)
                 {
-                    throw; // Laissez l'exception remonter
+                    throw;
+                }
+            }
+
+            foreach (var file in normalFiles)
+            {
+                CheckForInterruption();
+                string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+                try
+                {
+                    File.Copy(file, destFile, true);
+                    FileInfo fileInfo = new FileInfo(file);
+                    totalSize += fileInfo.Length;
+                    totalFiles++;
+                }
+                catch (Exception)
+                {
+                    throw;
                 }
             }
 
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
+                CheckForInterruption();
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
                 var result = CopyDirectory(dir, destDirPath);
                 totalSize += result.totalSize;
@@ -108,19 +125,28 @@ namespace Model
             long totalSize = 0;
             long totalFiles = 0;
 
+            // Liste d'extensions prioritaires
+            var priorityExtensions = new System.Collections.Generic.HashSet<string> { ".pdf", ".docx", ".xlsx" };
+
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
 
-            foreach (var file in Directory.GetFiles(sourceDir))
+            var allFiles = Directory.GetFiles(sourceDir);
+            var priorityFiles = allFiles.Where(f => priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+            var normalFiles = allFiles.Where(f => !priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+
+            // Copier d'abord les fichiers prioritaires
+            foreach (var file in priorityFiles)
             {
+                CheckForInterruption();
+
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 bool copyFile = true;
-
                 if (File.Exists(destFile))
                 {
-                    FileInfo sourceInfo = new FileInfo(file);
+                    FileInfo srcInfo = new FileInfo(file);
                     FileInfo destInfo = new FileInfo(destFile);
-                    if (sourceInfo.Length == destInfo.Length)
+                    if (srcInfo.Length == destInfo.Length)
                         copyFile = false;
                 }
 
@@ -140,8 +166,41 @@ namespace Model
                 }
             }
 
+            // Puis copier les fichiers non prioritaires
+            foreach (var file in normalFiles)
+            {
+                CheckForInterruption();
+
+                string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+                bool copyFile = true;
+                if (File.Exists(destFile))
+                {
+                    FileInfo srcInfo = new FileInfo(file);
+                    FileInfo destInfo = new FileInfo(destFile);
+                    if (srcInfo.Length == destInfo.Length)
+                        copyFile = false;
+                }
+
+                if (copyFile)
+                {
+                    try
+                    {
+                        File.Copy(file, destFile, true);
+                        FileInfo fileInfo = new FileInfo(file);
+                        totalSize += fileInfo.Length;
+                        totalFiles++;
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            // Copier récursivement les sous-dossiers
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
+                CheckForInterruption();
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
                 var result = CopyDirectoryDifferential(dir, destDirPath);
                 totalSize += result.totalSize;
@@ -151,6 +210,25 @@ namespace Model
             return (totalSize, totalFiles);
         }
 
-        //private bool IsDiscordRunning() => Process.GetProcessesByName("discord").Length > 0;
+
+        private void CheckForInterruption()
+        {
+            // Vérifie si le logiciel métier est en cours d’exécution
+            if (IsBusinessSoftwareRunning())
+            {
+                MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Copie interrompue.",
+                                "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+
+            // Vérifie si l’utilisateur a activé l’interruption
+            if (Interruption)
+            {
+                MessageBox.Show("Copie interrompue par l’utilisateur.",
+                                "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
     }
+
+   
+
 }
