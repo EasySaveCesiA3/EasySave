@@ -8,6 +8,7 @@ using Portable.Xaml;
 using System.Diagnostics;
 using System.Xml;
 
+
 namespace Log
 {
     public class LogEntry
@@ -224,6 +225,7 @@ namespace Log
         {
             string? path = null;
 
+
             switch (choix)
             {
                 case "1":
@@ -238,7 +240,7 @@ namespace Log
                     return "Choix invalide.";
             }
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
                 try
                 {
@@ -260,6 +262,7 @@ namespace Log
         {
             string? file;
             string directory;
+            
 
             switch (choix)
             {

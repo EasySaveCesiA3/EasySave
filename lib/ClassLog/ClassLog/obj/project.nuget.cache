@@ -1,11 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "P4A3I4Xj9d0=",
+  "dgSpecHash": "HaknEnasgrU=",
   "success": true,
-  "projectFilePath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+  "projectFilePath": "C:\\EasySave\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
   "expectedPackageFiles": [
-    "C:\\Users\\Martin\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
-    "C:\\Users\\Martin\\.nuget\\packages\\portable.xaml\\0.26.0\\portable.xaml.0.26.0.nupkg.sha512"
+    "C:\\Users\\fab02\\.nuget\\packages\\communitytoolkit.mvvm\\8.4.0\\communitytoolkit.mvvm.8.4.0.nupkg.sha512",
+    "C:\\Users\\fab02\\.nuget\\packages\\portable.xaml\\0.26.0\\portable.xaml.0.26.0.nupkg.sha512"
   ],
   "logs": []
 }
