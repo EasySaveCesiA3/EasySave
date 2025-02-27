@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\CryptoSoft.csproj": {}
+    "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj": {}
   },
   "projects": {
-    "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+    "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
         "projectName": "CryptoSoft",
-        "projectPath": "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
         "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\obj\\",
+        "outputPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -26,6 +26,7 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -44,7 +45,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.100"
+        "SdkAnalysisLevel": "9.0.200"
       },
       "frameworks": {
         "net8.0": {
@@ -57,7 +58,7 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.12, )",
+              "version": "[8.0.13, )",
               "autoReferenced": true
             }
           },
@@ -77,7 +78,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

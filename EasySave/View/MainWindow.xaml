@@ -198,7 +198,7 @@
                            Foreground="White"
                            Margin="10,10,0,0"/>
                 <ListBox ItemsSource="{Binding ListeSauvegardes}"
-                         SelectedItem="{Binding selectSauvegarde}"
+                         SelectedItem="{Binding SelectSauvegarde}"
                          Height="100"
                          Margin="0,2,0,0">
                     <ListBox.ItemTemplate>

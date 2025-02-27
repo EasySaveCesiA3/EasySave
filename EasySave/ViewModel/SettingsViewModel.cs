@@ -11,6 +11,7 @@ namespace ViewModels
     public partial class SettingsViewModel : ObservableObject
     {
         private const string FICHIER_EXTENSIONS = "extensions.txt";
+        private const string FICHIER_PRIORITES = "extensionsPrioritaires.txt";
 
         [ObservableProperty]
         private bool crypterFichiers;
@@ -23,6 +24,15 @@ namespace ViewModels
 
         [ObservableProperty]
         private ObservableCollection<string> extensionsCryptees = new ObservableCollection<string>();
+
+        [ObservableProperty]
+        private string nouvellePriorite;
+
+        [ObservableProperty]
+        private string prioriteSelectionnee;
+
+        [ObservableProperty]
+        private ObservableCollection<string> priorites = new ObservableCollection<string>();
 
         [ObservableProperty]
         private string logicielMetier;
@@ -41,7 +51,10 @@ namespace ViewModels
             SupprimerExtensionCommand = new RelayCommand(SupprimerExtension);
             SelectionnerLogicielMetierCommand = new RelayCommand(SelectionnerLogicielMetier);
 
+            AjouterPrioriteCommand = new RelayCommand(AjouterPriorite);
+            SupprimerPrioriteCommand = new RelayCommand(SupprimerPriorite);
             ChargerExtensions();
+            ChargerPriorites();
         }
 
         public RelayCommand SauvegarderCommand { get; }
@@ -49,6 +62,8 @@ namespace ViewModels
         public RelayCommand AjouterExtensionCommand { get; }
         public RelayCommand SupprimerExtensionCommand { get; }
         public RelayCommand SelectionnerLogicielMetierCommand { get; }
+        public RelayCommand AjouterPrioriteCommand { get; }
+        public RelayCommand SupprimerPrioriteCommand { get; }
 
         private void SauvegarderExtensions()
         {
@@ -73,9 +88,32 @@ namespace ViewModels
             }
         }
 
+        private void SauvegarderPriorites()
+        {
+            try
+            {
+                File.WriteAllLines(FICHIER_PRIORITES, Priorites);
+            }
+            catch (IOException ex)
+            {
+                MessageBox.Show($"Erreur lors de la sauvegarde des priorités : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void ChargerPriorites()
+        {
+            if (File.Exists(FICHIER_PRIORITES))
+            {
+                foreach (var priorite in File.ReadAllLines(FICHIER_PRIORITES))
+                {
+                    Priorites.Add(priorite);
+                }
+            }
+        }
+
         private void SauvegarderParametres()
         {
-            SauvegarderExtensions(); 
+            SauvegarderExtensions();
             MessageBox.Show("Paramètres sauvegardés avec succès !", "Succès", MessageBoxButton.OK, MessageBoxImage.Information);
         }
 
@@ -98,7 +136,7 @@ namespace ViewModels
             {
                 ExtensionsCryptees.Add(NouvelleExtension);
                 SauvegarderExtensions();
-                NouvelleExtension = ""; 
+                NouvelleExtension = "";
             }
         }
 
@@ -108,11 +146,35 @@ namespace ViewModels
             {
                 ExtensionsCryptees.Remove(ExtensionSelectionnee);
                 SauvegarderExtensions();
-                ExtensionSelectionnee = null; 
+                ExtensionSelectionnee = null;
             }
             else
             {
                 MessageBox.Show("Veuillez sélectionner une extension à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
+            }
+        }
+
+        private void AjouterPriorite()
+        {
+            if (!string.IsNullOrWhiteSpace(NouvellePriorite) && !Priorites.Contains(NouvellePriorite))
+            {
+                Priorites.Add(NouvellePriorite);
+                SauvegarderPriorites();
+                NouvellePriorite = "";
+            }
+        }
+
+        private void SupprimerPriorite()
+        {
+            if (!string.IsNullOrWhiteSpace(PrioriteSelectionnee) && Priorites.Contains(PrioriteSelectionnee))
+            {
+                Priorites.Remove(PrioriteSelectionnee);
+                SauvegarderPriorites();
+                PrioriteSelectionnee = null;
+            }
+            else
+            {
+                MessageBox.Show("Veuillez sélectionner une extension prioritaire à supprimer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
             }
         }
 

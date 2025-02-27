@@ -79,7 +79,7 @@ namespace ViewModel
 
             SelectionnerDossierCommand = new RelayCommand(SelectionnerDossier);
             SelectionnerDossierCibleCommand = new RelayCommand(SelectionnerDossierCible);
-            ListerTravailCommand = new RelayCommand(ListerTravail);
+            //ListerTravailCommand = new RelayCommand(ListerTravail);
             LancerSauvegardeCommand = new RelayCommand(LancerSauvegarde);
             ListerSauvegardesCommand = new RelayCommand(() => ListerSauvegardes(true));
             RestoreCommand = new RelayCommand(RestoreBackup);
@@ -122,22 +122,22 @@ namespace ViewModel
             }
         }
 
-        private async Task ListerTravail()
-        {
-            ListeTravaux.Clear();
+        //private async Task ListerTravail()
+        //{
+        //    ListeTravaux.Clear();
 
-            string[] fichiers = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Etat"), "*.txt");
+        //    string[] fichiers = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Etat"), "*.txt");
 
-            foreach (var path in fichiers)
-            {
-                string nomFichier = Path.GetFileName(path);
+        //    foreach (var path in fichiers)
+        //    {
+        //        string nomFichier = Path.GetFileName(path);
 
-                await Dispatcher.InvokeAsync(() =>
-                {
-                    ListeTravaux.Add(Model.Tools.ReadBackupState(path));
-                });
-            }
-        }
+        //        await Dispatcher.InvokeAsync(() =>
+        //        {
+        //            ListeTravaux.Add(Model.Tools.ReadBackupState(path));
+        //        });
+        //    }
+        //}
 
 
         private void ListerSauvegardes(bool afficherMessage = true)
@@ -196,7 +196,7 @@ namespace ViewModel
         }
         private void RestoreBackup()
         {
-            if (selectSauvegarde == null)
+            if (SelectSauvegarde == null)
             {
                 MessageBox.Show("Veuillez sélectionner une sauvegarde à restaurer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
@@ -205,7 +205,7 @@ namespace ViewModel
             MessageBox.Show("Restauration en cours...");
 
             RestoreViewModel restoreViewModel = new RestoreViewModel();
-            restoreViewModel.RestoreBackup(selectSauvegarde); 
+            restoreViewModel.RestoreBackup(SelectSauvegarde); 
         }
         private void OuvrirParametres()
         {
@@ -214,13 +214,13 @@ namespace ViewModel
         }
         private void LancerSuppression()
         {
-            if (selectSauvegarde == null)
+            if (SelectSauvegarde == null)
             {
                 MessageBox.Show("Veuillez sélectionner une sauvegarde à restaurer.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Warning);
                 return;
             }
 
-            DeleteViewModel.DeleteBackup(selectSauvegarde);
+            DeleteViewModel.DeleteBackup(SelectSauvegarde);
         }
 
         private void QuitterApplication()

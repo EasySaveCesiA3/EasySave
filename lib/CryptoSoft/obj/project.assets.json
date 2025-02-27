@@ -18,7 +18,7 @@
           "buildTransitive/CommunityToolkit.Mvvm.targets": {}
         }
       },
-      "Microsoft.NET.ILLink.Tasks/8.0.12": {
+      "Microsoft.NET.ILLink.Tasks/8.0.13": {
         "type": "package",
         "build": {
           "build/Microsoft.NET.ILLink.Tasks.props": {}
@@ -69,10 +69,10 @@
         "lib/netstandard2.1/CommunityToolkit.Mvvm.xml"
       ]
     },
-    "Microsoft.NET.ILLink.Tasks/8.0.12": {
-      "sha512": "FV4HnQ3JI15PHnJ5PGTbz+rYvrih42oLi/7UMIshNwCwUZhTq13UzrggtXk4ygrcMcN+4jsS6hhshx2p/Zd0ig==",
+    "Microsoft.NET.ILLink.Tasks/8.0.13": {
+      "sha512": "R19ZTaRiQAK+xo9ZwaHbF/1vb1wwR1Wn5+sqp9v8+CDjbdS8R6qftKdw0VSXWKm7VAMi7P+NCU4zxDzhEWcAwQ==",
       "type": "package",
-      "path": "microsoft.net.illink.tasks/8.0.12",
+      "path": "microsoft.net.illink.tasks/8.0.13",
       "hasTools": true,
       "files": [
         ".nupkg.metadata",
@@ -86,7 +86,7 @@
         "build/Microsoft.NET.ILLink.Analyzers.props",
         "build/Microsoft.NET.ILLink.Tasks.props",
         "build/Microsoft.NET.ILLink.targets",
-        "microsoft.net.illink.tasks.8.0.12.nupkg.sha512",
+        "microsoft.net.illink.tasks.8.0.13.nupkg.sha512",
         "microsoft.net.illink.tasks.nuspec",
         "tools/net472/ILLink.Tasks.dll",
         "tools/net472/ILLink.Tasks.dll.config",
@@ -124,7 +124,7 @@
   "projectFileDependencyGroups": {
     "net8.0": [
       "CommunityToolkit.Mvvm >= 8.4.0",
-      "Microsoft.NET.ILLink.Tasks >= 8.0.12"
+      "Microsoft.NET.ILLink.Tasks >= 8.0.13"
     ]
   },
   "packageFolders": {
@@ -134,11 +134,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+      "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
       "projectName": "CryptoSoft",
-      "projectPath": "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+      "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
       "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\erwan\\OrganisationES\\lib\\CryptoSoft\\obj\\",
+      "outputPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
@@ -153,6 +153,7 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
+        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -171,7 +172,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.100"
+      "SdkAnalysisLevel": "9.0.200"
     },
     "frameworks": {
       "net8.0": {
@@ -184,7 +185,7 @@
           "Microsoft.NET.ILLink.Tasks": {
             "suppressParent": "All",
             "target": "Package",
-            "version": "[8.0.12, )",
+            "version": "[8.0.13, )",
             "autoReferenced": true
           }
         },
@@ -204,7 +205,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

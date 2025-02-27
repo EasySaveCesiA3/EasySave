@@ -7,15 +7,18 @@ using System.Xml.Serialization;
 using Portable.Xaml;
 using System.Diagnostics;
 using System.Xml;
-using static Log.Historic;
+
 
 namespace Log
 {
     public class LogEntry
     {
-        public required string Logname { get; set; }
+        public required string BackupName { get; set; }
         public required string Action { get; set; }
         public required DateTime Time { get; set; }
+
+        [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
+        public string? StrategyType { get; set; }
 
         [JsonIgnore(Condition = JsonIgnoreCondition.WhenWritingNull)]
         public string? TransfertTime { get; set; }
@@ -37,16 +40,17 @@ namespace Log
         public static string jsonfile => $"Historiques/historiqueJSON/historique{DateTime.Now:yyyy-MM-dd}.json";
         public static string xamlfile => $"Historiques/historiqueXAML/historique{DateTime.Now:yyyy-MM-dd}.xaml";
 
-        public static string choix = "1";
+        public static bool choix = false;
 
-        public static void Backup(string logname, string source, string target, string transfert, string size)
+        public static void Backup(string backupName, string source, string target, string transfert, string size, string strategyType)
         {
             LogEntry logEntry = new LogEntry
             {
-                Logname = logname,
+                BackupName = backupName,
                 Time = DateTime.Now,
                 Source = source,
                 RestorationTarget = target,
+                StrategyType = strategyType,
                 TransfertTime = transfert,
                 Size = size,
                 Action = "Sauvegarde"
@@ -54,14 +58,15 @@ namespace Log
             AddLog(logEntry);
         }
 
-        public static void Restore(string logname, string source, string target, string transfert, string size)
+        public static void Restore(string backupName, string source, string target, string transfert, string size, string strategyType)
         {
             LogEntry logEntry = new LogEntry
             {
-                Logname = logname,
+                BackupName = backupName,
                 Time = DateTime.Now,
                 Source = source,
                 RestorationTarget = target,
+                StrategyType = strategyType,
                 TransfertTime = transfert,
                 Size = size,
                 Action = "Restauration"
@@ -69,12 +74,12 @@ namespace Log
             AddLog(logEntry);
         }
 
-        public void Delete(string logname)
+        public void Delete(string backupName)
         {
             LogEntry logEntry = new LogEntry
             {
                 Time = DateTime.Now,
-                Logname = logname,
+                BackupName = backupName,
                 Action = "Remplacement"
             };
             AddLog(logEntry);
@@ -86,7 +91,7 @@ namespace Log
             CreateLogFile();
             switch (choix)
             {
-                case "1":
+                case false:
                     List<LogEntry> logEntriesJson = new List<LogEntry>();
 
                     if (File.Exists(jsonfile))
@@ -120,7 +125,7 @@ namespace Log
                     }
                     return "";
 
-                case "2":
+                case true:
                     List<LogEntry> logEntriesXaml = new List<LogEntry>();
 
                     if (File.Exists(xamlfile))
@@ -162,28 +167,28 @@ namespace Log
             }
         }
 
-        public static (List<string> LogMessages, string ErrorMessage) DisplayLog()
+        public static (List<Dictionary<string, string>> LogDictionaries, string ErrorMessage) LogsData()
         {
-            string filename = choix == "1" ? jsonfile : xamlfile;
-            List<string> logMessages = new List<string>();
+            string filename = choix == false ? jsonfile : xamlfile;
+            List<Dictionary<string, string>> logDictionaries = new List<Dictionary<string, string>>();
             string errorMessage = string.Empty;
 
             if (!File.Exists(filename))
             {
                 errorMessage = $"Le fichier {filename} n'existe pas.";
-                return (logMessages, errorMessage);
+                return (logDictionaries, errorMessage);
             }
 
             try
             {
-                List<LogEntry>? logEntries = choix == "1"
+                List<LogEntry>? logEntries = choix == false
                     ? JsonSerializer.Deserialize<List<LogEntry>>(File.ReadAllText(filename))
                     : (List<LogEntry>?)XamlServices.Load(new StreamReader(filename));
 
                 if (logEntries == null || logEntries.Count == 0)
                 {
                     errorMessage = $"Le fichier {filename} est vide.";
-                    return (logMessages, errorMessage);
+                    return (logDictionaries, errorMessage);
                 }
 
                 foreach (var entry in logEntries)
@@ -199,7 +204,12 @@ namespace Log
                         }
                     }
 
-                    logMessages.Add(string.Join(", ", displayParts));
+                    var logDict = displayParts
+                        .Select(part => part.Split(": ", 2))
+                        .Where(parts => parts.Length == 2)
+                        .ToDictionary(e => e[0], e => e[1]);
+
+                    logDictionaries.Add(logDict);
                 }
             }
             catch (Exception ex)
@@ -207,22 +217,22 @@ namespace Log
                 errorMessage = $"Erreur lors de la lecture du fichier {filename}: {ex.Message}";
             }
 
-            return (logMessages, errorMessage);
+            return (logDictionaries, errorMessage);
         }
-
 
 
         public static string OpenLog()
         {
             string? path = null;
 
+
             switch (choix)
             {
-                case "1":
+                case false:
                     path = jsonpath;
                     break;
 
-                case "2":
+                case true:
                     path = xamlpath;
                     break;
 
@@ -230,7 +240,7 @@ namespace Log
                     return "Choix invalide.";
             }
 
-            if (!Directory.Exists(path))
+            if (Directory.Exists(path))
             {
                 try
                 {
@@ -253,9 +263,10 @@ namespace Log
             string? file;
             string directory;
 
+
             switch (choix)
             {
-                case "1":
+                case false:
                     file = jsonfile;
                     directory = $"{Path.GetDirectoryName(file)}";
                     if (!Directory.Exists(directory))
@@ -288,7 +299,7 @@ namespace Log
                         return "";
                     }
 
-                case "2":
+                case true:
                     file = xamlfile;
                     directory = $"{Path.GetDirectoryName(file)}";
                     if (!Directory.Exists(directory))

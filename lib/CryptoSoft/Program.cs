@@ -2,26 +2,28 @@
 using System.Collections.Generic;
 using System.IO;
 using System.Linq;
-using System.Text.RegularExpressions;
 
 namespace CryptoSoft
 {
     public static class CryptoSoftManager
     {
-        public static void StartCrypto(string folderPath, List<string> selectedExtensions)
+        private static string _cryptageKey;
+
+
+        public static void StartCrypto(string folderPath, List<string> selectedExtensions, string key)
         {
             if (string.IsNullOrEmpty(folderPath) || !Directory.Exists(folderPath))
                 throw new DirectoryNotFoundException("Erreur : Dossier introuvable.");
 
-            var extensions = GetExtensionsFromFolder(folderPath);
-            if (extensions.Count == 0)
-                throw new Exception("Aucun fichier détecté dans ce dossier.");
-
-            if (selectedExtensions.Count == 0)
+            if (selectedExtensions == null || selectedExtensions.Count == 0)
                 throw new Exception("Aucune extension sélectionnée pour le chiffrement.");
 
-            string key = ReadCryptageKey();
-            ProcessFiles(folderPath, key, selectedExtensions);
+            if (string.IsNullOrEmpty(key) || key.Length < 8)
+                throw new ArgumentException("La clé doit faire au moins 8 caractères.", nameof(key));
+
+            _cryptageKey = key;
+
+            ProcessFiles(folderPath, _cryptageKey, selectedExtensions);
         }
 
         public static List<string> GetExtensionsFromFolder(string folderPath)
@@ -29,7 +31,6 @@ namespace CryptoSoft
             if (!Directory.Exists(folderPath))
                 throw new DirectoryNotFoundException("Le dossier spécifié n'existe pas.");
 
-            
             List<string> extensions = Directory.GetFiles(folderPath)
                 .Select(file => Path.GetExtension(file).ToLower())
                 .Distinct()
@@ -56,14 +57,9 @@ namespace CryptoSoft
                 }
                 catch (Exception ex)
                 {
-                    throw new Exception($"Erreur avec {file} : {ex.Message}");
+                    Console.WriteLine($"Erreur avec {file} : {ex.Message}");
                 }
             }
-        }
-
-        public static string ReadCryptageKey()
-        {
-            return "MaSuperClé123"; // ⚠️ À sécuriser CHanger de procces pour demander de rentre la clé et pas de la mettre en statique
         }
     }
 }
