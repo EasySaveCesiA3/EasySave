@@ -138,13 +138,13 @@ namespace ViewModels
             }
         }
 
-        private static void CreerMetadata(string cheminSauvegarde, bool crypter)
+        private static void CreerMetadata(string cheminSauvegarde)
         {
             try
             {
                 // On récupère éventuellement la liste des extensions cryptees
                 string[] extensions = new string[0];
-                if (crypter && File.Exists("extensions.txt"))
+                if (File.Exists("extensions.txt"))
                 {
                     extensions = File.ReadAllLines("extensions.txt")
                                      .Select(e => e.Trim())
@@ -154,7 +154,7 @@ namespace ViewModels
 
                 var metadata = new
                 {
-                    Crypte = crypter, // indique que la sauvegarde a été filtrée (cryptée)
+                    Crypte = "sauvegarde cryptée", // indique que la sauvegarde a été filtrée (cryptée)
                     Date = DateTime.Now.ToString("yyyy-MM-dd HH:mm:ss"),
                     ExtensionsCryptees = extensions
                 };

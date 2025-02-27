@@ -8,5 +8,35 @@
     "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
     "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
     "Size": "13313"
+  },
+  {
+    "BackupName": "caca",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T19:38:45.5962267+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20067",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13313"
+  },
+  {
+    "BackupName": "caca",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T19:41:53.0914653+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "25049",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13428"
+  },
+  {
+    "BackupName": "caca",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T19:42:06.8122183+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "25044",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13428"
   }
 ]
