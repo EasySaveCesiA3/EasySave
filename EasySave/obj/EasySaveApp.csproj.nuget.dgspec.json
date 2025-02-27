@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj": {}
+    "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj": {
+    "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj",
+        "projectUniqueName": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj",
         "projectName": "EasySaveApp",
-        "projectPath": "C:\\Users\\erwan\\OrgaES\\EasySave\\EasySaveApp.csproj",
-        "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erwan\\OrgaES\\EasySave\\obj\\",
+        "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\EasySaveApp.csproj",
+        "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -26,18 +26,17 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
           "net8.0-windows7.0": {
             "targetAlias": "net8.0-windows",
             "projectReferences": {
-              "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
-                "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj"
+              "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
+                "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj"
               },
-              "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj": {
-                "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj"
+              "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+                "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj"
               }
             }
           }
@@ -52,7 +51,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0-windows7.0": {
@@ -94,24 +93,24 @@
               "privateAssets": "none"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
+    "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+        "projectUniqueName": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
         "projectName": "ClassLog",
-        "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
-        "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\obj\\",
+        "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\ClassLog.csproj",
+        "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\ClassLog\\ClassLog\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -120,7 +119,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -139,7 +137,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -170,24 +168,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     },
-    "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj": {
+    "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "projectUniqueName": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj",
         "projectName": "CryptoSoft",
-        "projectPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\CryptoSoft.csproj",
-        "packagesPath": "C:\\Users\\erwan\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\erwan\\OrgaES\\lib\\CryptoSoft\\obj\\",
+        "projectPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\CryptoSoft.csproj",
+        "packagesPath": "C:\\Users\\Martin\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Martin\\EasySaveWPF\\lib\\CryptoSoft\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
         ],
         "configFilePaths": [
-          "C:\\Users\\erwan\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Martin\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
@@ -196,7 +194,6 @@
         ],
         "sources": {
           "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-          "C:\\Program Files\\dotnet\\library-packs": {},
           "https://api.nuget.org/v3/index.json": {}
         },
         "frameworks": {
@@ -215,7 +212,7 @@
           "auditLevel": "low",
           "auditMode": "direct"
         },
-        "SdkAnalysisLevel": "9.0.200"
+        "SdkAnalysisLevel": "9.0.100"
       },
       "frameworks": {
         "net8.0": {
@@ -228,7 +225,7 @@
             "Microsoft.NET.ILLink.Tasks": {
               "suppressParent": "All",
               "target": "Package",
-              "version": "[8.0.13, )",
+              "version": "[8.0.12, )",
               "autoReferenced": true
             }
           },
@@ -248,7 +245,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.200/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.102/PortableRuntimeIdentifierGraph.json"
         }
       }
     }

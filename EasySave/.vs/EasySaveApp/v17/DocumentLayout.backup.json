@@ -1,68 +1,68 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Users\\erwan\\OrgaES\\EasySave\\",
+  "WorkspaceRootPath": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\format.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\format.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\viewmodel\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\settingsviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\viewmodel\\classinterfaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\classinterfaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\classmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\classmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{42BFB856-DA1A-4097-83F3-FC51AD4852A4}|..\\lib\\ClassLog\\ClassLog\\ClassLog.csproj|c:\\users\\erwan\\orgaes\\lib\\classlog\\classlog\\class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\classstates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\classstates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\classcrypto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\classcrypto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\settingswindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
-      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\backup\\classcopies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\backup\\classbackup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\viewmodel\\classinterfaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\classinterfaceviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\view\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\settingswindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\model\\classcrypto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\classcrypto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:viewmodel\\saveviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\model\\classstates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\classstates.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}",
+      "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\sauvegardewindow.xaml||{F11ACC28-31D1-4C80-A34B-F4E09D3D753C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\model\\backup\\classbackup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\backup\\classbackup.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\backup\\classtools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\model\\backup\\classtools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\backup\\classtools.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\model\\classlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\model\\classlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:model\\classlanguage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\gestionnairesauvegarde.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\gestionnairesauvegarde.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:gestionnairesauvegarde.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\erwan\\orgaes\\easysave\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|c:\\users\\martin\\easysavewpf\\easysave\\view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CC07EE6E-3D10-4C53-9C2E-1314A9E47A6B}|EasySaveApp.csproj|solutionrelative:view\\mainwindow.xaml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
@@ -73,39 +73,28 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 7,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Class1.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "RelativeDocumentMoniker": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "RelativeToolTip": "..\\lib\\ClassLog\\ClassLog\\Class1.cs",
-              "ViewState": "AgIAAE8BAAAAAAAAAAAowHABAAABAAAAAAAAAA==",
+              "DocumentIndex": 0,
+              "Title": "SettingsViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\ViewModel\\SettingsViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\SettingsViewModel.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\ViewModel\\SettingsViewModel.cs",
+              "RelativeToolTip": "ViewModel\\SettingsViewModel.cs",
+              "ViewState": "AgIAACgAAAAAAAAAAAAswDgAAAAfAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T15:22:52.622Z"
+              "WhenOpened": "2025-02-27T15:44:34.331Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "SaveViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\ViewModel\\SaveViewModel.cs",
-              "RelativeDocumentMoniker": "ViewModel\\SaveViewModel.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\ViewModel\\SaveViewModel.cs",
-              "RelativeToolTip": "ViewModel\\SaveViewModel.cs",
-              "ViewState": "AgIAACsAAAAAAAAAAAAQwDgAAAANAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T15:20:42.339Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 9,
               "Title": "classStates.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classStates.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\classStates.cs",
               "RelativeDocumentMoniker": "Model\\classStates.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classStates.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\classStates.cs",
               "RelativeToolTip": "Model\\classStates.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -113,82 +102,110 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 4,
               "Title": "classInterfaceViewModel.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\ViewModel\\classInterfaceViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\ViewModel\\classInterfaceViewModel.cs",
               "RelativeDocumentMoniker": "ViewModel\\classInterfaceViewModel.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\ViewModel\\classInterfaceViewModel.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\ViewModel\\classInterfaceViewModel.cs",
               "RelativeToolTip": "ViewModel\\classInterfaceViewModel.cs",
               "ViewState": "AgIAAL0AAAAAAAAAAAAewMwAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-25T22:41:50.413Z"
+              "WhenOpened": "2025-02-25T22:41:50.413Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 3,
               "Title": "MainWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\MainWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\MainWindow.xaml",
               "RelativeDocumentMoniker": "View\\MainWindow.xaml",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\MainWindow.xaml",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\MainWindow.xaml",
               "RelativeToolTip": "View\\MainWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-26T00:04:47.06Z"
+              "WhenOpened": "2025-02-26T00:04:47.06Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 7,
+              "DocumentIndex": 6,
               "Title": "classCrypto.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classCrypto.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\classCrypto.cs",
               "RelativeDocumentMoniker": "Model\\classCrypto.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classCrypto.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\classCrypto.cs",
               "RelativeToolTip": "Model\\classCrypto.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T14:33:19.707Z"
+              "WhenOpened": "2025-02-26T14:33:19.707Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SettingsWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\SettingsWindow.xaml",
+              "RelativeDocumentMoniker": "View\\SettingsWindow.xaml",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\SettingsWindow.xaml",
+              "RelativeToolTip": "View\\SettingsWindow.xaml",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
+              "WhenOpened": "2025-02-26T14:14:32.681Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 2,
-              "Title": "classModel.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classModel.cs",
-              "RelativeDocumentMoniker": "Model\\classModel.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classModel.cs",
-              "RelativeToolTip": "Model\\classModel.cs",
-              "ViewState": "AgIAABsAAAAAAAAAAAAYwCgAAAAkAAAAAAAAAA==",
+              "Title": "classCopies.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\Backup\\classCopies.cs",
+              "RelativeDocumentMoniker": "Model\\Backup\\classCopies.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\Backup\\classCopies.cs",
+              "RelativeToolTip": "Model\\Backup\\classCopies.cs",
+              "ViewState": "AgIAANMAAAAAAAAAAAAIwPkAAAARAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T14:55:35.377Z"
+              "WhenOpened": "2025-02-26T13:10:39.511Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "Format.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Format.cs",
-              "RelativeDocumentMoniker": "Model\\Format.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Format.cs",
-              "RelativeToolTip": "Model\\Format.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAQwCEAAAAAAAAAAAAAAA==",
+              "DocumentIndex": 5,
+              "Title": "SettingsWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\SettingsWindow.xaml.cs",
+              "RelativeDocumentMoniker": "View\\SettingsWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\SettingsWindow.xaml.cs",
+              "RelativeToolTip": "View\\SettingsWindow.xaml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T14:55:37.369Z",
+              "WhenOpened": "2025-02-27T15:46:37.878Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "SettingsWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\SettingsWindow.xaml",
-              "RelativeDocumentMoniker": "View\\SettingsWindow.xaml",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\SettingsWindow.xaml",
-              "RelativeToolTip": "View\\SettingsWindow.xaml",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
-              "WhenOpened": "2025-02-26T14:14:32.681Z"
+              "Title": "SaveViewModel.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\ViewModel\\SaveViewModel.cs",
+              "RelativeDocumentMoniker": "ViewModel\\SaveViewModel.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\ViewModel\\SaveViewModel.cs",
+              "RelativeToolTip": "ViewModel\\SaveViewModel.cs",
+              "ViewState": "AgIAACsAAAAAAAAAAAAQwDgAAAANAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T15:20:42.339Z"
             },
             {
               "$type": "Document",
-              "DocumentIndex": 9,
+              "DocumentIndex": 7,
+              "Title": "Class1.cs",
+              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "RelativeDocumentMoniker": "..\\..\\..\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "ToolTip": "C:\\Users\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "RelativeToolTip": "..\\..\\..\\erwan\\OrgaES\\lib\\ClassLog\\ClassLog\\Class1.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-02-26T15:22:52.622Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
               "Title": "SauvegardeWindow.xaml",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\SauvegardeWindow.xaml",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\SauvegardeWindow.xaml",
               "RelativeDocumentMoniker": "View\\SauvegardeWindow.xaml",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\SauvegardeWindow.xaml",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\SauvegardeWindow.xaml",
               "RelativeToolTip": "View\\SauvegardeWindow.xaml",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003549|",
               "WhenOpened": "2025-02-26T15:15:24.842Z"
@@ -197,9 +214,9 @@
               "$type": "Document",
               "DocumentIndex": 12,
               "Title": "classTools.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classTools.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\Backup\\classTools.cs",
               "RelativeDocumentMoniker": "Model\\Backup\\classTools.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classTools.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\Backup\\classTools.cs",
               "RelativeToolTip": "Model\\Backup\\classTools.cs",
               "ViewState": "AgIAAA8AAAAAAAAAAAAAwFYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -209,9 +226,9 @@
               "$type": "Document",
               "DocumentIndex": 13,
               "Title": "classLanguage.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classLanguage.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\classLanguage.cs",
               "RelativeDocumentMoniker": "Model\\classLanguage.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\classLanguage.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\classLanguage.cs",
               "RelativeToolTip": "Model\\classLanguage.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -219,23 +236,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "classCopies.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classCopies.cs",
-              "RelativeDocumentMoniker": "Model\\Backup\\classCopies.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classCopies.cs",
-              "RelativeToolTip": "Model\\Backup\\classCopies.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAF4AAAARAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-02-26T13:10:39.511Z"
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 11,
               "Title": "classBackup.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classBackup.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\Backup\\classBackup.cs",
               "RelativeDocumentMoniker": "Model\\Backup\\classBackup.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\Model\\Backup\\classBackup.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\Model\\Backup\\classBackup.cs",
               "RelativeToolTip": "Model\\Backup\\classBackup.cs",
               "ViewState": "AgIAACcAAAAAAAAAAAAwwDcAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -245,9 +250,9 @@
               "$type": "Document",
               "DocumentIndex": 14,
               "Title": "GestionnaireSauvegarde.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\GestionnaireSauvegarde.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\GestionnaireSauvegarde.cs",
               "RelativeDocumentMoniker": "GestionnaireSauvegarde.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\GestionnaireSauvegarde.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\GestionnaireSauvegarde.cs",
               "RelativeToolTip": "GestionnaireSauvegarde.cs",
               "ViewState": "AgIAAEIAAAAAAAAAAAApwEkAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -257,9 +262,9 @@
               "$type": "Document",
               "DocumentIndex": 15,
               "Title": "MainWindow.xaml.cs",
-              "DocumentMoniker": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\MainWindow.xaml.cs",
+              "DocumentMoniker": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\MainWindow.xaml.cs",
               "RelativeDocumentMoniker": "View\\MainWindow.xaml.cs",
-              "ToolTip": "C:\\Users\\erwan\\OrgaES\\EasySave\\View\\MainWindow.xaml.cs",
+              "ToolTip": "C:\\Users\\Martin\\EasySaveWPF\\EasySave\\View\\MainWindow.xaml.cs",
               "RelativeToolTip": "View\\MainWindow.xaml.cs",
               "ViewState": "AgIAABgAAAAAAAAAAAAYwCMAAAA7AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",

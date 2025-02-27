@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\erwan\OrgaES\EasySave\obj\Debug\net8.0-windows\
+C:\Users\Martin\EasySaveWPF\EasySave\obj\Debug\net8.0-windows\
 EasySaveApp
 none
 false
 TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\erwan\OrgaES\EasySave\App.xaml
+C:\Users\Martin\EasySaveWPF\EasySave\App.xaml
 5-1138348404
 
 241902114188
-208703815255
+2081657125646
 View\LanguageWindow.xaml;View\MainWindow.xaml;View\RestoreWindow.xaml;View\SauvegardeWindow.xaml;View\SettingsWindow.xaml;
 
 False

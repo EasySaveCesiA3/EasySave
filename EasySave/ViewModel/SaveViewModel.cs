@@ -54,7 +54,7 @@ namespace ViewModels
             }
 
             try
-            {
+            { 
                 // Instanciation du modèle et exécution de la sauvegarde
                 classModel classModelInstance = new classModel();
                 classModel.runBackup(cheminSauvegardeSource, cheminSauvegardeCible, nomSauvegarde, backupType);

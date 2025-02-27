@@ -74,11 +74,19 @@ namespace Model
             long transferredSize = 0;
             long transferredFiles = 0;
 
+            var priorityExtensions = GetPrioritizedExtensions();
+
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
 
-            foreach (var file in Directory.GetFiles(sourceDir))
+            var allFiles = Directory.GetFiles(sourceDir);
+
+            var priorityFiles = allFiles.Where(f => priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+            var normalFiles = allFiles.Where(f => !priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+
+            foreach (var file in priorityFiles)
             {
+                
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
@@ -97,7 +105,33 @@ namespace Model
                 {
                     throw; // Laissez l'exception remonter
                 }
+                Task.Delay(5000).Wait();
             }
+
+            foreach (var file in normalFiles)
+            {
+
+                string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+                try
+                {
+                    File.Copy(file, destFile, true);
+                    FileInfo fileInfo = new FileInfo(file);
+                    transferredSize += fileInfo.Length;
+                    transferredFiles++;
+
+                    // Mise à jour du progrès
+                    updateProgress(transferredSize, transferredFiles);
+
+                    // Pause de 2 secondes après chaque copie
+                    //Thread.Sleep(20000); // Attend 2 secondes
+                }
+                catch (Exception)
+                {
+                    throw; // Laissez l'exception remonter
+                }
+                Task.Delay(5000).Wait();
+            }
+
 
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
@@ -116,10 +150,48 @@ namespace Model
             long transferredSize = 0;
             long transferredFiles = 0;
 
+            var priorityExtensions = GetPrioritizedExtensions();
+
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
 
-            foreach (var file in Directory.GetFiles(sourceDir))
+            var allFiles = Directory.GetFiles(sourceDir);
+            var priorityFiles = allFiles.Where(f => priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+            var normalFiles = allFiles.Where(f => !priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
+
+            foreach (var file in priorityFiles)
+            {
+                string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
+                bool copyFile = true;
+
+                if (File.Exists(destFile))
+                {
+                    FileInfo sourceInfo = new FileInfo(file);
+                    FileInfo destInfo = new FileInfo(destFile);
+                    if (sourceInfo.Length == destInfo.Length)
+                        copyFile = false;
+                }
+
+                if (copyFile)
+                {
+                    try
+                    {
+                        File.Copy(file, destFile, true);
+                        FileInfo fileInfo = new FileInfo(file);
+                        transferredSize += fileInfo.Length;
+                        transferredFiles++;
+
+                        // Mise à jour du progrès
+                        updateProgress(transferredSize, transferredFiles);
+                    }
+                    catch (Exception)
+                    {
+                        throw;
+                    }
+                }
+            }
+
+            foreach (var file in normalFiles)
             {
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 bool copyFile = true;
@@ -160,6 +232,24 @@ namespace Model
             }
 
             return (transferredSize, transferredFiles);
+        }
+
+        private System.Collections.Generic.HashSet<string> GetPrioritizedExtensions()
+        {
+            var priorityExtensions = new System.Collections.Generic.HashSet<string>(StringComparer.OrdinalIgnoreCase);
+            string filePath = "extensionsPrioritaires.txt";
+            if (File.Exists(filePath))
+            {
+                var lines = File.ReadAllLines(filePath);
+                foreach (var line in lines)
+                {
+                    if (!string.IsNullOrWhiteSpace(line))
+                    {
+                        priorityExtensions.Add(line.Trim().ToLower());
+                    }
+                }
+            }
+            return priorityExtensions;
         }
 
         //private bool IsDiscordRunning() => Process.GetProcessesByName("discord").Length > 0;
