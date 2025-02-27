@@ -124,22 +124,44 @@ namespace ViewModel
 
         private async Task ListerTravail()
         {
-            while (true) // Boucle infinie jusqu'à la fermeture de l'application
+            while (true)
             {
                 string[] fichiers = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Etat"), "*.txt");
 
-                lock (ListeTravaux) // Protection contre les accès concurrents
+                lock (ListeTravaux)
                 {
-                    ListeTravaux.Clear();
+                    var fichiersExistants = fichiers.Select(f => Path.GetFileName(f)).ToList();
+
+                    var backupsASupprimer = ListeTravaux.Where(b => !fichiersExistants.Contains(b.Name)).ToList();
+                    foreach (var backup in backupsASupprimer)
+                    {
+                        ListeTravaux.Remove(backup);
+                    }
+
                     foreach (var path in fichiers)
                     {
-                        ListeTravaux.Add(Model.Tools.ReadBackupState(path));
+                        var backupProgress = Model.Tools.ReadBackupState(path);
+
+                        var existingBackup = ListeTravaux.FirstOrDefault(b => b.Name == backupProgress.Name);
+
+                        if (existingBackup != null)
+                        {
+                            existingBackup.Progress = backupProgress.Progress;
+                            existingBackup.Total = backupProgress.Total;
+                        }
+                        else
+                        {
+                            ListeTravaux.Add(backupProgress);
+                        }
                     }
                 }
 
                 await Task.Delay(500); // Pause pour éviter de surcharger le CPU
             }
         }
+
+
+
 
 
 

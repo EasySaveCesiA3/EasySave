@@ -237,9 +237,9 @@
                                 <TextBlock Text="{Binding Name}"
                        Foreground="Black"
                        FontWeight="Bold"/>
-                                <TextBlock Text="{Binding Progress}"
+                                <TextBlock Text="{Binding Action}"
                        Foreground="Black"/>
-                                <TextBlock Text="{Binding Total}"
+                                <TextBlock Text="{Binding ProgressPer, StringFormat='Progression du transfert : {0}%'}"
                        Foreground="Black"/>
                             </StackPanel>
                         </DataTemplate>
