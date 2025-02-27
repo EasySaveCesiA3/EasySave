@@ -1,2 +1,0 @@
-D:\Users\utilisateur\Downloads\CryptoSoft\bin\Release\net8.0\win-x64\publish\CryptoSoft.pdb
-D:\Users\utilisateur\Downloads\CryptoSoft\bin\Release\net8.0\win-x64\publish\CryptoSoft.exe

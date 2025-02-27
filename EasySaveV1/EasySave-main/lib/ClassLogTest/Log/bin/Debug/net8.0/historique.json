@@ -1,0 +1,34 @@
+[
+  {
+    "Action": "backup",
+    "Time": "2025-02-04T09:43:31.1598126+01:00",
+    "Logname": "Sauvegarde1",
+    "Source": "Serveur A",
+    "Transfert": 150.5,
+    "Target": "Serveur B"
+  },
+  {
+    "Action": "backup",
+    "Time": "2025-02-04T09:45:51.5261848+01:00",
+    "Logname": "Sauvegarde1",
+    "Source": "Serveur A",
+    "Transfert": 150.5,
+    "Target": "Serveur B"
+  },
+  {
+    "Action": "backup",
+    "Time": "2025-02-04T09:48:06.1074081+01:00",
+    "Logname": "Sauvegarde1",
+    "Source": "Serveur A",
+    "Transfert": 150.5,
+    "Target": "Serveur B"
+  },
+  {
+    "Action": "backup",
+    "Time": "2025-02-04T10:06:00.8487416+01:00",
+    "Logname": "Sauvegarde1",
+    "Source": "Serveur A",
+    "Transfert": 150.5,
+    "Target": "Serveur B"
+  }
+]

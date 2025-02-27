@@ -1,0 +1,26 @@
+[
+  {
+    "Action": "Sauvegarde",
+    "Time": "2025-02-06T22:01:04.804759+01:00",
+    "Logname": "Save1",
+    "Transfert": "100MB",
+    "Source": "C:\\Source\\file1.txt",
+    "Target": "D:\\Target\\file1.txt",
+    "Size": "100MB"
+  },
+  {
+    "Action": "Restauration",
+    "Time": "2025-02-06T22:01:04.8432847+01:00",
+    "Logname": "Save2",
+    "Transfert": "200MB",
+    "Source": "D:\\Source\\file2.txt",
+    "Target": "C:\\Target\\file2.txt",
+    "Size": "200MB"
+  },
+  {
+    "Action": "Remplacement",
+    "Time": "2025-02-06T22:01:04.8543538+01:00",
+    "Logname": "Save3",
+    "Logname2": "Save4"
+  }
+]

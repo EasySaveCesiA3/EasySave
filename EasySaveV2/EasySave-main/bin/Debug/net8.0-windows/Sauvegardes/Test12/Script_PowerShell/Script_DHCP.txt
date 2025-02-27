@@ -1,0 +1,25 @@
+# Installation du DHCP
+Install-WindowsFeature -Name DHCP -IncludeManagementTools
+
+# Importation des modules DHCP
+Import-Module DHCPServer
+
+# Définir les paramètres du pool DHCP
+$ScopeName = "notrereseau"
+$ScopeID = "192.168.1.0"
+$SubnetMask = "255.255.255.0"
+$StartIP = "192.168.1.100"
+$EndIP = "192.168.1.200"
+$DefaultGateway = "192.168.1.1"
+$DNSServer = "192.168.1.2"
+
+# Créer un nouveau pool DHCP
+Add-DhcpServerv4Scope -Name $ScopeName -StartRange $StartIP -EndRange $EndIP -SubnetMask $SubnetMask -State Active
+
+# Configurer le DHCP (DNS/Gateway)
+Set-DhcpServerv4OptionValue -ScopeId $ScopeID -DnsServer $DNSServer -Router $DefaultGateway
+
+# Activation du DHCP
+Restart-Service -Name DhcpServer
+
+Write-Host "Le serveur DHCP est configuré avec l'étendue '$ScopeName'."
