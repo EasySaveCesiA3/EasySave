@@ -65,7 +65,7 @@
 
                 <ListBox ItemsSource="{Binding ExtensionsCryptees}"
                          SelectedItem="{Binding ExtensionSelectionnee, Mode=TwoWay}"
-                         Height="100"
+                         Height="50"
                          Width="250"
                          Margin="0 5 0 0"
                          HorizontalAlignment="Left"/>
@@ -98,17 +98,10 @@
                            FontSize="20"
                            FontWeight="Bold"
                            Foreground="White"
-                           Margin="10 0 0 10"/>
+                           Margin="130 0 0 10"/>
                 <ComboBox ItemsSource="{Binding Langues}"
                           SelectedItem="{Binding LangueSelectionnee}"
                           Width="150"/>
-
-                <Button Content="Sauvegarder les paramètres"
-                        Command="{Binding SauvegarderCommand}"
-                        Background="#4A90E2"
-                        Foreground="White"
-                        Height="40"
-                        Margin="10"/>
 
                 <TextBlock Text="Extensions Prioritaires" 
                            FontSize="20" 
@@ -118,14 +111,20 @@
                 <StackPanel Orientation="Horizontal">
                     <TextBox Width="200" Text="{Binding NouvellePriorite, Mode=TwoWay}"/>
                     <Button Content="Ajouter" Command="{Binding AjouterPrioriteCommand}" 
-                            Background="#4A90E2" Foreground="White" Width="80" Margin="5"/>
+                            Background="#4A90E2" Foreground="White" Width="80" Margin="10"/>
                 </StackPanel>
                 <ListBox ItemsSource="{Binding Priorites}" 
                          SelectedItem="{Binding PrioriteSelectionnee, Mode=TwoWay}" 
-                         Height="100" Width="250" Margin="0 5 0 0" HorizontalAlignment="Left"/>
+                         Height="50" Width="250" Margin="0 5 0 0" HorizontalAlignment="Left"/>
                 <Button Content="Supprimer" Command="{Binding SupprimerPrioriteCommand}" 
                         Background="#D9534F" Foreground="White" Width="100" 
                         HorizontalAlignment="Left" Margin="80 5 5 5"/>
+                <Button Content="Sauvegarder les paramètres"
+                        Command="{Binding SauvegarderCommand}"
+                        Background="#4A90E2"
+                        Foreground="White"
+                        Height="40"
+                        />
             </StackPanel>
         </Border>
     </Grid>

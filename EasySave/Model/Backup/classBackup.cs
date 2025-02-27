@@ -41,7 +41,7 @@ public class CompleteBackup : IBackupStrategy
 
         Action<long, long> updateProgress = (transferredSize, transferredFiles) =>
         {
-            targetSize = transferredSize;
+            targetSize = ++transferredSize;
             Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
         };
 
@@ -70,7 +70,7 @@ public class DifferentialBackup : IBackupStrategy
 
         Action<long, long> updateProgress = (transferredSize, transferredFiles) =>
         {
-            targetSize = transferredSize;
+            targetSize = ++transferredSize;
             Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
         };
 
@@ -182,7 +182,7 @@ public class BackupService
 
 
     // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
-    public async Task StartBackup(string source, string target, string name, string strategyType)
+    public async Task StartBackup(string source, string target, string name, string strategyType, bool crypter)
     {
         if (CheckForBusinessSoftware())
             return;
@@ -196,6 +196,13 @@ public class BackupService
 
         // Attente asynchrone pour récupérer les résultats de la méthode ExecuteBackup
         var (transferredSize, transferredFiles) = await strategy.ExecuteBackup(source, sauvegarde, name, "Sauvegarde");
+
+        if (crypter)
+        {
+            Tools.CrypterFichiers(sauvegarde);
+
+            Tools.CreerMetadata(sauvegarde);
+        }
 
         stopwatch.Stop();
 
@@ -228,6 +235,14 @@ public class BackupService
 
         var (transferredSize, transferredFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination, backupData.Name, "Restauration");
 
+        string backupMetadataPath = System.IO.Path.Combine(System.IO.Path.GetFullPath(restoreDestination), "metadata.json");
+
+        if (File.Exists(backupMetadataPath))
+        {
+            Tools.DecrypterSauvegarde(backupData.Name, restoreDestination);
+        }
+        MessageBox.Show($"Restauration faites avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+
         stopwatch.Stop();
 
         Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), transferredSize.ToString(), backupData.Strategy);
@@ -244,13 +259,3 @@ public class BackupService
         return backupManager.ListBackups();
     }
 }
-
-// Objet résultat pour encapsuler le résultat d’une sauvegarde ou restauration
-//public class BackupResult
-//{
-//    public int BackupId { get; set; }
-//    public string BackupName { get; set; }
-//    public long transferredSize { get; set; }
-//    public long transferredFiles { get; set; }
-//    public long ElapsedTimeMs { get; set; }
-//}

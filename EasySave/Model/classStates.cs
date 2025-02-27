@@ -10,4 +10,11 @@ public class StateManager
         public required string Action { get; set; }
         public required string State { get; set; }
     }
+
+    internal class BackupMetadata
+    {
+        public bool Crypte { get; set; }
+        public string Date { get; set; }
+        public string[] ExtensionsCryptees { get; set; }
+    }
 }

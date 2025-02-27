@@ -40,7 +40,7 @@ namespace ViewModel
         private BackupData selectSauvegarde;
 
         [ObservableProperty]
-        private BackupData selectTravail;
+        private StateManager.BackupProgress selectTravail;
 
         [ObservableProperty]
         private string cheminSauvegardeSource;
@@ -79,7 +79,6 @@ namespace ViewModel
 
             SelectionnerDossierCommand = new RelayCommand(SelectionnerDossier);
             SelectionnerDossierCibleCommand = new RelayCommand(SelectionnerDossierCible);
-            //ListerTravailCommand = new RelayCommand(ListerTravail);
             LancerSauvegardeCommand = new RelayCommand(LancerSauvegarde);
             ListerSauvegardesCommand = new RelayCommand(() => ListerSauvegardes(true));
             RestoreCommand = new RelayCommand(RestoreBackup);
@@ -89,6 +88,7 @@ namespace ViewModel
             ViewLogsCommand = new RelayCommand(ouvrirLog);
             ChangeLogFormatCommand = new RelayCommand(changerLogType);
             //public RelayCommand<Window> CloseWindowCommand { get; }
+            ListerTravail();
 
         }
 
@@ -122,22 +122,25 @@ namespace ViewModel
             }
         }
 
-        //private async Task ListerTravail()
-        //{
-        //    ListeTravaux.Clear();
+        private async Task ListerTravail()
+        {
+            while (true) // Boucle infinie jusqu'à la fermeture de l'application
+            {
+                string[] fichiers = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Etat"), "*.txt");
 
-        //    string[] fichiers = Directory.GetFiles(Path.Combine(Directory.GetCurrentDirectory(), "Etat"), "*.txt");
+                lock (ListeTravaux) // Protection contre les accès concurrents
+                {
+                    ListeTravaux.Clear();
+                    foreach (var path in fichiers)
+                    {
+                        ListeTravaux.Add(Model.Tools.ReadBackupState(path));
+                    }
+                }
 
-        //    foreach (var path in fichiers)
-        //    {
-        //        string nomFichier = Path.GetFileName(path);
+                await Task.Delay(500); // Pause pour éviter de surcharger le CPU
+            }
+        }
 
-        //        await Dispatcher.InvokeAsync(() =>
-        //        {
-        //            ListeTravaux.Add(Model.Tools.ReadBackupState(path));
-        //        });
-        //    }
-        //}
 
 
         private void ListerSauvegardes(bool afficherMessage = true)

@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("EasySaveApp")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+d87c6abf50ea572a10f05a8b888e665e7f86b24a")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+939f699633fc457faed13cc4fc626c30199e8b9e")]
 [assembly: System.Reflection.AssemblyProductAttribute("EasySaveApp")]
 [assembly: System.Reflection.AssemblyTitleAttribute("EasySaveApp")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

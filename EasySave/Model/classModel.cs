@@ -9,7 +9,7 @@ namespace Model
     {
         private static BackupService backupService = new BackupService();
 
-        public static void runBackup(string source, string target, string backupName, string type)
+        public static void runBackup(string source, string target, string backupName, string type, bool crypter)
         {
             string sauvegardesPath = Path.Combine(Directory.GetCurrentDirectory(), "Sauvegardes");
             string backupPath = Path.Combine(sauvegardesPath, backupName);
@@ -20,7 +20,7 @@ namespace Model
                 return;
             }
 
-            backupService.StartBackup(source, target, backupName, type);
+            backupService.StartBackup(source, target, backupName, type, crypter);
         }
 
         public static void runRestore(string backupName, string destination)

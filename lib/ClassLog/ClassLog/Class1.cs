@@ -162,8 +162,6 @@ namespace Log
                     }
                     return "";
 
-                default:
-                    return "Choix invalide.";
             }
         }
 
@@ -236,8 +234,6 @@ namespace Log
                     path = xamlpath;
                     break;
 
-                default:
-                    return "Choix invalide.";
             }
 
             if (Directory.Exists(path))
@@ -333,8 +329,6 @@ namespace Log
                         return "Le fichier XAML existe déjà, il n'a pas été écrasé.";
                     }
 
-                default:
-                    return "Choix invalide.";
             }
         }
 

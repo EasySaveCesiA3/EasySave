@@ -57,16 +57,16 @@ namespace ViewModels
             {
                 // Instanciation du modèle et exécution de la sauvegarde
                 classModel classModelInstance = new classModel();
-                classModel.runBackup(cheminSauvegardeSource, cheminSauvegardeCible, nomSauvegarde, backupType);
+                classModel.runBackup(cheminSauvegardeSource, cheminSauvegardeCible, nomSauvegarde, backupType, crypter);
 
                 string cheminSauvegarde = Path.Combine("Sauvegardes", nomSauvegarde);
 
-                if (crypter)
-                {
-                    CrypterFichiers(cheminSauvegarde);
+                //if (crypter)
+                //{
+                //    CrypterFichiers(cheminSauvegarde);
 
-                    CreerMetadata(cheminSauvegarde, crypter);
-                }
+                //    CreerMetadata(cheminSauvegarde);
+                //}
             }
             catch (Exception ex)
             {

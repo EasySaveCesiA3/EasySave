@@ -45,7 +45,7 @@ namespace CryptoSoft
 
         public static void ProcessFiles(string folderPath, string key, List<string> selectedExtensions)
         {
-            foreach (var file in Directory.GetFiles(folderPath))
+            foreach (var file in Directory.GetFiles(folderPath, "*", SearchOption.AllDirectories))
             {
                 if (!selectedExtensions.Contains(Path.GetExtension(file).ToLower()))
                     continue;

@@ -38,5 +38,165 @@
     "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
     "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
     "Size": "13428"
+  },
+  {
+    "BackupName": "target",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:00:49.2893114+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "30350",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13313"
+  },
+  {
+    "BackupName": "vb",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:02:12.949272+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20049",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13313"
+  },
+  {
+    "BackupName": "crypte",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:14:29.2794636+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "10686",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13313"
+  },
+  {
+    "BackupName": "crypte",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:14:49.5445+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "13376",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13449"
+  },
+  {
+    "BackupName": "crypter",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:16:04.6795318+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "6165",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13313"
+  },
+  {
+    "BackupName": "crypter1",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:17:01.7133769+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "6389",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13313"
+  },
+  {
+    "BackupName": "crypter12",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:17:59.3132768+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "7243",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "crypter12",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:18:58.4903318+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "7911",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13447"
+  },
+  {
+    "BackupName": "re",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:26:28.0954109+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "6413",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "re",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:27:15.5621155+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "10949",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13447"
+  },
+  {
+    "BackupName": "del",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:57:18.3220824+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20058",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "guette",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T20:59:52.9062724+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20050",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "gestapo",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T21:09:44.3953624+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20035",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "gestapoo",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T21:10:27.9241003+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20025",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "gg",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T21:11:49.9769843+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20062",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
+  },
+  {
+    "BackupName": "ohhh",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T21:14:17.3093999+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "20065",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "13319"
   }
 ]

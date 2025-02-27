@@ -114,6 +114,7 @@ namespace Model
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
+                    Task.Delay(5000).Wait();
                     File.Copy(file, destFile, true);
                     FileInfo fileInfo = new FileInfo(file);
                     transferredSize += fileInfo.Length;
@@ -129,7 +130,7 @@ namespace Model
                 {
                     throw; // Laissez l'exception remonter
                 }
-                Task.Delay(5000).Wait();
+                //Task.Delay(5000).Wait();
             }
 
 
