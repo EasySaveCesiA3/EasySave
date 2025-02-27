@@ -152,4 +152,3 @@ EasySave est distribué sous licence [MIT](LICENSE). Vous êtes libre de l’uti
 ---
 
 **Dernière mise à jour :** *27/02/2025*
-```
