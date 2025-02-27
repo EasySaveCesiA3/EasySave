@@ -2,37 +2,12 @@ namespace Model;
 
 public class StateManager
 {
-    public void generateFinalReport()
+    public class BackupProgress()
     {
-        Console.WriteLine("ouiIIIIII");
-    }
-    public void updateStateFile()
-    {
-        Console.WriteLine("ouiIIIIII");
-    }
-    public JsonState loadStateFile()
-    {
-        //Temp pour pas avoir d'erreur sur l'IDE
-        Console.WriteLine("ouiIIIIII");
-        return new JsonState();
-    }
-
-}
-
-public class JsonState()
-{
-    private string backupName { get; set; }
-    private string lastUpdateTime { get; set; }
-    private int progress { get; set; }
-    private int filesRemaining { get; set; }
-    private long totalSizeReamining { get; set; }
-
-    public void saveState()
-    {
-        Console.WriteLine("ouiIIIIII");
-    }
-    public void loadState()
-    {
-        Console.WriteLine("ouiIIIIII");
+        public required string Name { get; set; }
+        public long Progress { get; set; }
+        public long Total { get; set; }
+        public required string Action { get; set; }
+        public required string State { get; set; }
     }
 }

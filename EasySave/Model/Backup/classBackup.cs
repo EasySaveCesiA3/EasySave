@@ -4,6 +4,7 @@ using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using System.Windows;
+using System.Windows.Shapes;
 using System.Xml.Linq;
 using Log;
 
@@ -15,32 +16,69 @@ public class BackupData
     public required string Source { get; set; }
     public required string Target { get; set; }
     public required string Name { get; set; }
-    public IBackupStrategy Strategy { get; set; }
+    public string Strategy { get; set; }
     public int BackupId { get; set; }
 }
 
 public interface IBackupStrategy
 {
-    Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target);
+    Task<(long transferredSize, long transferredFiles)> ExecuteBackup(string source, string target, string name, string action);
 }
 
 
 public class CompleteBackup : IBackupStrategy
 {
-    public async Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target)
+    public async Task<(long transferredSize, long transferredFiles)> ExecuteBackup(string source, string target, string name, string action)
     {
-        // Appel de la méthode asynchrone CopyDirectoryAsync
-        return await Copie.Instance.CopyDirectoryAsync(source, target, false);
+        string path = System.IO.Path.Combine("Etat", String.Concat(name,".txt"));
+
+        // Créer le fichier initial
+        Tools.CreateFile(path);
+        long sourceSize = Tools.GetSize(source);
+        long targetSize = 0;
+
+        Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+
+        Action<long, long> updateProgress = (transferredSize, transferredFiles) =>
+        {
+            targetSize = transferredSize;
+            Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+        };
+
+        var result = await Copie.Instance.CopyDirectoryAsync(source, target, false, updateProgress);
+
+        File.Delete(path);
+
+        return result;
     }
+
 }
 
 
 public class DifferentialBackup : IBackupStrategy
 {
-    public async Task<(long totalSize, long totalFiles)> ExecuteBackup(string source, string target)
+    public async Task<(long transferredSize, long transferredFiles)> ExecuteBackup(string source, string target, string name, string action)
     {
-        // Appel de la méthode asynchrone CopyDirectoryAsync avec différentiel
-        return await Copie.Instance.CopyDirectoryAsync(source, target, true);
+        string path = System.IO.Path.Combine("Etat", String.Concat(name, ".txt"));
+
+        // Créer le fichier initial
+        Tools.CreateFile(path);
+        long sourceSize = Tools.GetSize(source);
+        long targetSize = 0;
+
+        Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+
+        Action<long, long> updateProgress = (transferredSize, transferredFiles) =>
+        {
+            targetSize = transferredSize;
+            Tools.WriteBackupState(path, name, targetSize, sourceSize, action, "En cours");
+        };
+
+        var result = await Copie.Instance.CopyDirectoryAsync(source, target, true, updateProgress);
+
+        File.Delete(path);
+
+        return result;
     }
 }
 
@@ -51,7 +89,7 @@ public class BackupFactory
 {
     public IBackupStrategy CreateBackupStrategy(string type)
     {
-        MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
+        //MessageBox.Show($"DEBUG: TypeSauvegarde après conversion 123 = {type}");
         return type switch
         {
             "Complete" => new CompleteBackup(),
@@ -67,7 +105,7 @@ public class BackupManager
     private List<BackupData> backupList = new List<BackupData>();
     private int nextBackupId = 1;
 
-    public BackupData CreateBackupData(string source, string target, string name, IBackupStrategy strategy)
+    public BackupData CreateBackupData(string source, string target, string name, string strategy)
     {
         var backup = new BackupData
         {
@@ -92,10 +130,26 @@ public class BackupManager
         return false;
     }
 
-    public BackupData? GetBackup(int backupId)
+    public BackupData? GetBackup(string backupName)
     {
-        return backupList.FirstOrDefault(b => b.BackupId == backupId);
+        var (logDictionaries, errorMessage) = Historic.LogsData();
+
+        if (!string.IsNullOrEmpty(errorMessage) || logDictionaries == null || logDictionaries.Count == 0)
+        {
+            return null;
+        }
+
+        var backups = logDictionaries.Select(b => new BackupData
+        {
+            Name = b.TryGetValue("BackupName", out string? name) ? name : string.Empty,
+            Source = b.TryGetValue("Source", out string? source) ? source : string.Empty,
+            Target = b.TryGetValue("RestorationTarget", out string? target) ? target : string.Empty,
+            Strategy = b.TryGetValue("StrategyType", out string? strategy) ? strategy : string.Empty,
+        }).ToList();
+
+        return backups.FirstOrDefault(b => b.Name == backupName);
     }
+
 
     public List<BackupData> ListBackups()
     {
@@ -109,48 +163,74 @@ public class BackupService
     private BackupManager backupManager = new BackupManager();
     private BackupFactory backupFactory = new BackupFactory();
 
-    // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
-    public async Task StartBackup(string source, string target, string name, string type)
+    // Méthode de vérification du logiciel métier
+    private bool IsBusinessSoftwareRunning()
     {
-        var strategy = backupFactory.CreateBackupStrategy(type);
-        var backupData = backupManager.CreateBackupData(source, target, name, strategy);
-        string sauvegarde = Path.Combine("Sauvegardes", name);
+        return Model.Copie.Instance.IsBusinessSoftwareRunning();
+    }
+
+    private bool CheckForBusinessSoftware()
+    {
+        if (IsBusinessSoftwareRunning())
+        {
+            MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer avant de lancer l'opération.",
+                "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            return true;
+        }
+        return false;
+    }
+
+
+    // Démarre une sauvegarde et renvoie un résultat (aucun affichage dans le modèle)
+    public async Task StartBackup(string source, string target, string name, string strategyType)
+    {
+        if (CheckForBusinessSoftware())
+            return;
+
+        var strategy = backupFactory.CreateBackupStrategy(strategyType);
+        var backupData = backupManager.CreateBackupData(source, target, name, strategyType);
+        string sauvegarde = System.IO.Path.Combine("Sauvegardes", name);
+
 
         var stopwatch = Stopwatch.StartNew();
 
         // Attente asynchrone pour récupérer les résultats de la méthode ExecuteBackup
-        var (totalSize, totalFiles) = await strategy.ExecuteBackup(source, sauvegarde);
+        var (transferredSize, transferredFiles) = await strategy.ExecuteBackup(source, sauvegarde, name, "Sauvegarde");
 
         stopwatch.Stop();
 
-        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
+        MessageBox.Show($"Sauvegarde '{name}' enregistrée avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+
+        Historic.Backup(name, source, target, stopwatch.ElapsedMilliseconds.ToString(), transferredSize.ToString(), strategyType);
     }
 
     // Restaure une sauvegarde et renvoie le résultat
-    public async Task RestoreBackup(int backupId, string restoreDestination, bool differential)
+    public async Task RestoreBackup(string backupName, string restoreDestination)
     {
-        var backupData = backupManager.GetBackup(backupId);
+        if (CheckForBusinessSoftware())
+            return;
 
-        // Vérification si le backup existe
+        var backupData = backupManager.GetBackup(backupName);
+        bool differential = false;
+
         if (backupData == null)
         {
             throw new ArgumentException("Backup non trouvé");
         }
 
-        string sauvegarde = Path.Combine("Sauvegarde", backupData.Name);
+        string sauvegarde = System.IO.Path.Combine("Sauvegardes", backupData.Name);
 
         // Choix de la stratégie pour la restauration
         IBackupStrategy strategy = differential ? new DifferentialBackup() : new CompleteBackup();
 
         var stopwatch = Stopwatch.StartNew();
 
-        // Appel asynchrone de la méthode ExecuteBackup pour effectuer la restauration
-        var (totalSize, totalFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination);
+
+        var (transferredSize, transferredFiles) = await strategy.ExecuteBackup(sauvegarde, restoreDestination, backupData.Name, "Restauration");
 
         stopwatch.Stop();
 
-        // Enregistrement de l'historique après la restauration
-        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), totalSize.ToString());
+        Historic.Backup(backupData.Name, backupData.Source, backupData.Target, stopwatch.ElapsedMilliseconds.ToString(), transferredSize.ToString(), backupData.Strategy);
     }
 
 
@@ -170,7 +250,7 @@ public class BackupService
 //{
 //    public int BackupId { get; set; }
 //    public string BackupName { get; set; }
-//    public long TotalSize { get; set; }
-//    public long TotalFiles { get; set; }
+//    public long transferredSize { get; set; }
+//    public long transferredFiles { get; set; }
 //    public long ElapsedTimeMs { get; set; }
 //}

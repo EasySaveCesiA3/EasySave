@@ -1,4 +1,7 @@
+using Log;
 using System.Collections.Generic;
+using System.IO;
+using System.Windows;
 
 namespace Model
 {
@@ -6,16 +9,23 @@ namespace Model
     {
         private static BackupService backupService = new BackupService();
 
-        // Démarrer une sauvegarde ; renvoie un objet résultat à l’interface
         public static void runBackup(string source, string target, string backupName, string type)
         {
+            string sauvegardesPath = Path.Combine(Directory.GetCurrentDirectory(), "Sauvegardes");
+            string backupPath = Path.Combine(sauvegardesPath, backupName);
+
+            if (File.Exists(backupPath) || Directory.Exists(backupPath))
+            {
+                MessageBox.Show($"Un fichier ou un dossier nommé '{backupName}' existe déjà dans 'Sauvegardes'.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+
             backupService.StartBackup(source, target, backupName, type);
         }
 
-        // Restaurer une sauvegarde ; differential indique le type de restauration
-        public static void runRestore(int backupId, string destination, bool differential)
+        public static void runRestore(string backupName, string destination)
         {
-            backupService.RestoreBackup(backupId, destination, differential);
+            backupService.RestoreBackup(backupName, destination);
         }
 
         public static List<BackupData> listBackups()
@@ -27,7 +37,18 @@ namespace Model
         {
             return backupService.DeleteBackup(backupId);
         }
+        public static void openLog()
+        {
+            MessageBox.Show("Ouverture du journal d'événements");
+            Historic.OpenLog();
+        }
 
-        // Vous pourrez ajouter d’autres méthodes (modifyBackup, addBackup, etc.) en suivant ce modèle.
+        public static bool logtype()
+        {
+            Historic.choix = !Historic.choix;
+            return Historic.choix;
+        }
     }
+
+
 }

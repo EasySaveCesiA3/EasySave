@@ -1,139 +1,99 @@
-﻿//using System;
-//using System.Collections.ObjectModel;
-//using System.ComponentModel;
-//using System.IO;
-//using System.Linq;
-//using System.Runtime.CompilerServices;
-//using System.Windows;
-//using System.Windows.Input;
+﻿using System;
+using Model;
+using CommunityToolkit.Mvvm.ComponentModel;
+using System.Windows;
+using CryptoSoft;
+using System.Text.Json;
+using Microsoft.VisualBasic;
+using System.IO;
+using System.IO.Packaging;
 
-//namespace EasySaveApp.ViewModels
-//{
-//    public class RestoreViewModel : INotifyPropertyChanged
-//    {
-//        private readonly GestionnaireSauvegarde gestionnaire;
-//        private string _selectedDestination;
-//        private int _selectedRestoreTypeIndex;
+namespace ViewModel
+{
+    public partial class RestoreViewModel : ObservableObject
+    {
+        private readonly classModel _classModel = new classModel();
 
-//        public ObservableCollection<string> BackupList { get; set; } = new ObservableCollection<string>();
-//        public ObservableCollection<string> SelectedBackups { get; set; } = new ObservableCollection<string>();
-//        public ObservableCollection<string> DestinationPaths { get; set; } = new ObservableCollection<string>();
+        public void RestoreBackup(BackupData selectedBackup)
+        {
+            if (selectedBackup == null)
+            {
+                MessageBox.Show("Aucune sauvegarde sélectionnée.", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+                return;
+            }
+            bool isDifferential = selectedBackup.Strategy is "Differential";
+           
+            classModel.runRestore(selectedBackup.Name, selectedBackup.Target);
 
-//        public string SelectedDestination
-//        {
-//            get => _selectedDestination;
-//            set { _selectedDestination = value; OnPropertyChanged(); }
-//        }
+            string backupMetadataPath = Path.Combine(Path.GetFullPath(selectedBackup.Target), "metadata.json");
 
-//        public int SelectedRestoreTypeIndex
-//        {
-//            get => _selectedRestoreTypeIndex;
-//            set { _selectedRestoreTypeIndex = value; OnPropertyChanged(); }
-//        }
+            if (File.Exists(backupMetadataPath)) 
+            { 
+                DecrypterSauvegarde(selectedBackup.Name, selectedBackup.Target);
+            }
+            MessageBox.Show($"Restauration faites avec succès !", "Confirmation", MessageBoxButton.OK, MessageBoxImage.Information);
+        }
 
-//        public ICommand LoadBackupsCommand { get; }
-//        public ICommand SelectFolderCommand { get; }
-//        public ICommand RestoreCommand { get; }
-//        public ICommand CloseCommand { get; }
+        private void DecrypterSauvegarde(string backupName, string targetFolder)
+        {
+            try
+            {
+                string backupFolder = Path.Combine("Sauvegardes", backupName);
+                string backupMetadataPath = Path.Combine(Path.GetFullPath(backupFolder), "metadata.json");
 
-//        public event PropertyChangedEventHandler PropertyChanged;
+                if (!File.Exists(backupMetadataPath))
+                {
+                    MessageBox.Show("Aucun fichier de métadonnées trouvé dans le dossier de sauvegarde.",
+                                    "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
+                string metadataJson = File.ReadAllText(backupMetadataPath);
+                var metadata = JsonSerializer.Deserialize<BackupMetadata>(metadataJson);
+                if (metadata == null || !metadata.Crypte)
+                {
+                    MessageBox.Show("La sauvegarde n'est pas cryptée.",
+                                    "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                    return;
+                }
 
-//        public RestoreViewModel()
-//        {
-//            gestionnaire = new GestionnaireSauvegarde();
+                string key = Microsoft.VisualBasic.Interaction.InputBox("Cette sauvegarde est cryptée. Entrez la clé pour décrypter :",
+                                                                         "Décryptage", "");
+                while (string.IsNullOrEmpty(key) || key.Length < 8)
+                {
+                    key = Microsoft.VisualBasic.Interaction.InputBox("La clé doit faire au moins 8 caractères. Réessayez :",
+                                                                     "Décryptage", "");
+                }
 
-//            LoadBackupsCommand = new RelayCommand(LoadBackups);
-//            SelectFolderCommand = new RelayCommand(SelectFolder);
-//            RestoreCommand = new RelayCommand(Restore);
-//            CloseCommand = new RelayCommand(Close);
+                var extensionsToDecrypt = metadata.ExtensionsCryptees.ToList();
 
-//            LoadBackups();
-//        }
+                CryptoSoftManager.StartCrypto(targetFolder, extensionsToDecrypt, key);
 
-//        private void LoadBackups()
-//        {
-//            BackupList.Clear();
-//            string backupsRoot = "Sauvegardes";
+                string targetMetadataPath = Path.Combine(Path.GetFullPath(targetFolder), "metadata.json");
 
-//            if (!Directory.Exists(backupsRoot))
-//            {
-//                MessageBox.Show("Aucune sauvegarde disponible.");
-//                return;
-//            }
+                if (!Path.GetFullPath(backupFolder).Equals(Path.GetFullPath(targetFolder), StringComparison.OrdinalIgnoreCase))
+                {
+                    if (File.Exists(targetMetadataPath))
+                    {
+                        File.Delete(targetMetadataPath);
+                    }
+                }
 
-//            var directories = Directory.GetDirectories(backupsRoot).Select(Path.GetFileName).ToList();
-//            if (directories.Count == 0)
-//            {
-//                MessageBox.Show("Aucune sauvegarde trouvée.");
-//                return;
-//            }
+                MessageBox.Show("La sauvegarde a été décrytée avec succès.",
+                                "Décryptage", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du décryptage : {ex.Message}",
+                                "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+        private class BackupMetadata
+        {
+            public bool Crypte { get; set; }
+            public string Date { get; set; }
+            public string[] ExtensionsCryptees { get; set; }
+        }
+    }
 
-//            foreach (var dir in directories)
-//                BackupList.Add(dir);
-//        }
 
-//        private void SelectFolder()
-//        {
-//            var dialog = new Microsoft.Win32.OpenFolderDialog
-//            {
-//                Title = "Sélectionnez un dossier"
-//            };
-
-//            if (dialog.ShowDialog() == true)
-//            {
-//                DestinationPaths.Add(dialog.FolderName);
-//            }
-//        }
-
-//        private void Restore()
-//        {
-//            if (SelectedBackups.Count == 0)
-//            {
-//                MessageBox.Show("Veuillez sélectionner au moins une sauvegarde.");
-//                return;
-//            }
-
-//            if (SelectedBackups.Count != DestinationPaths.Count)
-//            {
-//                MessageBox.Show("Veuillez entrer un chemin pour chaque sauvegarde sélectionnée.");
-//                return;
-//            }
-
-//            bool isDifferential = SelectedRestoreTypeIndex == 1;
-
-//            for (int i = 0; i < SelectedBackups.Count; i++)
-//            {
-//                string backupName = SelectedBackups[i];
-//                string backupPath = Path.Combine("Sauvegardes", backupName);
-//                string destination = DestinationPaths[i];
-
-//                if (string.IsNullOrEmpty(destination) || !Directory.Exists(Path.GetDirectoryName(destination)))
-//                {
-//                    MessageBox.Show($"Chemin invalide pour {backupName}. Restauration annulée.");
-//                    continue;
-//                }
-
-//                if (isDifferential)
-//                {
-//                    gestionnaire.RestoreBackupDifferential(backupPath, destination, backupName);
-//                }
-//                else
-//                {
-//                    gestionnaire.RestoreBackup(backupPath, destination, backupName);
-//                }
-//            }
-
-//            MessageBox.Show("Restauration terminée !");
-//        }
-
-//        private void Close()
-//        {
-//            Application.Current.Windows.OfType<Window>().SingleOrDefault(w => w.IsActive)?.Close();
-//        }
-
-//        private void OnPropertyChanged([CallerMemberName] string propertyName = null)
-//        {
-//            PropertyChanged?.Invoke(this, new PropertyChangedEventArgs(propertyName));
-//        }
-//    }
-//}
+}

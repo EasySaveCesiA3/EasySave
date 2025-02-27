@@ -43,12 +43,12 @@ namespace Model
             switch (choix)
             {
                 case "1":
-                    Historic.choix = "1";
+                    Historic.choix = false;
                     Historic.CreateLogFile();
                     Console.WriteLine("Sauvegarde sous format Json");
                     break;
                 case "2":
-                    Historic.choix = "2";
+                    Historic.choix = true;
                     Historic.CreateLogFile();
                     Console.WriteLine("Sauvegarde sous format Xaml");
                     break;

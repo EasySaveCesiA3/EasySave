@@ -1,0 +1,52 @@
+[
+  {
+    "BackupName": "cctl",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T09:36:07.3851956+01:00",
+    "StrategyType": "Differential",
+    "TransfertTime": "18",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "cctl",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T09:36:14.3540237+01:00",
+    "StrategyType": "Differential",
+    "TransfertTime": "1440",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "cctls",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T09:36:31.3667941+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "5",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "cctls",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T09:36:38.9440372+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "537",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  },
+  {
+    "BackupName": "cctls",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-27T09:40:18.6942185+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "753",
+    "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
+    "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
+    "Size": "24"
+  }
+]

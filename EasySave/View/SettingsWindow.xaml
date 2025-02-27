@@ -1,0 +1,115 @@
+﻿<Window x:Class="Views.SettingsWindow"
+        Title="Paramètres"
+        SizeToContent="WidthAndHeight"
+        WindowStartupLocation="CenterScreen"
+        Background="Black"
+        WindowStyle="None"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="clr-namespace:ViewModels">
+
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="250"/>
+            <ColumnDefinition Width="*"/>
+        </Grid.ColumnDefinitions>
+
+        <Border Grid.Column="0"
+                Background="#2E2E2E"
+                Padding="10"
+                BorderBrush="#444"
+                BorderThickness="2">
+            <StackPanel HorizontalAlignment="Stretch" VerticalAlignment="Top">
+                <TextBlock Text="Paramètres"
+                           FontSize="24"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="10"
+                           HorizontalAlignment="Center"/>
+                <Button Content="Retour"
+                        Command="{Binding RetourCommand}"
+                        Background="#4A90E2"
+                        Foreground="White"
+                        Height="40"
+                        Margin="5"/>
+            </StackPanel>
+        </Border>
+
+        <Border Grid.Column="1"
+                Padding="20"
+                BorderBrush="#444"
+                BorderThickness="2">
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,1">
+                    <GradientStop Color="#4A90E2" Offset="0"/>
+                    <GradientStop Color="#1E1E1E" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+
+            <StackPanel>
+                <TextBlock Text="Crypter Fichier"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="0 0 0 10"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="200"
+                             Text="{Binding NouvelleExtension, Mode=TwoWay}"/>
+                    <Button Content="Ajouter"
+                            Command="{Binding AjouterExtensionCommand}"
+                            Background="#4A90E2"
+                            Foreground="White"
+                            Width="80"
+                            Margin="5"/>
+                </StackPanel>
+
+                <ListBox ItemsSource="{Binding ExtensionsCryptees}"
+                         SelectedItem="{Binding ExtensionSelectionnee, Mode=TwoWay}"
+                         Height="100"
+                         Width="250"
+                         Margin="0 5 0 0"
+                         HorizontalAlignment="Left"/>
+                <Button Content="Supprimer"
+                        Command="{Binding SupprimerExtensionCommand}"
+                        Background="#D9534F"
+                        Foreground="White"
+                        Width="100"
+                        HorizontalAlignment="Left"
+                        Margin="80 5 5 5"/>
+
+                <TextBlock Text="Détection de Logiciel Métier"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="10 0 0 10"/>
+                <StackPanel Orientation="Horizontal">
+                    <TextBox Width="250"
+                             Text="{Binding LogicielMetier, Mode=TwoWay}"
+                             IsReadOnly="True"/>
+                    <Button Content="Parcourir"
+                            Command="{Binding SelectionnerLogicielMetierCommand}"
+                            Background="#4A90E2"
+                            Foreground="White"
+                            Width="80"
+                            Margin="5"/>
+                </StackPanel>
+
+                <TextBlock Text="Langue"
+                           FontSize="20"
+                           FontWeight="Bold"
+                           Foreground="White"
+                           Margin="10 0 0 10"/>
+                <ComboBox ItemsSource="{Binding Langues}"
+                          SelectedItem="{Binding LangueSelectionnee}"
+                          Width="150"/>
+
+                <Button Content="Sauvegarder les paramètres"
+                        Command="{Binding SauvegarderCommand}"
+                        Background="#4A90E2"
+                        Foreground="White"
+                        Height="40"
+                        Margin="10"/>
+            </StackPanel>
+        </Border>
+    </Grid>
+</Window>
