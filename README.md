@@ -103,7 +103,7 @@ Chaque publication est accompagnée d’un fichier **Release Notes** détaillant
 - **Support technique** :  
   - Emplacement par défaut : `C:\Program Files (x86)\EasySave`  
   - Fichiers de configuration : `C:\ProgramData\EasySave\Config`  
-  - Configuration minimale : Windows 10, .NET 8.0, 200 Mo d’espace disque
+  - Configuration minimale : Windows 10, .NET 8.0, 100 Mo d’espace disque
 - **Diagrammes UML** : réalisés avec **Mermaid**
 - **FAQ / Issues** : en cas de problème, [ouvrez une issue](#) sur GitHub ou contactez l’équipe support à `support@prosoft.com`.
 
