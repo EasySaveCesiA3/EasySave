@@ -4,16 +4,16 @@
 winexe
 C#
 .cs
-C:\Users\Martin\source\repos\EasySaveApp\obj\Debug\net8.0-windows\
+C:\EasySave\EasySaveV2\EasySave-main\obj\Debug\net8.0-windows\
 EasySaveApp
 none
 false
-TRACE;DEBUG;NET;NET8_0;NETCOREAPP
-C:\Users\Martin\source\repos\EasySaveApp\App.xaml
+TRACE;DEBUG;NET;NET8_0;NETCOREAPP;WINDOWS;WINDOWS7_0;NET5_0_OR_GREATER;NET6_0_OR_GREATER;NET7_0_OR_GREATER;NET8_0_OR_GREATER;NETCOREAPP3_0_OR_GREATER;NETCOREAPP3_1_OR_GREATER;WINDOWS7_0_OR_GREATER
+C:\EasySave\EasySaveV2\EasySave-main\App.xaml
 4-1579528396
 
 10802094061
-204849010944
+204-521085281
 LanguageWindow.xaml;MainWindow.xaml;RestoreWindow.xaml;SauvegardeWindow.xaml;
 
 False
