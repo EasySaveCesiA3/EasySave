@@ -238,5 +238,15 @@
     "Source": "C:\\Users\\erwan\\OneDrive\\Documents\\\u00E0 copier",
     "RestorationTarget": "C:\\Users\\erwan\\OneDrive\\Documents\\cible",
     "Size": "26609"
+  },
+  {
+    "BackupName": "lucas",
+    "Action": "Sauvegarde",
+    "Time": "2025-02-28T08:37:50.4508106+01:00",
+    "StrategyType": "Complete",
+    "TransfertTime": "4935",
+    "Source": "C:\\Users\\fab02\\Music\\Screenshots",
+    "RestorationTarget": "C:\\Users\\fab02\\Music\\Nouveau dossier",
+    "Size": "257359099"
   }
 ]

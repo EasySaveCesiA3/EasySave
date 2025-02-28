@@ -1,6 +1,8 @@
 ﻿using System;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 
@@ -10,8 +12,17 @@ namespace Model
     {
         private static Copie? _instance;
         private static readonly object _lock = new object();
+
+        // Indique si une interruption est demandée
         public volatile bool Interruption = false;
+        // Indique si un arrêt est demandé
         public volatile static bool Arret = false;
+
+        // Sémaphore pour empêcher le transfert parallèle de plusieurs fichiers "gros"
+        private SemaphoreSlim _largeFileSemaphore = new SemaphoreSlim(1, 1);
+        // Seuil configurable pour considérer un fichier comme "gros" (en Ko)
+        public long LargeFileThresholdInKB { get; set; } = 100; // Valeur par défaut modifiable
+        public long LargeFileThresholdInBytes => LargeFileThresholdInKB * 1024;
 
         private Copie() { }
 
@@ -35,7 +46,6 @@ namespace Model
 
         public void Pause() => Interruption = true;
         public void Resume() => Interruption = false;
-
         public void Stop() => Arret = true;
 
         public bool IsBusinessSoftwareRunning()
@@ -44,7 +54,6 @@ namespace Model
                 return false;
 
             string exeName = Path.GetFileNameWithoutExtension(BusinessSoftwarePath);
-
             return Process.GetProcessesByName(exeName).Any();
         }
 
@@ -57,11 +66,10 @@ namespace Model
                 {
                     MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
                                     "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
-
                     throw new Exception("Logiciel métier en cours d'exécution.");
                 }
 
-                // On attend tant que le logiciel métier est actif ou que l'interruption est activée
+                // On attend tant que le logiciel métier est actif ou qu'une interruption est demandée
                 while (IsBusinessSoftwareRunning() || Interruption)
                 {
                     await Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
@@ -77,87 +85,106 @@ namespace Model
         {
             long transferredSize = 0;
             long transferredFiles = 0;
-
             var priorityExtensions = GetPrioritizedExtensions();
 
             if (!Directory.Exists(destinationDir))
                 Directory.CreateDirectory(destinationDir);
 
             var allFiles = Directory.GetFiles(sourceDir);
-
             var priorityFiles = allFiles.Where(f => priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
             var normalFiles = allFiles.Where(f => !priorityExtensions.Contains(Path.GetExtension(f).ToLower())).ToList();
 
+            // Traitement des fichiers prioritaires
             foreach (var file in priorityFiles)
             {
-
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
                     if (Arret)
                     {
                         MessageBox.Show("okokok");
-
                         throw new Exception("Sauvegarde arrétée prématurément");
                     }
                     while (Interruption)
                     {
-                        Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
+                        Task.Delay(200).Wait(); // Attend 200 ms avant de vérifier à nouveau
                     }
                     Task.Delay(1500).Wait();
-                    File.Copy(file, destFile, true);
+
                     FileInfo fileInfo = new FileInfo(file);
+                    if (fileInfo.Length > LargeFileThresholdInBytes)
+                    {
+                        _largeFileSemaphore.Wait();
+                        try
+                        {
+                            File.Copy(file, destFile, true);
+                        }
+                        finally
+                        {
+                            _largeFileSemaphore.Release();
+                        }
+                    }
+                    else
+                    {
+                        File.Copy(file, destFile, true);
+                    }
+
                     transferredSize += fileInfo.Length;
                     transferredFiles++;
-
-                    // Mise à jour du progrès
                     updateProgress(transferredSize, transferredFiles);
-
-                    // Pause de 2 secondes après chaque copie
-                    //Thread.Sleep(20000); // Attend 2 secondes
                 }
                 catch (Exception)
                 {
                     throw; // Laissez l'exception remonter
                 }
-                
             }
 
+            // Traitement des fichiers non prioritaires
             foreach (var file in normalFiles)
             {
-
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
                     if (Arret)
                     {
                         MessageBox.Show("okokok");
-
                         throw new Exception("Sauvegarde arrétée prématurément");
                     }
                     while (Interruption)
                     {
-                        Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
+                        Task.Delay(200).Wait();
                     }
                     Task.Delay(1500).Wait();
-                    File.Copy(file, destFile, true);
+
                     FileInfo fileInfo = new FileInfo(file);
+                    if (fileInfo.Length > LargeFileThresholdInBytes)
+                    {
+                        _largeFileSemaphore.Wait();
+                        try
+                        {
+                            File.Copy(file, destFile, true);
+                        }
+                        finally
+                        {
+                            _largeFileSemaphore.Release();
+                        }
+                    }
+                    else
+                    {
+                        File.Copy(file, destFile, true);
+                    }
+
                     transferredSize += fileInfo.Length;
                     transferredFiles++;
-
-                    // Mise à jour du progrès
                     updateProgress(transferredSize, transferredFiles);
-
-                    // Pause de 2 secondes après chaque copie
-                    //Thread.Sleep(20000); // Attend 2 secondes
                 }
                 catch (Exception)
                 {
-                    throw; // Laissez l'exception remonter
+                    throw;
                 }
             }
 
-
+            // Traitement récursif des sous-répertoires
             foreach (var dir in Directory.GetDirectories(sourceDir))
             {
                 string destDirPath = Path.Combine(destinationDir, Path.GetFileName(dir));
@@ -169,12 +196,10 @@ namespace Model
             return (transferredSize, transferredFiles);
         }
 
-
         public (long transferredSize, long transferredFiles) CopyDirectoryDifferential(string sourceDir, string destinationDir, Action<long, long> updateProgress)
         {
             long transferredSize = 0;
             long transferredFiles = 0;
-
             var priorityExtensions = GetPrioritizedExtensions();
 
             if (!Directory.Exists(destinationDir))
@@ -188,7 +213,6 @@ namespace Model
             {
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 bool copyFile = true;
-
                 if (File.Exists(destFile))
                 {
                     FileInfo sourceInfo = new FileInfo(file);
@@ -196,17 +220,29 @@ namespace Model
                     if (sourceInfo.Length == destInfo.Length)
                         copyFile = false;
                 }
-
                 if (copyFile)
                 {
                     try
                     {
-                        File.Copy(file, destFile, true);
                         FileInfo fileInfo = new FileInfo(file);
+                        if (fileInfo.Length > LargeFileThresholdInBytes)
+                        {
+                            _largeFileSemaphore.Wait();
+                            try
+                            {
+                                File.Copy(file, destFile, true);
+                            }
+                            finally
+                            {
+                                _largeFileSemaphore.Release();
+                            }
+                        }
+                        else
+                        {
+                            File.Copy(file, destFile, true);
+                        }
                         transferredSize += fileInfo.Length;
                         transferredFiles++;
-
-                        // Mise à jour du progrès
                         updateProgress(transferredSize, transferredFiles);
                     }
                     catch (Exception)
@@ -220,7 +256,6 @@ namespace Model
             {
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 bool copyFile = true;
-
                 if (File.Exists(destFile))
                 {
                     FileInfo sourceInfo = new FileInfo(file);
@@ -228,17 +263,29 @@ namespace Model
                     if (sourceInfo.Length == destInfo.Length)
                         copyFile = false;
                 }
-
                 if (copyFile)
                 {
                     try
                     {
-                        File.Copy(file, destFile, true);
                         FileInfo fileInfo = new FileInfo(file);
+                        if (fileInfo.Length > LargeFileThresholdInBytes)
+                        {
+                            _largeFileSemaphore.Wait();
+                            try
+                            {
+                                File.Copy(file, destFile, true);
+                            }
+                            finally
+                            {
+                                _largeFileSemaphore.Release();
+                            }
+                        }
+                        else
+                        {
+                            File.Copy(file, destFile, true);
+                        }
                         transferredSize += fileInfo.Length;
                         transferredFiles++;
-
-                        // Mise à jour du progrès
                         updateProgress(transferredSize, transferredFiles);
                     }
                     catch (Exception)
@@ -276,7 +323,5 @@ namespace Model
             }
             return priorityExtensions;
         }
-
-        //private bool IsDiscordRunning() => Process.GetProcessesByName("discord").Length > 0;
     }
 }

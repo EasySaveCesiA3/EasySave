@@ -61,3 +61,16 @@ C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
 C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
 C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
 C:\Users\erwan\OrgaES\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
+C:\EasySaveV3\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.deps.json
+C:\EasySaveV3\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.dll
+C:\EasySaveV3\lib\CryptoSoft\bin\Debug\net8.0\CryptoSoft.pdb
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.AssemblyReference.cache
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.GeneratedMSBuildEditorConfig.editorconfig
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfoInputs.cache
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.AssemblyInfo.cs
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.csproj.CoreCompileInputs.cache
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.sourcelink.json
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.dll
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\refint\CryptoSoft.dll
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\CryptoSoft.pdb
+C:\EasySaveV3\lib\CryptoSoft\obj\Debug\net8.0\ref\CryptoSoft.dll
