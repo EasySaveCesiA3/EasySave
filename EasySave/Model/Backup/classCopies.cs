@@ -10,7 +10,8 @@ namespace Model
     {
         private static Copie? _instance;
         private static readonly object _lock = new object();
-        private volatile bool Interruption = false;
+        public volatile bool Interruption = false;
+        public volatile static bool Arret = false;
 
         private Copie() { }
 
@@ -35,6 +36,8 @@ namespace Model
         public void Pause() => Interruption = true;
         public void Resume() => Interruption = false;
 
+        public void Stop() => Arret = true;
+
         public bool IsBusinessSoftwareRunning()
         {
             if (string.IsNullOrWhiteSpace(BusinessSoftwarePath))
@@ -49,6 +52,7 @@ namespace Model
         {
             return await Task.Run(async () =>
             {
+                Arret = false;
                 if (IsBusinessSoftwareRunning())
                 {
                     MessageBox.Show("Erreur : Le logiciel métier est en cours d'exécution. Veuillez le fermer pour continuer.",
@@ -90,6 +94,17 @@ namespace Model
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
+                    if (Arret)
+                    {
+                        MessageBox.Show("okokok");
+
+                        throw new Exception("Sauvegarde arrétée prématurément");
+                    }
+                    while (Interruption)
+                    {
+                        Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
+                    }
+                    Task.Delay(1500).Wait();
                     File.Copy(file, destFile, true);
                     FileInfo fileInfo = new FileInfo(file);
                     transferredSize += fileInfo.Length;
@@ -105,7 +120,7 @@ namespace Model
                 {
                     throw; // Laissez l'exception remonter
                 }
-                Task.Delay(5000).Wait();
+                
             }
 
             foreach (var file in normalFiles)
@@ -114,7 +129,17 @@ namespace Model
                 string destFile = Path.Combine(destinationDir, Path.GetFileName(file));
                 try
                 {
-                    Task.Delay(5000).Wait();
+                    if (Arret)
+                    {
+                        MessageBox.Show("okokok");
+
+                        throw new Exception("Sauvegarde arrétée prématurément");
+                    }
+                    while (Interruption)
+                    {
+                        Task.Delay(200); // Attend 200 ms avant de vérifier à nouveau
+                    }
+                    Task.Delay(1500).Wait();
                     File.Copy(file, destFile, true);
                     FileInfo fileInfo = new FileInfo(file);
                     transferredSize += fileInfo.Length;
@@ -130,7 +155,6 @@ namespace Model
                 {
                     throw; // Laissez l'exception remonter
                 }
-                //Task.Delay(5000).Wait();
             }
 
 

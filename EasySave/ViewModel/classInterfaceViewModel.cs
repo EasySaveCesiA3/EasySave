@@ -15,6 +15,7 @@ using ViewModels;
 using System.IO;
 using ControlzEx.Standard;
 using System.Windows.Threading;
+using static Model.StateManager;
 
 namespace ViewModel
 
@@ -32,6 +33,8 @@ namespace ViewModel
         public ICommand OuvrirParametresCommand { get; }
         public ICommand ViewLogsCommand { get; }
         public ICommand ChangeLogFormatCommand { get; }
+        public ICommand PauseCommand { get; }
+        public ICommand StopCommand { get; }
         public RelayCommand QuitterCommand { get; }
 
 
@@ -87,6 +90,8 @@ namespace ViewModel
             DeleteSauvegardeCommand = new RelayCommand(LancerSuppression);
             ViewLogsCommand = new RelayCommand(ouvrirLog);
             ChangeLogFormatCommand = new RelayCommand(changerLogType);
+            PauseCommand = new RelayCommand(PauseSauvegarde);
+            StopCommand = new RelayCommand(StopSauvegarde);
             //public RelayCommand<Window> CloseWindowCommand { get; }
             ListerTravail();
 
@@ -130,24 +135,17 @@ namespace ViewModel
 
                 lock (ListeTravaux)
                 {
-                    var fichiersExistants = fichiers.Select(f => Path.GetFileName(f)).ToList();
-
-                    var backupsASupprimer = ListeTravaux.Where(b => !fichiersExistants.Contains(b.Name)).ToList();
-                    foreach (var backup in backupsASupprimer)
-                    {
-                        ListeTravaux.Remove(backup);
-                    }
-
+                    CleanListeTravaux(fichiers);
                     foreach (var path in fichiers)
                     {
                         var backupProgress = Model.Tools.ReadBackupState(path);
-
                         var existingBackup = ListeTravaux.FirstOrDefault(b => b.Name == backupProgress.Name);
 
                         if (existingBackup != null)
                         {
                             existingBackup.Progress = backupProgress.Progress;
                             existingBackup.Total = backupProgress.Total;
+                           
                         }
                         else
                         {
@@ -156,13 +154,31 @@ namespace ViewModel
                     }
                 }
 
+
                 await Task.Delay(500); // Pause pour éviter de surcharger le CPU
             }
         }
 
+        private void CleanListeTravaux(string[] fichiersExistants)
+        {
+            var fichiersExistantsNoms = fichiersExistants.Select(f => Path.GetFileName(f)).ToList();
+            var backupsToRemove = new List<BackupProgress>(); // Liste des éléments à supprimer
 
+            // Récupérer les éléments à supprimer
+            foreach (var backup in ListeTravaux)
+            {
+                if (!fichiersExistantsNoms.Contains(backup.Name + ".txt"))
+                {
+                    backupsToRemove.Add(backup);
+                }
+            }
 
-
+            // Supprimer les éléments après l'itération
+            foreach (var backup in backupsToRemove)
+            {
+                ListeTravaux.Remove(backup);
+            }
+        }
 
 
         private void ListerSauvegardes(bool afficherMessage = true)
@@ -264,7 +280,32 @@ namespace ViewModel
             {
                 MessageBox.Show("Format => JSON "); ;
             }
+        }
 
+        private void PauseSauvegarde()
+        {
+            try
+            {
+                if (Copie.Instance.Interruption)
+                {
+                    Copie.Instance.Resume();
+                    MessageBox.Show("Sauvegarde reprise.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+                else
+                {
+                    Copie.Instance.Pause();
+                    MessageBox.Show("Sauvegarde en pause.", "Information", MessageBoxButton.OK, MessageBoxImage.Information);
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Erreur lors du changement d'état de la sauvegarde : {ex.Message}", "Erreur", MessageBoxButton.OK, MessageBoxImage.Error);
+            }
+        }
+
+        private void StopSauvegarde()
+        {
+            Copie.Instance.Stop();
         }
     }
 }
